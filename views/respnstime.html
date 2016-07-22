@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sara Sae :: RT138</title>
+<script src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="fusn_v3.5/fusioncharts.js"></script>
+<script type="text/javascript" src="fusn_v3.5/fusioncharts.widgets.js"></script>
+
+<!--<script type="text/javascript" src="/FusionCharts/FusionCharts.js"></script>
+<script type="text/javascript" src="/FusionCharts/FusionCharts.jQueryPlugin.js"></script> &lt;!&ndash; this js used for create chart using JSON data&ndash;&gt;-->
+<link href="/stylesheets/fonts.css" rel="stylesheet" type="text/css">
+<script src="/javascripts/tabs.js"></script>
+<script src="socket.io/socket.io.js"></script>
+    <script src="/datajs/respns_time_config.js" type="text/javascript"></script><!--here add dynamic PUMP-->
+<script src="/datajs/conn.js" type="text/javascript"></script><!--here to define socket ip-->
+<!--<link  rel="stylesheet" type="text/css" href="/stylesheets/stylishscroll.css"/>-->
+<script type="text/javascript" src="/javascripts/date.js"></script>
+<link href="/stylesheets/respnstime.css" rel="stylesheet" /> <!--page CSS-->
+    <link href="/stylesheets/resptme_css.css" rel="stylesheet" /> <!--page CSS-->
+    <script type="text/javascript" src="/javascripts/jquery.datetimepicker.js"></script>
+    <link  rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.css"/>
+
+<!--for footer content Resources start-->
+<link href="/javascripts/animated_marq/animate.css" rel="stylesheet" />
+<link href="/stylesheets/modeldialog.css" rel="stylesheet" />
+<script type='text/javascript' src='/javascripts/jquery.simplemodal.js'></script>
+<link href="/stylesheets/alarm_button.css" rel="stylesheet" />
+<script src="/datajs/t_alarm.js"></script>
+<script src="/datajs/Almarqu.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.textillate.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.fittext.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.lettering.js"></script>
+    <script src="/datajs/resp_time.js"></script>
+
+    <script src="/datajs/respns_realtime.js"></script>
+<!--for footer content Resources End-->
+
+</head>
+<body>
+<div id="main" style="display: block;">
+<!--<div class="back"> </div>-->
+<a href="/bop" title="back"><img class="back" src="/svg/back_arrow.svg"></a>
+<a href="/logout" title="Log out"><img class="log_out" src="/svg/logout.svg"></a>
+
+<div id="wrapper">
+
+<div id="tabContainer">
+<div class="tabs">
+    <ul>
+        <li  id="tabHeader_1">REAL TIME VALVE RESPONSE TIME</li>
+        <li  id="tabHeader_2" >RESPONSE TIME LOGS</li>
+        <li   id="tabHeader_3">HISTORICAL RESPONSE TIME</li>
+        <li   id="tabHeader_4">ACCUMULATOR RECHARGE TIME</li>
+    </ul>
+</div>
+<div class="tabscontent">
+<div class="tabpage" id="tabpage_1">
+    <div id="content1" style="display: block;">
+        <div class="tabpage_main">
+            <div class="pump_content">
+               <!-- <div class="pump1">
+                    <table id="t_pmp1" style="width: 100%; text-align: center;">
+                        <tr valign="middle" class="tr36">
+                            <td colspan="5">
+                                <img id="no_pmp1_alm"  class="tr_pump1" src="svg/gray_cir.svg">
+                                <img id="pmp1_alm" class="tr_pump1"  style=" display: none" src="svg/green_cir.svg">
+                                <span class="pmp">PUMP 1</span>
+                            </td>
+                        </tr>
+                        <tr valign="middle" class="tr55">
+                            <td colspan="3">Total Pump Runtime</td>
+                            <td rowspan="2">Start Pressure<br />
+                                (psi)</td>
+                            <td rowspan="2">Stop Pressure<br />
+                                (psi)</td>
+                        </tr>
+                        <tr valign="middle" class="tr31">
+                            <td>Hour</td>
+                            <td>Minute</td>
+                            <td>Seconds</td>
+                        </tr>
+                        <tr valign="middle" class="tr36">
+                            <td><label id="p1_hr">hr</label></td>
+                            <td><label id="p1_min">min</label></td>
+                            <td><label id="p1_sec">sec</label></td>
+                            <td><label id="p1_str">sec</label></td>
+                            <td><label id="p1_stp">sec</label></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="pump2">
+                    <table id="t_pmp2" style="width: 100%; text-align: center;">
+                        <tr valign="middle" class="tr36">
+                            <td colspan="5">
+                                <img id="no_pmp2_alm" class="tr_pump2" src="svg/gray_cir.svg">
+                                <img id="pmp2_alm"  class="tr_pump2" style="display: none" src="svg/green_cir.svg">
+                                <span class="pmp">PUMP 2</span>
+                            </td>
+                        </tr>
+                        <tr valign="middle" class="tr55">
+                            <td colspan="3">Total Pump Runtime</td>
+                            <td rowspan="2">Start Pressure<br />
+                                (psi)</td>
+                            <td rowspan="2">Start Pressure<br />
+                                (psi)</td>
+                        </tr>
+                        <tr valign="middle" class="tr31">
+                            <td>Hour</td>
+                            <td>Minute</td>
+                            <td>Seconds</td>
+                        </tr>
+                        <tr valign="middle" class="tr36">
+                            <td><label id="p2_hr">hr</label></td>
+                            <td><label id="p2_min">min</label></td>
+                            <td><label id="p2_sec">sec</label></td>
+                            <td><label id="p2_str">sec</label></td>
+                            <td><label id="p2_stp">sec</label></td>
+                        </tr>
+                    </table>
+                </div>-->
+
+            </div>
+
+
+
+        </div>
+        <div class="tmeelsp">
+            <table id="t_tmels" style="width: 100%; text-align: center;">
+                <tr valign="middle" class="tr122_5">
+                    <td>Time elapsed for accumulator pressure to reach 2700-3000 psi</td>
+                </tr>
+                <tr valign="middle" class="tr31">
+                    <td><label id="tme_els">2000</label></td>
+                </tr>
+            </table>
+        </div>
+        <div class="middle_content" style="padding-left:0 ; padding-right:0">
+            <table id="tab_mid" style="padding-left:0; padding-right:0;width: 100%;margin-top: 0.5%;">
+                <tr style="vertical-align: bottom; height:30%; margin-top:4%;padding-left:0; padding-right:0" >
+                    <td class="tr_1">Last Operated Valve</td>
+                    <td class="tr_2">Date/Time  </td>
+                    <td class="tr_3">Response Time <br>(ms)</td>
+                    <td class="tr_4">Estimated Time on <br> 2nd Valve Operation(sec) </td>
+                    <td class="tr_6">Rate of Leakage </td>
+                    <td class="tr_5"> Pressure Leakage</td>
+                    <td class="tr_7">Slow Recharge </td>
+                </tr>
+                <tr style="vertical-align: bottom; padding-left:0; padding-right:0" >
+                    <td class="tb_1" >
+                        <input id="lst_txt"  class="tb_1_1"  readonly="true" type="text" />
+                    </td>
+                    <td class="tb_2" >
+                        <input id="dtm_txt"  class="tb_1_2" readonly="true" type="text" />
+                    </td>
+                    <td class="tb_3">
+                        <input id="rsptm_txt" class="tb_1_3"  readonly="true" type="text" />
+                    </td>
+                    <td class="tb_4">
+                        <input id="esttm_txt"  class="tb_1_4"  readonly="true" type="text" />
+                    </td>
+                    <td class="tb_6">
+                        <img id="prss_lkg_noalm"  class="tb_1_6"  src="svg/red_cir.svg"><img id="prss_lkg_alm"  class="tb_1_6" style="display: none;" src="svg/red_cir_fill.svg">
+                    </td>
+                    <td class="tb_5">
+                        <input id="rtlkg_txt" class="tb_1_5"   readonly="true" type="text" />
+                    </td>
+                    <td class="tb_7">
+
+                        <img id="slow_rchg_noalm" class="tb_1_7"  src="svg/red_cir.svg"><img id="slow_rchg_alm"  class="tb_1_7"  style="display: none;" src="svg/red_cir_fill.svg">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="below_content">
+            <div class="chart" >
+                <div id="multiline" style="" >FusionCharts XT will load here!</div>
+            </div>
+
+        </div>
+        <div class="legend" style=" float: left;" >
+            <table id="lgnd" style="" >
+                <tr style="vertical-align: middle;">
+                    <td> <div style="float: left; border: 1px dashed #33cdce; vertical-align:top;" class="tr25"></div></td>
+                    <td><label class="lgn_sub">Manifold Pressure</label></td>
+                </tr>
+                <tr style="vertical-align: middle;">
+                    <td> <div style="float: left; border: 1px solid #003caf; vertical-align:top;" class="tr25"></div></td>
+                    <td><label class="lgn_sub">Accumulator Pressure</label></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="tabpage" id="tabpage_2">
+    <div id="content2" style="display: none;">
+
+        <!-- <div class="valve_opr">
+
+             <table id="valve_tab" style="width: 100%;text-align: center;">
+                 <tr  class="tr_tab" style=" color: #5b9ca4; ">
+                     <td>Sr.<br>No</td>
+                     <td>Valve <br> Name</td>
+                     <td>Response<br>Time</td>
+                     <td>Date</td>
+                     <td>Previous <br> Response<br>Time</td>
+                     <td>Date</td>
+                     <td>Baseline <br> Response <br>Time</td>
+                     <td>Date</td>
+                 </tr>
+                 <tbody  id="valve_data">
+
+                 </tbody>
+             </table>
+         </div>-->
+        <div class="subhead2">   <lable class="subhead" >VALVE OPERATION RESPONSE TIME</lable></div>
+        <section id="valve_opr_sec" class="">
+
+
+            <div class="valve_opr_div">
+                <table  id="valve_tab" class="scroll">
+                    <thead>
+                    <tr class="header" style="border-bottom: 1px solid #000;">
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                            Sr.<br> No.<br>
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                            Valve <br> Name<br>
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                            Response<br>Time
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                         Date<br>
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                            Previous <br> Response<br>Time
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                          Date
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle;border-right: 1px solid #000">
+                            Baseline <br> Response <br>Time
+
+                        </th>
+                        <th style="text-align: center;vertical-align: middle">
+                            Date
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="valve_data">
+
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="shear_opr"><lable class="subhead" >SHEAR BOOST PRESSURE VS TIME</lable><br>
+
+            <div class="below_subhead">
+                <div  class="below_subhead_1" ><div class="bsh1">-5s</div><div class="bsh2">0</div><div class="bsh3">+5s</div></div>
+                <div id="shear_chart" style="overflow: hidden;">FusionCharts XT will load here!</div>
+            </div>
+        </div>
+
+        <div class="mani_press">
+            <div class="below_subhead1"><lable class="subhead" >MANIFOLD PRESSURE VS TIME</lable></div>
+            <div class="below_subhead_2"><div class="mani1">-5s</div><div class="mani2">0</div><div class="mani3">+5s</div></div>
+            <div id="mani_chart" style=" overflow: hidden;">FusionCharts XT will load here!</div>
+        </div>
+        <div class="ann_press">
+            <div class="below_subhead1" ><lable class="subhead" >ANNULAR PRESSURE VS TIME</lable></div>
+            <div class="below_subhead_2"><div class="ann1">-5s</div><div class="ann2">0</div><div class="ann3">+5s</div></div>
+            <div id="ann_chart" style="overflow: hidden;">FusionCharts XT will load here!</div>
+        </div>
+    </div>
+</div>
+<div class="tabpage" id="tabpage_3">
+    <div id="content3" style="display: none;">
+        <div class="his_head">MONTH &nbsp;&nbsp;
+            <select id="month">
+                <option value="1">JANUARY</option>
+                <option value="2">FEBRUARY</option>
+                <option value="3">MARCH</option>
+                <option value="4">APRIL</option>
+                <option value="5">MAY</option>
+                <option value="6">JUNE</option>
+                <option value="7">JULY</option>
+                <option value="8">AUGUST</option>
+                <option value="9">SEPTEMBER</option>
+                <option value="10">OCTOBER</option>
+                <option value="11">NOVEMBER</option>
+                <option value="12">DECEMBER</option>
+            </select></div>
+
+        <div class="his_head1">YEAR&nbsp;&nbsp;<select id="year"></select></div>
+        <div class="his_chart1">
+            <select id="vallist1">
+                <option value="1">Annular</option>
+                <option value="2">Blind Shear</option>
+                <option value="3">Chokeline 1</option>
+                <option value="4">Chokeline 2</option>
+                <option value="5">Piperam 1</option>
+                <option value="6">Piperam 2</option>
+                <option value="7">Piperam 3</option>
+                <option value="8">Killline 1</option>
+                <option value="9">Killline 2</option>
+            </select>
+
+            <div id="Anchrt" onclick="bigchart(1)"  class="his_0_4em" style="  width:100%; overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Bschrt" onclick="bigchart(2)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk1chrt" onclick="bigchart(3)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk2chrt" onclick="bigchart(4)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip1chrt" onclick="bigchart(5)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip2chrt" onclick="bigchart(6)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip3chrt" onclick="bigchart(7)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll1chrt" onclick="bigchart(8)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll2chrt" onclick="bigchart(9)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+        </div>
+        <div class="his_chart2">
+            <select id="vallist2">
+                <option value="1">Annular</option>
+                <option value="2">Blind Shear</option>
+                <option value="3">Chokeline 1</option>
+                <option value="4">Chokeline 2</option>
+                <option value="5">Piperam 1</option>
+                <option value="6">Piperam 2</option>
+                <option value="7">Piperam 3</option>
+                <option value="8">Killline 1</option>
+                <option value="9">Killline 2</option>
+            </select>
+
+
+            <div id="Anchrt2" onclick="bigchart(1)" class="his_0_4em" style="  width:100%; overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Bschrt2" onclick="bigchart(2)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk1chrt2" onclick="bigchart(3)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk2chrt2" onclick="bigchart(4)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip1chrt2" onclick="bigchart(5)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip2chrt2" onclick="bigchart(6)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip3chrt2" onclick="bigchart(7)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll1chrt2" onclick="bigchart(8)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll2chrt2" onclick="bigchart(9)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+        </div>
+        <div class="his_chart3">
+            <select id="vallist3">
+                <option value="1">Annular</option>
+                <option value="2">Blind Shear</option>
+                <option value="3">Chokeline 1</option>
+                <option value="4">Chokeline 2</option>
+                <option value="5">Piperam 1</option>
+                <option value="6">Piperam 2</option>
+                <option value="7">Piperam 3</option>
+                <option value="8">Killline 1</option>
+                <option value="9">Killline 2</option>
+            </select>
+
+            <div id="Anchrt3" onclick="bigchart(1)" class="his_0_4em" style="  width:100%; overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Bschrt3" onclick="bigchart(2)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk1chrt3" onclick="bigchart(3)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="Chk2chrt3" onclick="bigchart(4)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip1chrt3" onclick="bigchart(5)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip2chrt3" onclick="bigchart(6)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="pip3chrt3" onclick="bigchart(7)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll1chrt3" onclick="bigchart(8)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+            <div id="kll2chrt3" onclick="bigchart(9)" class="his_0_4em" style="  width:100%;display:none;overflow:hidden;">FusionCharts XT will load here!l load here!</div>
+        </div>
+
+        <hr class="hr_1">
+        <div class="big_chart"><label id="info">Annular Valve</label>
+
+            <div id="bigAnn" class="his_0_4_1em" style=" width:100%; margin-top:10px; overflow:hidden;">FusionCharts XT will load here!</div>
+            <div id="bigBs" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigchk1" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigchk2" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigpp1" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigpp2" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigpp3" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigkll1" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+            <div id="bigkll2" class="his_0_4_1em" style=" width:100%;margin-top:10px; overflow:hidden;display:none;">FusionCharts XT will load here!</div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="tabpage" id="tabpage_4">
+    <div id="content4" style="display: none; position: absolute;">
+        <label class="frm_lbl">FROM</label> <input type="text" id="txtfrom"/>
+
+        <label class="to_lbl">TO</label> <input type="text" id="txtto"/>
+        <button id="btn_data">Get Data</button>
+
+       <!-- <label class="lbl_tit">Time elapsed for accumulator pressure</label>-->
+
+        <div id="bop">
+        </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+</div>
+
+<div class="f1"></div>
+<div class="f2" onclick="show_dialog()"></div>
+
+<div id="data" style="display:none;">
+
+</div>
+<img class="logo_div" src="svg/CPC_logo_ft.svg"/>
+<img src="svg/btm_arrow.svg" id="btm_arrow"/>
+
+</div>
+</body>
+</html>

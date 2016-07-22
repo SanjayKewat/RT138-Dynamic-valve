@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Push notification server streaming on a MySQL db</title>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="/datajs/conn.js" type="text/javascript"></script> <!--here to define socket ip-->
+    <script src="/javascripts/jquery.min.js"></script>
+
+    <script>
+
+
+        // create a new websocket
+        var socket = io.connect(connection);
+        // on message received we print all the data inside the #container div
+
+
+        $(function(){
+
+            var ctr=0,alm_arr2=[],k=0;
+            socket.on('current_data', function (data) {
+                ++ctr;
+                var tr = "",li='',alm_arr=[];
+
+                $.each(data.curr_data,function(index,c_data){
+
+                        k++;
+                        tr+='<tr style="text-align: center"><td>'+c_data.rig_id+'</td><td>'+c_data.choke_console+'</td><td>'+c_data.drill_pipe_pressure+'</td><td>'+c_data.hydraulic_choke_close_1+'</td><td>'+c_data.drill_pipe_pressure_low+'</td></tr>';
+
+
+
+                });
+
+
+                //>>>>>>******************** Start Execute 1 times when page load **************************>>>>>>>>>>>>>
+                if(ctr==1){
+
+                }
+
+                //>>>>>>******************** End Execute 1 times when page load **************************>>>>>>>>>>>>>
+
+
+                //>>>>>>******************** Start Call when value changed in DB **************************>>>>>>>>>>>>>
+
+
+                //>>>>>>******************** End Call when value changed in DB **************************>>>>>>>>>>>>>
+
+
+                $('#alrm').html(tr);
+            });
+
+
+
+
+
+        });
+
+
+
+    </script>
+</head>
+<body>
+<div style="width:800px; margin:0 auto;background-color:#fff; height:500px;position: absolute ">
+    <h1>Reading value of current data.</h1>
+    <table style="width:100%;">
+        <tr>
+            <th>Rig ID</th>
+            <th>Choke</th>
+            <th>Drill pipe</th>
+            <th>Hydraulic choke</th>
+            <th>Drill pipe low</th>
+        </tr>
+        <tbody id="alrm"></tbody>
+    </table>
+</div>
+</body>
+</html>

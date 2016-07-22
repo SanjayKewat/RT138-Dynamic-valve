@@ -1,0 +1,405 @@
+input
+{
+    padding: 0;
+    margin: 0;
+}
+body
+{
+    margin:0;
+    position: relative;
+    font-family: nft, verdana, helvetica, arial, sans-serif;
+
+    /*color: #4AB825;*/
+}
+
+/*button*/
+/*{*/
+    /*text-align: center;*/
+    /*width: 163px;*/
+    /*height: 41px;*/
+    /*font-size: 18px;*/
+/*}*/
+@media only screen and (min-width : 120px) {
+
+    .home {
+        margin-left: 14.83px;
+        margin-top: 13px;
+        width: 27.674px;
+        height: 28.422px;
+        position: absolute;
+
+    }
+
+    .log_out {
+        position: absolute;
+        margin-top: 20.7727px;
+        margin-left: 1407.576px;
+        width: 20px;
+        height: 20px;
+    }
+    .head{
+        margin-left:610px;
+        margin-top: 13px;
+        width: 320px;
+        height: 28px;
+        color: #808080;
+        font-size:  16px;
+        position: absolute;
+    }
+    .daterng{
+        text-align:center;
+        margin-left:27px;
+        margin-top: 92px;
+        width:90px;
+        height:27px;
+        font-size: 16px;
+        position: absolute;
+    }
+
+    #txtfr{
+        text-align:center;
+        margin-left:98.829px;
+        margin-top: 84.115px;
+        width:140px;
+        height:27px;
+        font-size: 16px;
+        position: absolute;
+    }
+    .daterng_1{
+        text-align:center;
+        margin-left:245px;
+        margin-top: 92px;
+        width:50px;
+        height:27px;
+        font-size: 16px;
+        position: absolute;
+    }
+
+    #txtto{
+        text-align:center;
+        margin-left:296.218px;
+        margin-top: 84.115px;
+        width:140px;
+        height:27px;
+        font-size:  16px;
+        position: absolute;
+    }
+
+    #btn{
+        text-align:center;
+        margin-left:450px;
+        margin-top: 86.115px;
+        width:120px;
+        height:27px;
+        font-size:  16px;
+        position: absolute;
+    }
+    .content{
+        margin-left:56.959px;
+        margin-top: 128.929px;
+        width:1327px;
+        height:591.419px;
+        font-size:  16px;
+        position: absolute;
+    }
+
+
+    .f1{
+        margin: 0;
+        margin-top: 747px; /*change*/
+        width:1439.5px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 26.938px;
+        font-family: nft, Verdana, Arial;
+        font-size: 13px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+    }
+    .f2{
+        margin: 0;
+        margin-top:772px; /*change*/
+        width:1439.5px;
+        background-color: #333333;
+        height: 23px;
+        font-family: nft, Verdana, Arial;
+        font-size: 16px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+        padding-top: 5px;
+    }
+    .logo_div{
+        margin-left: 0px;
+        margin-top:  774px;
+        width:95px;
+        height: 25px;
+        background:#333333;
+        position:absolute;
+    }
+    #btm_arrow{
+        margin-left: 719.5px;
+        margin-top: 762px;
+        width:28px;
+        height: 12px;
+        z-index: 1;
+        position: absolute;
+    }
+
+    .tabcont{
+        width:100%;
+        height: 296px;
+        margin:0;
+        overflow-y:scroll;
+    }
+    .tr_back{
+        width:217px;
+    }
+    #val_alarm tr{
+        height: 32.15px;
+        font-size: 16px;
+    }
+
+    #main_tab tr{
+        height: 32.15px;
+        font-size: 16px;
+    }
+
+    #val_alarm th{
+        font-size: 16px;
+    }
+
+    #main_tab th{
+        font-size:  16px;
+    }
+
+
+    table {
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    #main_tab th,#main_tab td {
+        border: 1px solid #000;
+
+    }
+
+    #main_tab th,#main_tab th {
+        background-color: #e6e6e6;
+        font-size: 16px;
+        font-weight: normal;
+        color: #000;
+    }
+    #main_tab th[data-sort],#main_tab th[data-sort]{
+        cursor:pointer;
+    }
+    #main_tab th{
+        border-top: none;
+    }
+    .tr_back
+    {
+        background-color: #e6e6e6;
+        font-size: 16px;
+    }
+
+
+    .even
+    {
+        background-color: rgba(230, 230, 230, 0.29);
+    }
+
+    .log_out:hover
+    {
+        cursor: pointer;
+    }
+
+
+}
+@media only screen and (min-width : 1445px) {
+
+    .home{
+        margin-left:19.046px;
+        margin-top: 18.667px;
+        width: 37px;
+        height: 38px;
+        position:absolute;
+    }
+
+    .log_out{
+        margin-left:1850.5px;
+        margin-top: 19.161px;
+        width: 30px;
+        height: 35px;
+        position: absolute;
+    }
+    .head{
+        margin-left:892.596px;
+        margin-top: 71.176px;
+        width: 320px;
+        height: 45px;
+        color: #808080;
+        font-size:  18px;
+        position: absolute;
+    }
+    .daterng{
+        margin-left:47px;
+        margin-top: 130.434px;
+        width: 100px;
+        height:45px;
+        font-size:  18px;
+        position: absolute;
+    }
+
+    #txtfr{
+        text-align:center;
+        margin-left:125px;
+        margin-top: 120.434px;
+        width:163px;
+        height:30px;
+        font-size: 18px;
+        position: absolute;
+    }
+    .daterng_1{
+        margin-left:366px;
+        margin-top: 130.434px;
+        width:53px;
+        height:35px;
+        font-size:  18px;
+        position: absolute
+    }
+
+    #txtto{
+        text-align:center;
+        margin-left:412px;
+        margin-top: 120.434px;
+        width:163px;
+        height:30px;
+        font-size:  18px;
+        position: absolute;
+    }
+
+    #btn{
+        text-align:center;
+        margin-left:607.25px;
+        margin-top: 120.434px;
+        width:163px;
+        height:35px;
+        font-size:  18px;
+        position: absolute;
+    }
+    .content{
+        margin-left:71px;
+        margin-top: 192px;
+        width:1754px;
+        height:790px;
+        font-size:  18px;
+        position: absolute;
+    }
+
+
+    .f1{
+        width: 1919px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 35px;
+        font-family: nft, Verdana, Arial;
+        font-size:  16px;
+        color: #fff;
+        position:  absolute;
+        margin-top: 998px;
+        margin-left:0.5px;
+    }
+    #btm_arrow{
+        margin-left: 1035px;
+        margin-top: 1020px;
+        width: 32px;
+        height: 15px;
+        z-index:1;
+        position: absolute;
+    }
+    .f2{
+        width: 1919px;
+        background-color: #333333;
+        height: 37px;
+        font-family: nft, Verdana, Arial;
+        font-size:  30px;
+        color: #fff;
+        position:  absolute;
+        margin-top: 1033px;
+        margin-left: 0.5px;
+    }
+    .logo_div{
+        margin-left: 0.5px;
+        margin-top: 1033px;
+        width:155px;
+        height: 37px;
+        background:#333333;
+        position:absolute;
+    }
+
+    .tabcont{
+        width:100%;
+        height: 395px;
+        margin:0;
+        overflow-y:scroll;
+    }
+    .tr_back{
+        width:289px;
+    }
+    #val_alarm tr{
+        height: 37px;
+        font-size: 16px;
+    }
+
+    #main_tab tr{
+        height: 37px;
+        font-size: 16px;
+    }
+
+    #val_alarm th{
+        font-size: 18px;
+    }
+
+    #main_tab th{
+        font-size:  18px;
+    }
+
+
+    table {
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    #main_tab th,#main_tab td {
+        border: 1px solid #000;
+
+    }
+
+    #main_tab th,#main_tab th {
+        background-color: #e6e6e6;
+        font-size: 18px;
+        font-weight: normal;
+        color: #000;
+    }
+    #main_tab th[data-sort],#main_tab th[data-sort]{
+        cursor:pointer;
+    }
+    #main_tab th{
+        border-top: none;
+    }
+    .tr_back
+    {
+        background-color: #e6e6e6;
+        font-size: 18px;
+    }
+
+
+    .even
+    {
+        background-color: rgba(230, 230, 230, 0.29);
+    }
+
+    .log_out:hover
+    {
+        cursor: pointer;
+    }
+
+
+}

@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sara Sae :: RT138</title>
+<script src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/FusionCharts/FusionCharts.js"></script>
+<script type="text/javascript" src="/FusionCharts/FusionCharts.jQueryPlugin.js"></script> <!-- this js used for create chart using JSON data-->
+<link href="/stylesheets/fonts.css" rel="stylesheet" type="text/css">
+<script src="/javascripts/tabs.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="/datajs/conn.js" type="text/javascript"></script><!--here to define socket ip-->
+<script type="text/javascript" src="/javascripts/date.js"></script>
+<link href="/stylesheets/monthffaillog.css" rel="stylesheet" /> <!--page CSS-->
+
+<!--for footer content Resources start-->
+<link href="/stylesheets/modeldialog.css" rel="stylesheet" />
+<script type='text/javascript' src='/javascripts/jquery.simplemodal.js'></script>
+<link href="/stylesheets/alarm_button.css" rel="stylesheet" />
+<link href="/stylesheets/stylishscroll.css" rel="stylesheet" />
+<script src="/datajs/t_alarm.js"></script>
+<script src="/datajs/Almarqu.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.textillate.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.fittext.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.lettering.js"></script>
+<link href="/javascripts/animated_marq/animate.css" rel="stylesheet" />
+<!--for footer content Resources End-->
+
+
+
+<script>
+var fmax= 0,ffmax= 0,allmax=0;
+function show_dialog() {
+    $('#data').modal();
+}
+window.onload=function() {
+
+    // get tab container
+    var container = document.getElementById("tabContainer");
+    // set current tab
+    var navitem = container.querySelector(".tabs ul li");
+    //store which tab we are on
+    var ident = navitem.id.split("_")[1];
+    navitem.parentNode.setAttribute("data-current",ident);
+    //set current tab with class of activetabheader
+    navitem.setAttribute("class","tabActiveHeader");
+
+    //hide two tab contents we don't need
+    var pages = container.querySelectorAll(".tabpage");
+    for (var i = 1; i < pages.length; i++) {
+        pages[i].style.display="none";
+    }
+
+    //this adds click event to tabs
+    var tabs = container.querySelectorAll(".tabs ul li");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].onclick=displayPage;
+
+
+    }
+//    show_rze_uplgd;
+}
+
+// on click of one of tabs
+function displayPage() {
+    var current = this.parentNode.getAttribute("data-current");
+    //remove class of activetabheader and hide old contents
+    document.getElementById("tabHeader_" + current).removeAttribute("class");
+    document.getElementById("tabpage_" + current).style.display="none";
+    document.getElementById("content" + current).style.display="none";
+
+    var ident = this.id.split("_")[1];
+    //add class of activetabheader to new active tab and show contents
+    this.setAttribute("class","tabActiveHeader");
+    document.getElementById("tabpage_" + ident).style.display="block";
+    document.getElementById("content" + ident).style.display="block";
+    this.parentNode.setAttribute("data-current",ident);
+
+}
+/*$(function() {
+ //    window.onload = call;
+ window.onresize= call;
+ });*/
+
+$(function() {
+
+
+
+});
+
+function call()
+{
+//    alert('resize call');
+    show_rze_uplgd();
+    show_rze_uplgd1();
+}
+function daysInMonth(year,month) {
+    return new Date(year, month, 0).getDate();
+}  //method returns no. of days in a specific month.
+
+var days= 0,rig_id=window.localStorage.getItem("rigid");
+
+document.getElementsByName
+FusionCharts.setCurrentRenderer('javascript');
+$(function() {
+
+    $('#data').append(alarmcontent());
+    $('.f2').append(alarm_footer());
+    user_name();
+    //here get selected rigname
+    var rigname = window.localStorage.getItem("rgnm");
+    console.log(rigname);
+    $('#rig_lbl').text(rigname); //display rigname
+
+
+
+
+
+
+
+
+    //making stylish alram start
+    $('.tlt').textillate({
+        // the default selector to use when detecting multiple texts to animate
+        selector: '.texts',
+
+        // enable looping
+        loop: true,
+
+        // sets the minimum display time for each text before it is replaced
+        minDisplayTime: 2000,
+
+        // sets the initial delay before starting the animation
+        // (note that depending on the in effect you may need to manually apply
+        // visibility: hidden to the element before running this plugin)
+        initialDelay: 0,
+
+        // set whether or not to automatically start animating
+        autoStart: true,
+
+        // custom set of 'in' effects. This effects whether or not the
+        // character is shown/hidden before or after an animation
+        inEffects: [],
+
+        // custom set of 'out' effects
+        outEffects: ['hinge'],
+
+        // in animation settings
+        in: {
+            // set the effect name
+            effect: 'fadeInLeftBig',
+
+            // set the delay factor applied to each consecutive character
+            delayScale: 1.5,
+
+            // set the delay between each character
+            delay: 50,
+
+            // set to true to animate all the characters at the same time
+            sync: true,
+
+            // randomize the character sequence
+            // (note that shuffle doesn't make sense with sync = true)
+            shuffle: false,
+
+            // reverse the character sequence
+            // (note that reverse doesn't make sense with sync = true)
+            reverse: false,
+
+            // callback that executes once the animation has finished
+            callback: function () { }
+        },
+
+        // out animation settings.
+        out: {
+            effect: 'fadeOutRight',
+            delayScale: 1.5,
+            delay: 50,
+            sync: true,
+            shuffle: false,
+            reverse: false,
+            callback: function () { }
+        },
+
+        // callback that executes once textillate has finished
+        callback: function () {
+
+        }
+    });
+
+//    End stylish alram
+
+
+//    window.onload = show_rze_uplgd();
+
+    bindyear();
+    var dt=new Date();
+
+    var dt=new Date();
+
+    var urlParams,trace,month,year,trace1,month1,year1;
+    (window.onpopstate = function () {
+        var match,
+                pl     = /\+/g,  // Regex for replacing addition symbol with a space
+                search = /([^&=]+)=?([^&]*)/g,
+                decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+                query  = window.location.search.substring(1);
+
+        urlParams = {};
+        while (match = search.exec(query))
+            urlParams[decode(match[1])] = decode(match[2]);
+    })();
+
+//            alert(urlParams["id"]);
+    if(document.location.search.length) {
+        // query string exists
+
+//        function logs
+        trace=parseInt(urlParams["trace"]);
+        month=parseInt(urlParams["month"]);
+        year=parseInt(urlParams["year"]);
+
+    }
+    else {
+        // no query string exists
+        trace=1;
+        month=(dt.getMonth()+1);
+        year=dt.getFullYear();
+
+
+    }
+    days=daysInMonth(year,(month));
+//    alert(trace+" m "+month+" y "+year);
+
+    flog_drop_bind(trace);
+    fflog_drop_bind(trace);
+
+    $('.f1').append(userinfo());
+
+//    $('#trace').val(trace);
+    $('#year').val(year);
+    $('#month').val(month);
+    column(rig_id,trace,year,month);
+    Scatterchart(rig_id,trace,year,month);
+
+
+
+    column1(rig_id,trace,year,month);
+    Scatterchart1(rig_id,trace,year,month);
+
+//    $('#trace1').val(trace);
+    $('#year1').val(year);
+    $('#month1').val(month);
+
+
+    $("#month").change(function(){
+        days=daysInMonth($('#year').val(),$('#month').val());
+
+    });
+
+    $("#year").change(function(){
+
+    });
+
+
+
+    $('#vallist1').change(function () {
+
+
+    });
+
+    $('#btndetail').click(function() {
+        days=daysInMonth($('#year').val(),$('#month').val());
+        column(rig_id,$('#trace').val(),$('#year').val(),$('#month').val());
+        Scatterchart(rig_id,$('#trace').val(),$('#year').val(),$('#month').val());
+        show_rze_uplgd();
+
+    });
+
+    $('#btndetail1').click(function() {
+        days=daysInMonth($('#year1').val(),$('#month1').val());
+        column1(rig_id,$('#trace1').val(),$('#year1').val(),$('#month1').val());
+        Scatterchart1(rig_id,$('#trace1').val(),$('#year1').val(),$('#month1').val());
+        show_rze_uplgd1();
+    });
+
+    window.onresize= call;
+});
+
+
+
+function bindyear()
+{
+    var dt=new Date();
+    for(i=dt.getFullYear();i>=2010;i--)
+    {
+        $('#year').append('<option value='+i+'>'+i+'</option>');
+        $('#year1').append('<option value='+i+'>'+i+'</option>');
+    }
+}
+
+//FUNCTION LOG START
+
+//  Function logs column chart
+function column(rig_id,vid,year,month)
+{
+
+    var strxml="", strcategories="", strd1="", strd2="";
+    var opn_arry=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],dy= 0,opn_ctr= 1,cls_ctr=2;
+    var cls_arry=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+
+    $.get('/mwise_flog_clm/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+        JSON.stringify(data);
+
+        for (k = 0; k < data.open[0].length; k++) {
+
+            dys=(data.open[0][k].opn_dys)-1;
+            {
+                opn_arry[dys]=data.open[0][k].opn_tot;
+            }
+
+            if(data.open[0][k].opn_tot>fmax)
+            {
+                fmax=data.open[0][k].opn_tot;
+            }
+
+
+        }
+        for (k = 0; k < data.close[0].length; k++) {
+
+            dys=(data.close[0][k].cls_dys)-1;
+            {
+                cls_arry[dys]=data.close[0][k].cls_tot;
+            }
+
+
+            if(data.close[0][k].cls_tot>fmax)
+            {
+                fmax=data.close[0][k].cls_tot;
+            }
+        }
+
+        $.get('/mwise_fflog_clm/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+            JSON.stringify(data);
+
+            for (k = 0; k < data.open[0].length; k++) {
+                if(data.open[0][k].opn_tot>ffmax)
+                {
+                    ffmax=data.open[0][k].opn_tot;
+                }
+
+            }
+            for (k = 0; k < data.close[0].length; k++) {
+
+                if(data.close[0][k].cls_tot>ffmax)
+                {
+                    ffmax=data.close[0][k].cls_tot;
+                }
+            }
+
+            allmax=Math.max(fmax, ffmax);
+
+
+            strxml = "<chart plotSpacePercent='100' chartLeftMargin='75'   showYAxisValues='0' xAxisMaxValue='0' yAxisMaxValue='" + allmax + "'  placeValuesInside='1'  yAxisValuesPadding='100' xAxisName='DATE'  xAxisNamePadding='0'  canvasbgcolor='      ,      ,' drawAnchors='0' rotateValues='1' showBorder='0'  numberPrefix=''    chartBottomMargin='50' showLegend='0' legendPosition='below' bgAlpha='0,0'  numVDivLines='0'  numDivLines='0'  showValues='0' canvasbgalpha='0' canvasbgangle='0' outCnvbaseFontSize='18' outcnvBaseFontColor='808080' alternateHGridAlpha='0' alternateHGridColor='464646' canvasBorderThickness='1' canvasBorderAlpha='0' outcnvBaseFontsize='8' canvasBorderColor='828282'  hoverCapBorderColor='828282' hoverCapBgColor='828282' plotGradientColor='' plotFillAngle='90' plotFillColor='1D8BD1' plotfillalpha='100' showAnchors='0' canvaspadding='0' plotFillRatio='90,90' showPlotBorder='0' plotborderthickness='1' divlinecolor='      ,      ' divlinealpha='0'>";
+//        strxml = "<chart plotSpacePercent='100' chartLeftMargin='75'   showYAxisValues='0' xAxisMaxValue='0'   placeValuesInside='1'  yAxisValuesPadding='100' xAxisName='DATE'  xAxisNamePadding='0'  canvasbgcolor='      ,      ,' drawAnchors='0' rotateValues='1' showBorder='0'  numberPrefix=''    chartBottomMargin='50' showLegend='0' legendPosition='below' bgAlpha='0,0'  numVDivLines='0'  numDivLines='0'  showValues='0' canvasbgalpha='0' canvasbgangle='0' outCnvbaseFontSize='18' outcnvBaseFontColor='808080' alternateHGridAlpha='0' alternateHGridColor='464646' canvasBorderThickness='1' canvasBorderAlpha='0' outcnvBaseFontsize='8' canvasBorderColor='828282'  hoverCapBorderColor='828282' hoverCapBgColor='828282' plotGradientColor='' plotFillAngle='90' plotFillColor='1D8BD1' plotfillalpha='100' showAnchors='0' canvaspadding='0' plotFillRatio='90,90' showPlotBorder='0' plotborderthickness='1' divlinecolor='      ,      ' divlinealpha='0'>";
+
+            strxml += "<styles>";
+            strxml += "<definition>";
+            strxml += "<style name='xaxisfont' type='font' font='Verdana' align='left' size='12' bold='1' underline='0'/>";
+            strxml += "</definition>";
+            strxml += "<application>";
+            strxml += "<apply toObject='YAxisName' styles='xaxisfont' />";
+            strxml += "<apply toObject='XAxisName' styles='xaxisfont' />";
+            strxml += "</application>";
+            strxml += "</styles>";
+            strcategories = "<categories>";
+            strd1 = "<dataset seriesName='OPEN' color='7fb5b7' alpha='100' >";
+            strd2 = "<dataset seriesName='CLOSE' color='999999' alpha='100' >";
+            for (i = 1; i <= days; i++) {
+                strcategories += "<category name='" + i + "' />";
+//          strcategories += "<category name='' />";
+
+            }
+
+
+            for (i = 0; i < days; i++) {
+                strd1 += "<set value='" + opn_arry[i] + "'/>";
+                strd2 += "<set value='" + cls_arry[i] + "'/>";
+
+                $('#tli_'+opn_ctr).text(opn_arry[i]);
+                $('#tli_'+cls_ctr).text(cls_arry[i]);
+
+                opn_ctr+=2;
+                cls_ctr+=2;
+            }
+
+
+
+
+            strcategories += "</categories>";
+            strd1 += "</dataset>";
+            strd2 += "</dataset>";
+            strxml += strcategories + strd1 + strd2 + "</chart>";
+
+            var colm = new FusionCharts('FusionCharts/MSColumn2D.swf', 'chart-3', '100%', '105%', '0', '1');
+            colm.setXMLData(strxml);
+            colm.setTransparent(true);
+            colm.render('colm');
+        });
+    });
+
+
+    show_rze_uplgd();
+}
+
+function Scatterchart(rig_id,vid,year,month)
+{
+
+
+    var day= 0,h= 0,m=0;
+    var strxml, strcategories, strd1, strd2;
+
+    $.get('/mnth_wise_flog_sct/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+        JSON.stringify(data);
+
+//    strxml = "<chart toolTipBorderColor='D9E5F1' showToolTip='1' xAxisName='Days' bgAlpha='0' numberSuffix=':00'  toolTipBgColor='D9E5F1' xAxisMaxValue='31' xAxisMinValue='1' yAxisName='Time(In 24 hrs format)' yAxisMinValue='1'  yAxisMaxValue='24' numDivLines='22' showAlternateHGridColor='0'  divlinecolor='808080' divlinealpha='10' divLineThickness='2' vDivlineAlpha='10' showBorder='0' canvasbgalpha='0' showLegend='0' chartBottomMargin='105' canvasBorderAlpha='20' canvasBorderColor='000000' canvasBorderThickness='1'>";
+        strxml = "<chart  canvasPadding='0' toolTipBorderColor='D9E5F1' showToolTip='1'    bgAlpha='0,0' numberSuffix=':00' xAxisName='.' yAxisName='TIME(In 24 hrs format)'  toolTipBgColor='D9E5F1' xAxisMaxValue='31' xAxisMinValue='1'  yAxisMinValue='1'  yAxisMaxValue='24' numDivLines='22' showAlternateHGridColor='0'  divLineColor='808080'  divLineThickness='1' divLineIsDashed='1' divLineDashLen='2' divLineDashGap='5' vDivlineAlpha='10' showBorder='0'  canvasbgalpha='0' canvasbgangle='0' canvasbgcolor='      ,      ,' showLegend='0' chartBottomMargin='58' canvasBorderAlpha='20' canvasBorderColor='000000' canvasBorderThickness='1'>";
+
+        strxml += "<styles>";
+        strxml += "<definition>";
+        strxml += "<style name='xaxisfont' type='font' font='Verdana' align='left' size='12' color='ffffff' bold='1' underline='0'/>";
+        strxml += "<style name='yaxisfont' type='font' font='Verdana' align='left' size='12'  bold='1' underline='0'/>";
+        strxml += "</definition>";
+        strxml += "<application>";
+        strxml += "<apply toObject='YAxisName' styles='yaxisfont' />";
+        strxml += "<apply toObject='XAxisName' styles='xaxisfont' />";
+        strxml += "</application>";
+        strxml += "</styles>";
+        strcategories = "<categories verticalLineColor='000000' >"; //verticalLineColor='e8e9ea' verticalLineThickness='1'
+        strd1 = "<dataset id='OP1' seriesName='OPEN' anchorRadius='2' anchorSides='0' color='7fb5b7' anchorBorderColor='7fb5b7' anchorBgColor='7fb5b7'>";
+        strd2 = "<dataset id='CL1' seriesName='CLOSE' anchorRadius='2' anchorSides='0' color='999999' anchorBorderColor='999999' anchorBgColor='999999'>";
+        for (i = 0; i <= days; i++) {
+            if (i == 0) {
+                strcategories += "<category label=''  x='" + i + "' showVerticalLine='0'  />";
+            }
+            else {
+                strcategories += "<category label=''  x='" + i + "' showVerticalLine='1'  vDivlineAlpha='0' />";
+            }
+        }
+        strcategories += "</categories>";
+
+        for (i = 0; i < data.message[0].length; i++) {
+            day = new Date(data.message[0][i].open_date_time).getDate();
+            h = new Date(data.message[0][i].open_date_time).getHours();
+            m = new Date(data.message[0][i].open_date_time).getMinutes();
+            strd1 += "<set x='" + (day - 0.8) + "' y='" + h + "." + m + "'/>";
+
+
+            day = new Date(data.message[0][i].close_date_time).getDate();
+            h = new Date(data.message[0][i].close_date_time).getHours();
+            m = new Date(data.message[0][i].close_date_time).getMinutes();
+            strd2 += "<set x='" + (day - 0.2) + "' y='" + h + "." + m + "'/>";
+
+//            console.log('scatter : '+day+' '+h+' '+m);
+        }
+
+
+        strd1 += "</dataset>";
+        strd2 += "</dataset>";
+        // start set Vertical color here start
+        strxml += "<vTrendLines>";
+
+        for (i = 0; i < days; i++) {
+            strxml += "<line startValue='" + i + "' endValue='" + (i + 1) + "' displayValue=' ' thickness='1' isTrendZone='1' color='      ' alpha='80'/>";
+        }
+
+
+        strxml += "</vTrendLines>";
+        //End set Vertical color here start
+        strxml += strcategories + strd1 + strd2 + "</chart>";
+
+        var b = new FusionCharts('FusionCharts/Scatter.swf', 'chart-4', '100%', '105%', '0', '1');
+        //  b.setXMLUrl("scatter.xml");
+        b.setXMLData(strxml);
+        b.setTransparent(true);
+        b.render('bop');
+
+    });
+
+}
+
+function show_rze_uplgd()
+{
+
+    lx=$(window).width();
+//    console.log('value of  : '+lx);
+    if(lx>1444) {
+        if (days == 28) {
+
+            $('#colm').css({
+                'width': '1555px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+            $('#tli_57').hide();
+            $('#tli_58').hide();
+            $('#tli_59').hide();
+            $('#tli_60').hide();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 29) {
+            $('#colm').css({
+                'width': '1610px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').hide();
+            $('#tli_60').hide();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 30) {
+
+            $('#colm').css({
+                'width': '1663px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1715px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').show();
+            $('#tli_60').show();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 31) {
+
+            $('#colm').css({
+                'width': '1710px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').show();
+            $('#tli_60').show();
+            $('#tli_61').show();
+            $('#tli_62').show();
+        }
+    }
+    else{
+
+//        console.log('value of  : '+lx);
+        if (days == 28) {
+
+            $('#colm').css({
+                'width': '1178.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+            $('#tli_57').hide();
+            $('#tli_58').hide();
+            $('#tli_59').hide();
+            $('#tli_60').hide();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 29) {
+            $('#colm').css({
+                'width': '1215px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1293px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').hide();
+            $('#tli_60').hide();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 30) {
+
+            $('#colm').css({
+                'width': '1265.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1297.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').show();
+            $('#tli_60').show();
+            $('#tli_61').hide();
+            $('#tli_62').hide();
+        }
+        else if (days == 31) {
+            console.log('call');
+            $('#colm').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#tli_57').show();
+            $('#tli_58').show();
+            $('#tli_59').show();
+            $('#tli_60').show();
+            $('#tli_61').show();
+            $('#tli_62').show();
+        }
+    }
+
+}
+
+function flog_drop_bind(trace){
+    $.get('/flog_drop', {}, function(data) {
+        JSON.stringify(data);
+        for(i=0;i<data.message.length;i++){
+            $('#trace').append('<option value='+data.message[i].valve_id+'>'+data.message[i].valve_name+'</option>');   /*Function Log Dropdown*/
+
+        }
+        $('#trace').val(trace);
+    });
+}
+
+function fflog_drop_bind(trace){
+    $.get('/fflog_drop', {}, function(data) {
+        JSON.stringify(data);
+        for(i=0;i<data.message.length;i++){
+
+            $('#trace1').append('<option value='+data.message[i].valve_id+'>'+data.message[i].valve_name+'</option>');  /*Function Fail Dropdown*/
+        }
+        $('#trace1').val(trace);
+    });
+}
+
+
+//FUNCTION LOG END
+
+
+//FUNCTION FAIL LOG START
+
+
+
+
+function column1(rig_id,vid,year,month)
+{
+
+
+    var strxml="", strcategories="", strd1="", strd2="";
+    var opn_arry=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],dy= 0,opn_ctr= 1,cls_ctr=2;
+    var cls_arry=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+    $.get('/mwise_flog_clm/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+        JSON.stringify(data);
+
+        for (k = 0; k < data.open[0].length; k++) {
+            if(data.open[0][k].opn_tot>fmax)
+            {
+                fmax=data.open[0][k].opn_tot;
+            }
+
+        }
+        for (k = 0; k < data.close[0].length; k++) {
+
+            if(data.close[0][k].cls_tot>fmax)
+            {
+                fmax=data.close[0][k].cls_tot;
+            }
+        }
+
+        $.get('/mwise_fflog_clm/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+            JSON.stringify(data);
+
+            for (k = 0; k < data.open[0].length; k++) {
+
+                dys=(data.open[0][k].opn_dys)-1;
+                {
+                    opn_arry[dys]=data.open[0][k].opn_tot;
+                }
+
+                if(data.open[0][k].opn_tot>ffmax)
+                {
+                    ffmax=data.open[0][k].opn_tot;
+                }
+
+            }
+            for (k = 0; k < data.close[0].length; k++) {
+
+                dys=(data.close[0][k].cls_dys)-1;
+                {
+                    cls_arry[dys]=data.close[0][k].cls_tot;
+                }
+
+                if(data.close[0][k].cls_tot>ffmax)
+                {
+                    ffmax=data.close[0][k].cls_tot;
+                }
+            }
+
+            allmax=Math.max(fmax, ffmax);
+
+
+            strxml = "<chart plotSpacePercent='100' chartLeftMargin='75'   showYAxisValues='0' xAxisMaxValue='0' yAxisMaxValue='" + allmax + "'  placeValuesInside='1'  yAxisValuesPadding='100' xAxisName='DATE'  xAxisNamePadding='0'  canvasbgcolor='      ,      ,' drawAnchors='0' rotateValues='1' showBorder='0'  numberPrefix=''    chartBottomMargin='50' showLegend='0' legendPosition='below' bgAlpha='0,0'  numVDivLines='0'  numDivLines='0'  showValues='0' canvasbgalpha='0' canvasbgangle='0' outCnvbaseFontSize='18' outcnvBaseFontColor='808080' alternateHGridAlpha='0' alternateHGridColor='464646' canvasBorderThickness='1' canvasBorderAlpha='0' outcnvBaseFontsize='8' canvasBorderColor='828282'  hoverCapBorderColor='828282' hoverCapBgColor='828282' plotGradientColor='' plotFillAngle='90' plotFillColor='1D8BD1' plotfillalpha='100' showAnchors='0' canvaspadding='0' plotFillRatio='90,90' showPlotBorder='0' plotborderthickness='1' divlinecolor='      ,      ' divlinealpha='0'>";
+//        strxml = "<chart plotSpacePercent='100' chartLeftMargin='75'   showYAxisValues='0' xAxisMaxValue='0'   placeValuesInside='1'  yAxisValuesPadding='100' xAxisName='DATE'  xAxisNamePadding='0'  canvasbgcolor='      ,      ,' drawAnchors='0' rotateValues='1' showBorder='0'  numberPrefix=''    chartBottomMargin='50' showLegend='0' legendPosition='below' bgAlpha='0,0'  numVDivLines='0'  numDivLines='0'  showValues='0' canvasbgalpha='0' canvasbgangle='0' outCnvbaseFontSize='18' outcnvBaseFontColor='808080' alternateHGridAlpha='0' alternateHGridColor='464646' canvasBorderThickness='1' canvasBorderAlpha='0' outcnvBaseFontsize='8' canvasBorderColor='828282'  hoverCapBorderColor='828282' hoverCapBgColor='828282' plotGradientColor='' plotFillAngle='90' plotFillColor='1D8BD1' plotfillalpha='100' showAnchors='0' canvaspadding='0' plotFillRatio='90,90' showPlotBorder='0' plotborderthickness='1' divlinecolor='      ,      ' divlinealpha='0'>";
+
+            strxml += "<styles>";
+            strxml += "<definition>";
+            strxml += "<style name='xaxisfont' type='font' font='Verdana' align='left' size='12' color='ffffff' bold='1' underline='0'/>";
+            strxml += "<style name='yaxisfont' type='font' font='Verdana' align='left' size='12'  bold='1' underline='0'/>";
+            strxml += "</definition>";
+            strxml += "<application>";
+            strxml += "<apply toObject='YAxisName' styles='yaxisfont' />";
+            strxml += "<apply toObject='XAxisName' styles='xaxisfont' />";
+            strxml += "</application>";
+            strxml += "</styles>";
+            strcategories = "<categories>";
+            strd1 = "<dataset seriesName='OPEN' color='7fb5b7' alpha='100' >";
+            strd2 = "<dataset seriesName='CLOSE' color='999999' alpha='100' >";
+            for (i = 1; i <= days; i++) {
+                strcategories += "<category name='" + i + "' />";
+//          strcategories += "<category name='' />";
+
+            }
+
+
+
+            for (i = 0; i < days; i++) {
+                strd1 += "<set value='" + opn_arry[i] + "'/>";
+                strd2 += "<set value='" + cls_arry[i] + "'/>";
+
+                $('#t1li_'+opn_ctr).text(opn_arry[i]);
+                $('#t1li_'+cls_ctr).text(cls_arry[i]);
+
+                opn_ctr+=2;
+                cls_ctr+=2;
+            }
+
+
+
+
+            strcategories += "</categories>";
+            strd1 += "</dataset>";
+            strd2 += "</dataset>";
+            strxml += strcategories + strd1 + strd2 + "</chart>";
+
+            var colm = new FusionCharts('FusionCharts/MSColumn2D.swf', 'chart-5', '100%', '105%', '0', '1');
+            colm.setXMLData(strxml);
+            colm.setTransparent(true);
+            colm.render('colm1');
+
+
+
+
+
+        });
+
+    });
+
+
+    show_rze_uplgd1();
+}
+
+function Scatterchart1(rig_id,vid,year,month)
+{
+
+
+    var day= 0,h= 0,m=0;
+    var strxml, strcategories, strd1, strd2;
+
+    $.get('/mnth_wise_fflog_sct/' + rig_id + '/' + vid + '/' + year+'/'+month, {}, function (data) {
+        JSON.stringify(data);
+
+//    strxml = "<chart toolTipBorderColor='D9E5F1' showToolTip='1' xAxisName='Days' bgAlpha='0' numberSuffix=':00'  toolTipBgColor='D9E5F1' xAxisMaxValue='31' xAxisMinValue='1' yAxisName='Time(In 24 hrs format)' yAxisMinValue='1'  yAxisMaxValue='24' numDivLines='22' showAlternateHGridColor='0'  divlinecolor='808080' divlinealpha='10' divLineThickness='2' vDivlineAlpha='10' showBorder='0' canvasbgalpha='0' showLegend='0' chartBottomMargin='105' canvasBorderAlpha='20' canvasBorderColor='000000' canvasBorderThickness='1'>";
+        strxml = "<chart  canvasPadding='0' toolTipBorderColor='D9E5F1' showToolTip='1'    bgAlpha='0,0' numberSuffix=':00' xAxisName='.' yAxisName='TIME(In 24 hrs format)'  toolTipBgColor='D9E5F1' xAxisMaxValue='31' xAxisMinValue='1'  yAxisMinValue='1'  yAxisMaxValue='24' numDivLines='22' showAlternateHGridColor='0'  divLineColor='808080'  divLineThickness='1' divLineIsDashed='1' divLineDashLen='2' divLineDashGap='5' vDivlineAlpha='10' showBorder='0'  canvasbgalpha='0' canvasbgangle='0' canvasbgcolor='      ,      ,' showLegend='0' chartBottomMargin='58' canvasBorderAlpha='20' canvasBorderColor='000000' canvasBorderThickness='1'>";
+
+        strxml += "<styles>";
+        strxml += "<definition>";
+        strxml += "<style name='xaxisfont' type='font' font='Verdana' align='left' size='12' color='ffffff' bold='1' underline='0'/>";
+        strxml += "<style name='yaxisfont' type='font' font='Verdana' align='left' size='12'  bold='1' underline='0'/>";
+        strxml += "</definition>";
+        strxml += "<application>";
+        strxml += "<apply toObject='YAxisName' styles='yaxisfont' />";
+        strxml += "<apply toObject='XAxisName' styles='xaxisfont' />";
+        strxml += "</application>";
+        strxml += "</styles>";
+        strcategories = "<categories verticalLineColor='000000' >"; //verticalLineColor='e8e9ea' verticalLineThickness='1'
+        strd1 = "<dataset id='OP1' seriesName='OPEN' anchorRadius='2' anchorSides='0' color='7fb5b7' anchorBorderColor='7fb5b7' anchorBgColor='7fb5b7'>";
+        strd2 = "<dataset id='CL1' seriesName='CLOSE' anchorRadius='2' anchorSides='0' color='999999' anchorBorderColor='999999' anchorBgColor='999999'>";
+        for (i = 0; i <= days; i++) {
+            if (i == 0) {
+                strcategories += "<category label=''  x='" + i + "' showVerticalLine='0'  />";
+            }
+            else {
+                strcategories += "<category label=''  x='" + i + "' showVerticalLine='1'  vDivlineAlpha='0' />";
+            }
+        }
+        strcategories += "</categories>";
+
+        for (i = 0; i < data.message[0].length; i++) {
+            day = new Date(data.message[0][i].open_date_time).getDate();
+            h = new Date(data.message[0][i].open_date_time).getHours();
+            m = new Date(data.message[0][i].open_date_time).getMinutes();
+            strd1 += "<set x='" + (day - 0.8) + "' y='" + h + "." + m + "'/>";
+
+
+            day = new Date(data.message[0][i].close_date_time).getDate();
+            h = new Date(data.message[0][i].close_date_time).getHours();
+            m = new Date(data.message[0][i].close_date_time).getMinutes();
+            strd2 += "<set x='" + (day - 0.2) + "' y='" + h + "." + m + "'/>";
+
+//            console.log('scatter : '+day+' '+h+' '+m);
+        }
+
+
+        strd1 += "</dataset>";
+        strd2 += "</dataset>";
+        // start set Vertical color here start
+        strxml += "<vTrendLines>";
+
+        for (i = 0; i < days; i++) {
+            strxml += "<line startValue='" + i + "' endValue='" + (i + 1) + "' displayValue=' ' thickness='1' isTrendZone='1' color='      ' alpha='80'/>";
+        }
+
+
+        strxml += "</vTrendLines>";
+        //End set Vertical color here start
+        strxml += strcategories + strd1 + strd2 + "</chart>";
+
+        var b = new FusionCharts('FusionCharts/Scatter.swf', 'chart-6', '100%', '105%', '0', '1');
+        //  b.setXMLUrl("scatter.xml");
+        b.setXMLData(strxml);
+        b.setTransparent(true);
+        b.render('bop1');
+
+    });
+
+}
+
+
+function show_rze_uplgd1()
+{
+
+
+    lx=$(window).width();
+//    console.log('value of  : '+lx);
+    if(lx>1444) {
+        if (days == 28) {
+
+            $('#colm1').css({
+                'width': '1555px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+            $('#t1li_57').hide();
+            $('#t1li_58').hide();
+            $('#t1li_59').hide();
+            $('#t1li_60').hide();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 29) {
+            $('#colm1').css({
+                'width': '1610px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#t1li_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').hide();
+            $('#t1li_60').hide();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 30) {
+
+            $('#colm1').css({
+                'width': '1663px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1715px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+
+            $('#t1li_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').show();
+            $('#t1li_60').show();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 31) {
+
+            $('#colm1').css({
+                'width': '1710px',
+                'height': '690px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1710px',
+                'height': '690px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#t1li_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').show();
+            $('#t1li_60').show();
+            $('#t1li_61').show();
+            $('#t1li_62').show();
+        }
+    }
+    else{
+
+//        console.log('value of  : '+lx);
+        if (days == 28) {
+
+            $('#colm1').css({
+                'width': '1178.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+            $('#t1li_57').hide();
+            $('#t1li_58').hide();
+            $('#t1li_59').hide();
+            $('#t1li_60').hide();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 29) {
+            $('#colm1').css({
+                'width': '1215px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1293px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#t1li_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').hide();
+            $('#t1li_60').hide();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 30) {
+
+            $('#colm11').css({
+                'width': '1265.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1297.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+
+
+            $('#tli_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').show();
+            $('#t1li_60').show();
+            $('#t1li_61').hide();
+            $('#t1li_62').hide();
+        }
+        else if (days == 31) {
+            console.log('call');
+            $('#colm1').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+                'position': 'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#bop1').css({
+                'width': '1292.05px',
+                'height': '580.679px',
+//            'position':'absolute',
+//            'display':'none',
+                'overflow': 'hidden'
+            });
+            $('#t1li_57').show();
+            $('#t1li_58').show();
+            $('#t1li_59').show();
+            $('#t1li_60').show();
+            $('#t1li_61').show();
+            $('#t1li_62').show();
+        }
+    }
+
+}
+//FUNCTION FAIL LOG END
+</script>
+
+
+</head>
+<body>
+<a href="/logs" title="Back"><img class="back" src="/svg/back_arrow.svg"></a>
+<a href="/logout" title="Log out"><img class="log_out" src="/svg/logout.svg"></a>
+
+<div id="wrapper">
+
+<div id="tabContainer">
+<div class="tabs">
+    <ul>
+        <li id="tabHeader_1">FUNCTION FAIL LOGS</li>
+        <li id="tabHeader_2" >FUNCTION LOGS</li>
+
+    </ul>
+</div>
+<div class="tabscontent">
+<div class="tabpage" id="tabpage_1">
+
+
+    <div id="content1" style="display: block;">
+        <div class="control">
+            <select id="trace1">
+
+
+            </select>
+
+            <select id="month1">
+                <option value="1">JANUARY</option>
+                <option value="2">FEBRUARY</option>
+                <option value="3">MARCH</option>
+                <option value="4">APRIL</option>
+                <option value="5">MAY</option>
+                <option value="6">JUNE</option>
+                <option value="7">JULY</option>
+                <option value="8">AUGUST</option>
+                <option value="9">SEPTEMBER</option>
+                <option value="10">OCTOBER</option>
+                <option value="11">NOVEMBER</option>
+                <option value="12">DECEMBER</option>
+            </select>
+
+            <select id="year1"></select>
+
+            <button id="btndetail1">Get Details</button>
+
+
+            <div class="legend">
+                <ul>
+                    <li><div class="legend_1"></div></li>
+                    <li class="legend_2">OPEN</li>
+                    <!--<li class="legend_3">&nbsp;&nbsp</li>-->
+                    <li><div class="legend_1_1"></div></li>
+                    <li class="legend_2">CLOSE</li>
+                </ul>
+            </div>
+        </div>
+
+        <!--<div class="up_legend"><ul id="t_val1"></ul></div>-->
+        <label class="alrm_cnt" style="position: absolute;color: #808080;">ALARM COUNT</label>
+        <div  id="t1li_1" >0</div>
+        <div id="t1li_2">0</div>
+
+        <div id="t1li_3">0</div>
+        <div id="t1li_4" >0</div>
+
+        <div id="t1li_5" >0</div>
+        <div id="t1li_6" >0</div>
+
+        <div id="t1li_7" >0</div>
+        <div id="t1li_8" >0</div>
+
+        <div id="t1li_9">0</div>
+        <div id="t1li_10">0</div>
+
+        <div id="t1li_11">0</div>
+        <div id="t1li_12">0</div>
+
+        <div id="t1li_13">0</div>
+        <div id="t1li_14">0</div>
+
+        <div id="t1li_15">0</div>
+        <div id="t1li_16">0</div>
+
+        <div id="t1li_17">0</div>
+        <div id="t1li_18">0</div>
+
+        <div id="t1li_19">0</div>
+        <div id="t1li_20" >0</div>
+
+        <div id="t1li_21">0</div>
+        <div id="t1li_22">0</div>
+
+
+        <div id="t1li_23">0</div>
+        <div id="t1li_24">0</div>
+
+        <div id="t1li_25">0</div>
+        <div id="t1li_26">0</div>
+
+        <div id="t1li_27" >0</div>
+        <div id="t1li_28" >0</div>
+
+        <div id="t1li_29">0</div>
+        <div id="t1li_30">0</div>
+
+        <div id="t1li_31">0</div>
+        <div id="t1li_32">0</div>
+
+        <div id="t1li_33">0</div>
+        <div id="t1li_34">0</div>
+
+        <div id="t1li_35">0</div>
+        <div id="t1li_36">0</div>
+
+        <div id="t1li_37">0</div>
+        <div id="t1li_38">0</div>
+
+        <div id="t1li_39">0</div>
+        <div id="t1li_40">0</div>
+
+        <div id="t1li_41" >0</div>
+        <div id="t1li_42">0</div>
+
+        <div id="t1li_43" >0</div>
+        <div id="t1li_44" >0</div>
+
+        <div id="t1li_45">0</div>
+        <div id="t1li_46">0</div>
+
+        <div id="t1li_47">0</div>
+        <div id="t1li_48">0</div>
+
+        <div id="t1li_49">0</div>
+        <div id="t1li_50">0</div>
+
+        <div id="t1li_51">0</div>
+        <div id="t1li_52">0</div>
+
+        <div id="t1li_53">0</div>
+        <div id="t1li_54">0</div>
+
+        <div id="t1li_55">0</div>
+        <div id="t1li_56">0</div>
+
+        <div id="t1li_57">0</div>
+        <div id="t1li_58">0</div>
+
+
+        <div id="t1li_59">0</div>
+        <div id="t1li_60">0</div>
+
+        <div id="t1li_61">0</div>
+        <div id="t1li_62">0</div>
+
+        <div class="chart">
+            <div id="colm1">FusionCharts XT will load here!</div>
+            <div id="bop1">FusionCharts XT(Scatter)will load here!</div>
+        </div>
+    </div>
+</div>
+<div class="tabpage" id="tabpage_2">
+    <div id="content2" style="display:none ;">
+        <div class="control">
+            <select id="trace">
+            </select>
+
+            <select id="month">
+                <option value="1">JANUARY</option>
+                <option value="2">FEBRUARY</option>
+                <option value="3">MARCH</option>
+                <option value="4">APRIL</option>
+                <option value="5">MAY</option>
+                <option value="6">JUNE</option>
+                <option value="7">JULY</option>
+                <option value="8">AUGUST</option>
+                <option value="9">SEPTEMBER</option>
+                <option value="10">OCTOBER</option>
+                <option value="11">NOVEMBER</option>
+                <option value="12">DECEMBER</option>
+            </select>
+
+            <select id="year"></select>
+
+            <button id="btndetail">Get Details</button>
+
+
+            <div class="legend">
+                <ul>
+                    <li><div class="legend_1"></div></li>
+                    <li class="legend_2">OPEN</li>
+                    <!--<li class="legend_3">&nbsp;&nbsp</li>-->
+                    <li><div class="legend_1_1"></div></li>
+                    <li class="legend_2">CLOSE</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <label  class="alrm_cnt" style="position: absolute;color: #808080;">ALARM COUNT</label>
+
+
+        <div  id="tli_1" style=" ">0</div>
+        <div id="tli_2" style="">0</div>
+
+        <div id="tli_3" style=" ">0</div>
+        <div id="tli_4" style="">0</div>
+
+        <div id="tli_5" style=" ">0</div>
+        <div id="tli_6" style="">0</div>
+
+        <div id="tli_7" style="">0</div>
+        <div id="tli_8" style="">0</div>
+
+        <div id="tli_9" style=" ">0</div>
+        <div id="tli_10" style="">0</div>
+
+        <div id="tli_11" style=" ">0</div>
+        <div id="tli_12" style="">0</div>
+
+        <div id="tli_13" style=" ">0</div>
+        <div id="tli_14" style="">0</div>
+
+        <div id="tli_15" style=" ">0</div>
+        <div id="tli_16" style="">0</div>
+
+        <div id="tli_17" style=" ">0</div>
+        <div id="tli_18" style="">0</div>
+
+
+        <div id="tli_19" style="">0</div>
+        <div id="tli_20" style="">0</div>
+
+
+
+        <div id="tli_21" style=" ">0</div>
+        <div id="tli_22" style="">0</div>
+
+
+        <div id="tli_23" style=" ">0</div>
+        <div id="tli_24" style="">0</div>
+
+        <div id="tli_25" style=" ">0</div>
+        <div id="tli_26" style="">0</div>
+
+
+        <div id="tli_27" style=" ">0</div>
+        <div id="tli_28" style="">0</div>
+
+
+        <div id="tli_29" style=" ">0</div>
+        <div id="tli_30" style="">0</div>
+
+
+        <div id="tli_31" style=" ">0</div>
+        <div id="tli_32" style="">0</div>
+
+        <div id="tli_33" style="">0</div>
+        <div id="tli_34" style="">0</div>
+
+
+
+        <div id="tli_35" style=" ">0</div>
+        <div id="tli_36" style="">0</div>
+
+        <div id="tli_37" style=" ">0</div>
+        <div id="tli_38" style="">0</div>
+
+
+        <div id="tli_39" style=" ">0</div>
+        <div id="tli_40" style="">0</div>
+
+
+        <div id="tli_41" style=" ">0</div>
+        <div id="tli_42" style="">0</div>
+
+
+        <div id="tli_43" style=" ">0</div>
+        <div id="tli_44" style="">0</div>
+
+
+        <div id="tli_45" style=" ">0</div>
+        <div id="tli_46" style="">0</div>
+
+
+
+
+        <div id="tli_47" style="">0</div>
+        <div id="tli_48" style="">0</div>
+
+        <div id="tli_49" style=" ">0</div>
+        <div id="tli_50" style="">0</div>
+
+        <div id="tli_51" style=" ">0</div>
+        <div id="tli_52" style="">0</div>
+
+        <div id="tli_53" style=" ">0</div>
+        <div id="tli_54" style="">0</div>
+
+        <div id="tli_55" style=" ">0</div>
+        <div id="tli_56" style="">0</div>
+
+
+        <div id="tli_57" style=" ">0</div>
+        <div id="tli_58" style="">0</div>
+
+
+        <div id="tli_59" style=" ">0</div>
+        <div id="tli_60" style="">0</div>
+
+        <div id="tli_61" style="">0</div>
+        <div id="tli_62" style="">0</div>
+
+        <div class="chart">
+            <div id="colm" >FusionCharts XT will load here!</div>
+            <div id="bop" >FusionCharts XT(Scatter)will load here!</div>
+        </div>
+
+
+
+        <!--<div id="bop" style="height:700px; margin-top: 800px;position: absolute; width:1730px; overflow:hidden; ">FusionCharts XT(Scatter)will load here!</div>-->
+    </div>
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+<div class="f1"></div>
+<div class="f2" onclick="show_dialog()"></div>
+
+<div id="data" style="display:none;">
+</div>
+
+<img class="logo_div" src="svg/CPC_logo_ft.svg"/>
+<img src="svg/btm_arrow.svg" id="btm_arrow"/>
+</body>
+</html>

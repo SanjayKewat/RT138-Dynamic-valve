@@ -1,0 +1,232 @@
+.outer_g
+{
+    margin-top: -224px;margin-left: 10px; background-color:transparent;
+}
+
+body{
+    margin:80px 0 0 0;
+    /*margin-top: 80px;*/
+    font-family: nft,verdana, helvetica, arial, sans-serif;
+    height: 100%;
+}
+.arrow
+{
+    width:98%;
+    height: 35px;
+    vertical-align: middle;
+    padding-left: 20px;
+
+}
+.header
+{
+    width: 93%;
+    height: 25px;
+    text-align: center;
+    padding: 5px 1%;
+    padding-right: 5%;
+}
+.headerII
+{
+    width: 96%;
+    height: 325px;
+    text-align: center;
+    padding: 5px 2%;
+}
+.sub_head
+{
+    width: 49%; float: left;
+    padding: 5px 0;
+}
+.sub_headII
+{
+    width: 49%; float: left;
+    padding: 5px 0;
+}
+.rchart
+{
+    width: 94%;
+    padding: 2% 3% 0;
+    height: 320px;
+}
+.rchartI
+{
+    width: 56%;
+    float: left;
+    padding: 0 2% 0;
+}
+.rchartII
+{
+    width: 32%;
+    float: left;
+    text-align: left;
+    padding: 2% 4%;
+}
+.subtitle
+{
+    font-size: 0.80em;
+    padding-top: 2%;
+    width: 50%;
+}
+.left_arrow
+{
+    width: 5%;
+    float: left;
+    padding-top: 120px;
+}
+.right_arrow
+{
+    width: 5%;
+    float: left;
+    padding-top: 120px;
+}
+.content
+{
+    width: 80%;
+    float: left;
+    text-align: center;
+}
+
+
+.mainfooter nav{
+    width: 100%;
+    background-color: rgba(96, 56, 19, 0.80);
+    color: #CCCCCC;
+    font-family: nft,verdana, helvetica, arial, sans-serif;
+    font-size: .8em;
+    height: 40px;
+}
+.mainfooter nav ul{
+    list-style: none;
+    margin:0; /* apply margin 2 % above define*/
+}
+.mainfooter nav ul li{
+    float: left;
+    display: inline;  /*display bullet in 1 line*/
+    padding: 0.5% 0.9%;
+    margin: 0;
+    text-align: center;
+}
+
+
+.mainfooter_I nav{
+    width: 100%;
+    background-color: rgba(96, 56, 19, 0.80);
+    color: #CCCCCC;
+    font-family: nft,verdana, helvetica, arial, sans-serif;
+    font-size: .8em;
+    height:110px;
+
+}
+
+nav ul
+{
+    width: 100%;
+    margin: 0;
+}
+nav ul li{
+    float: left;
+    display: inline;  /*display bullet in 1 line*/
+    padding: 1px 10px;
+    margin: 0;
+
+    text-align: center;
+}
+.mainfooterII nav{
+    width: 100%;
+    background-color:#333333;
+    color: #ed1c24;
+    font-family: nft,verdana, helvetica, arial, sans-serif;
+    height: 40px;
+    font-size: 2em;
+
+}
+.logo
+{
+    max-width: 80%;
+    padding-top: 3px;
+    padding-left: 25%;
+}
+#infoIII{
+    display: none;
+}
+#rcontII
+{
+    display: none;
+}
+#foot
+{
+    display: none;
+}
+.mainfooter_subII nav{
+    width: 100%;
+    background-color:#333333;
+    color: #ed1c24;
+    font-family: nft,verdana, helvetica, arial, sans-serif;
+    height: 40px;
+    font-size: 2em;
+
+}
+@media only screen and (min-width: 150px) and (max-width: 768px) {
+    #infoII
+    {
+        display: none;
+    }
+    #infoIII{
+        display: block;
+    }
+    .sub_head
+    {
+        width: 98%; float: left;
+        padding: 5px 0;
+    }
+    hr{
+        display: none;
+    }
+    .rchartI
+    {
+        width: 100%;
+        float: left;
+        padding: 0;
+    }
+    .rchart
+    {
+        width: 100%;
+        padding:0;
+        margin: 0;
+        height: 320px;
+    }
+    .rchartII
+    {
+        width: 92%;
+        float: left;
+        text-align: left;
+        padding: 2% 4%;
+    }
+    #rcontI
+    {
+        display: none;
+    }
+    #rcontII
+    {
+        display: block;
+        text-align: center;
+    }
+    #foot
+    {
+        display: block;
+    }
+    .mainfooter
+    {
+        display: none;
+    }
+    .mainfooterII
+    {
+        display: none;
+    }
+    .logo
+    {
+        max-width: 100%;
+        padding-bottom: 3px;
+        padding-left: 25%;
+    }
+}

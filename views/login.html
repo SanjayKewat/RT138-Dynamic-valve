@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--<meta http-equiv="X-UA-Compatible" content="IE=8" >-->
+<title>Sara Sae :: RT138</title>
+    <title>Sara Sae :: RT138</title>
+    <script src="/javascripts/jquery.min.js"></script>
+
+    <link href="/stylesheets/login.css" rel="stylesheet" /> <!--page CSS-->
+    <script type="text/javascript">
+        $(function(){
+            $('#txtusr').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){//Check enter key events
+                    check_login();
+                }
+                //Stop the event from propogation to other handlers
+                //If this line will be removed, then keypress event handler attached
+                //at document level will also be triggered
+                event.stopPropagation();
+            });
+
+            $('#txtpass').keypress(function(event){
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if(keycode == '13'){//Check enter key events
+                    check_login();
+                }
+                //Stop the event from propogation to other handlers
+                //If this line will be removed, then keypress event handler attached
+                //at document level will also be triggered
+                event.stopPropagation();
+            });
+
+
+        });
+
+        function check_login()
+        {
+            var usr=$('#txtusr').val();
+            var pwd=$('#txtpass').val();
+
+            if((pwd.length>0)&&(usr.length>0))
+            {
+
+                $.get('/usrinfo/'+usr, {}, function(data) {
+                    JSON.stringify(data);
+
+                    if(data.usr_dts!=500)
+                    {
+                        var user=data.usr_dts[0].User_name;
+                        var pass=data.usr_dts[0].Password;
+                        var app_sts=data.usr_dts[0].approve_status;
+                        var usr_typ=data.usr_dts[0].Utypid;
+//                        alert(data.usr_dts.length);
+                        if((usr==user)&&(pwd==pass)&&(app_sts==1)&&(usr_typ==1))
+                        {
+                            //For Admin
+                            location.href='/bopconfg';
+                            $('#error').text('');
+                        }
+                        else if((usr==user)&&(pwd==pass)&&(app_sts==1))
+                        {
+                            //For user
+                            location.href='/map';
+                            $('#error').text('');
+                        }
+                        else
+                        {
+                            $('#error').text('Username or Password is incorrect');
+                        }
+
+                    }
+                    else
+                    {
+                        $('#error').text('Username or Password is incorrect');
+//                        console.log(data.usr_dts);
+                    }
+
+                });
+            }
+            else
+            {
+            $('#error').text('Please enter Username & Password');
+            }
+
+//            alert('call');
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="main" style="display: block;">
+<div class="log_div">
+   <table style="width: 100%; background-color: #808080;">
+       <tr class="tab_top" valign="middle">
+           <td><div style="width: 25%; padding-left: 5%; padding-top: 0.7%; float: left;">RT 138</div> <div style="padding-top: 1%;"><img class="logo" src="svg/CPC logo-06.svg"/> </div></td>
+       </tr>
+       <tr valign="middle" class="tab_tr1">
+           <td><div style="width: 25%; padding-left: 5%; padding-top:5%; float: left;">Username</div> <div style="float: right; padding-right: 3%;padding-top:2%;"><input type="text" id="txtusr" class="txt"/> </div></td>
+       </tr>
+
+       <tr valign="middle" class="tab_tr1">
+           <td><div style="width: 25%; padding-left: 5%; padding-top:5%; float: left;">Password</div> <div style="float: right; padding-right: 3%;padding-top:2%;"><input type="password" id="txtpass" class="txt"/> </div></td>
+       </tr>
+       <tr>
+           <td align="right">
+               <!--<div style="width: 25%; padding-left: 5%; padding-top:5%; float: left;"></div> <div style="padding-right: 3%;padding-top:2%; text-align: center;"> </div>-->
+               <label id="error"></label>
+           </td>
+       </tr>
+       <tr valign="middle" class="tab_tr2">
+           <td><div id="fpwd" style="width: 45%; padding-left: 5%; padding-top:5%; float: left;"><a href="/new_usr">Create New User</a><br><a href="#">Forgot Password ?</a></div> <div style="float: right; padding-right: 3%;padding-top:2%;"><img class="logo_btn" id="btn_login" onclick="check_login()" src="svg/login_btn.svg"/> </div></td>
+
+       </tr>
+
+   </table>
+</div>
+</div>
+</body>
+</html>

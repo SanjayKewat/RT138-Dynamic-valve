@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My First chart using FusionCharts Suite XT</title>
+    <script type="text/javascript" src="fusn_v3.5/fusioncharts.js"></script>
+    <script type="text/javascript" src="fusn_v3.5/fusioncharts.widgets.js"></script>
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            var rig_id=1;
+            var myChart = new FusionCharts({
+                "type": "realtimeline",
+                "renderAt": "chartContainer",
+                "width": "100%",
+                "height": "110%",
+                "dataFormat": "xml",
+                "dataSource": "<chart showShadow='0' useMessageLog='1' showRTmenuItem='1' manageResize='1' yAxisMaxValue='10000' formatnumberscale='0'  showRealTimeValue='0' showToolTip='1' tooltipbgcolor='fff' tooltipbordercolor='fff' connectNullData='1' dataStreamURL='rsppress/"+rig_id+"' refreshInterval='1' drawAnchors='1' anchorRadius='1' showBorder='0' chartBottomMargin='60' showLegend='0' legendPosition='below' bgAlpha='0,0' numVDivLines='16' showValues='0' outcnvBaseFontColor='000000' alternateHGridAlpha='100' alternateHGridColor='f2f2f2' canvasBorderThickness='1' canvasBorderAlpha='100' canvasBorderColor='cccccc'  hoverCapBorderColor='f1f1f2' hoverCapBgColor='f1f1f2'  showAnchors='1' canvaspadding='0' showAlternateHGridColor='0'     showPlotBorder='0' plotborderthickness='1' divlineborderthickness='2' divlinecolor='f1f1f2' divlinealpha='100'><styles><definition><style name='myCaptionFont' type='font' font='Verdana' align='left' size='18' bold='1' underline='1'/></definition><application><apply toObject='Caption' styles='myCaptionFont' /></application></styles><categories><category label='Start'/></categories><dataset seriesName='Manifold' color='33cdce' dashed='1'  lineThickness='2'><set value='0'/></dataset><dataset seriesName='Accumulator' color='003caf' lineThickness='2'><set value='0'/></dataset></chart>"
+//                "dataSource": "<chart caption='Harrys SuperMart' subcaption='Monthly revenue for last year' xaxisname='Month' yaxisname='Amount' numberprefix='$' palettecolors='#008ee4' bgalpha='0' borderalpha='20' canvasborderalpha='0' theme='fint' useplotgradientcolor='0' plotborderalpha='10' placevaluesinside='1' rotatevalues='1' valuefontcolor='#ffffff' captionpadding='20' showaxislines='1' axislinealpha='25' divlinealpha='10'><set label='Jan' value='420000' /><set label='Feb' value='810000' /><set label='Mar' value='720000' /><set label='Apr' value='550000' /><set label='May' value='910000' /><set label='Jun' value='510000' /><set label='Jul' value='680000' /><set label='Aug' value='620000' /><set label='Sep' value='610000' /><set label='Oct' value='490000' /><set label='Nov' value='900000' /><set label='Dec' value='730000' /></chart>"
+            });
+
+            myChart.render();
+        });
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="width: 700px;height: 600px;">FusionCharts XT will load here!</div>
+</body>
+</html>

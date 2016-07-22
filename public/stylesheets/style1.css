@@ -1,0 +1,235 @@
+body
+{
+    background-color: #f3f3f3;
+    color: #000305;
+    font-size: 87.5%;
+    font-family:verdana, helvetica, arial, sans-serif;
+    line-height: 1.5;
+    text-align: left;
+}
+ a{
+     text-decoration: none;
+ }
+ a:link,a:visited{
+     color: #cf5c3f;
+ }
+
+ a:hover,a:active{
+     color: #fff;
+     background-color: #cf5c3f;
+ }
+
+.body{
+    margin:0 auto;
+    width: 70%;
+    clear: both;/*-- --*/
+}
+
+.mainheader img{  /* style for img element inside mainheader class */
+    width: 30%;
+    /*width: 11.6%;*/
+    height: auto;
+    margin:2% 0;
+    height: auto;
+    margin:2% 0;
+}
+.mainheader nav{
+    background-color: #666;
+    height: 40px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px; /* for browser webkit*/
+}
+.mainheader nav ul{
+    list-style: none;
+    margin:0 auto; /* apply margin 2 % above define*/
+}
+
+
+.mainheader nav ul li{
+    float: left;
+    display: inline;  /*display bullet in 1 line*/
+}
+
+.mainheader nav a:link,.mainheader nav a:visited{
+    color: #fff;
+    display: inline-block;
+    padding: 10px 25px;
+    height: 20px;
+}
+
+.mainheader nav a:hover,.mainheader nav a:active,.mainheader nav .active a:link,
+.mainheader nav .active a:visited
+{
+background-color: #cf5c3f;
+text-shadow: none;
+}
+
+.mainheader nav ul li a{
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px; /* for browser webkit*/
+}
+
+.maincontent
+{
+    line-height: 25px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px; /* for browser webkit*/
+    /*overflow: hidden;*/
+}
+.content
+{
+    width: 70%;
+    float: left;
+
+}
+.topcontent
+{
+    background-color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    padding: 3% 5%;
+    margin-top: 2%;
+}
+.bottomcontent
+{
+    background-color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    padding: 3% 5%;
+    margin-top: 2%;
+}
+.post-info
+{
+    font-style: italic;
+    color: #999;
+    font-size: 90%;
+
+}
+.top-sidebar
+{
+    width: 21%;
+    float: left;
+    background-color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    padding: 2% 3%;
+    margin:2% 0 2% 3%; /*top rigth bottom left*/
+}
+
+.middle-sidebar
+{
+    width: 21%;
+    float: left;
+    background-color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    padding: 2% 3%;
+    margin:2% 0 2% 3%; /*top rigth bottom left*/
+}
+.bottom-sidebar
+{
+    width: 21%;
+    float: left;
+    background-color: #fff;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    padding: 2% 3%;
+    margin:2% 0 2% 3%; /*top rigth bottom left*/
+}
+.mainfooter
+{
+    width: 100%;
+    float: left;
+    height: 40px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;  /*for mozill browser*/
+    -webkit-border-radius: 5px;
+    background-color: #666;
+    margin: 2% 0;
+    /*margin-top: 2%; */
+    /*margin-bottom: 2%*/
+}
+
+.mainfooter p{
+    width: 92%;
+    margin:10px auto;
+    color: #fff;
+}
+
+@media only screen and (min-width: 150px) and (max-width: 660px) {
+    .body{
+
+        width: 98%;
+        font-size: 95%;
+
+    }
+    .mainheader img{  /* style for img element inside mainheader class */
+        width: 100%;
+
+    }
+
+    .mainheader nav{
+        height: 160px;
+
+    }
+    .mainheader nav ul{
+    padding-left: 0;
+    }
+
+
+    .mainheader nav ul li{
+      width: 100%;
+      text-align: center;
+    }
+
+    .mainheader nav a:link,.mainheader nav a:visited{
+         padding: 10px 25px;
+        height: 20px;
+        display: block; /*when hover over link show in complt. width */
+    }
+
+
+    .content
+    {
+        width: 100%;
+        float: left;
+        margin-top: 2%;
+    }
+
+    .post-info{
+        display: none;
+    }
+
+    .topcontent
+    {
+        background-color: #fff;
+        border-radius: 5px;
+        -moz-border-radius: 5px;  /*for mozill browser*/
+        -webkit-border-radius: 5px;
+        padding: 3% 5%;
+        margin-top: 2%;
+        margin-bottom: 4%;
+    }
+    .bottomcontent
+    {
+
+        margin-top: 3%;
+    }
+
+    .top-sidebar, .middle-sidebar,.bottom-sidebar
+    {
+        width: 94%;
+        margin:2% 0 2% 0%; /*top rigth bottom left*/
+        padding: 2% 3%;
+
+    }
+
+}

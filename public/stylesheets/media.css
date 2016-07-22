@@ -1,0 +1,82 @@
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    /* Styles */
+}
+
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+    /* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+    /* Styles */
+}
+
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1824px) {
+    /* Styles */
+
+
+    .rig
+    {
+        margin-left:1624.5px;margin-top:2px; position:relative ;
+        margin-bottom: 0;
+    }
+    .chk
+    {
+        margin-left:1182.5px;margin-top:110.5px;position: relative ;
+        margin-bottom: 0;
+    }
+    .bop
+    {
+        margin-left: -0.5px;margin-top:282.5px;position: relative ;
+        margin-bottom: 0;
+    }
+}
+
+img
+{
+    max-width: 100%;
+    height: auto;
+
+}
+/*.footer*/
+/*{*/
+    /*width: 100%;*/
+    /*background-color: rgba(96, 56, 19, 0.80);*/
+    /*height: 35px;*/
+    /*font-family: nft, Verdana, Arial;*/
+    /*font-size:0.8em;*/
+    /*padding-top: 3px;*/
+    /*padding-bottom: 3px;*/
+    /*color: #CCCCCC;*/
+    /*margin-top: -5px;*/
+    /*position: absolute;*/
+/*}*/
+/*.footer2*/
+/*{*/
+
+    /*background-color:#333333;*/
+    /*height: 37px;*/
+    /*font-family: nft, Verdana, Arial;*/
+    /*font-size:0.8em;*/
+    /*padding-top: 3px;*/
+    /*padding-bottom: 3px;*/
+    /*color: #ed1c24;*/
+    /*position: absolute;*/
+/*}*/
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+    /* Styles */
+}

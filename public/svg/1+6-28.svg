@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1164px"
+	 height="286px" viewBox="0 0 1164 286" enable-background="new 0 0 1164 286" xml:space="preserve">
+<g id="Layer_1" display="none">
+</g>
+<g id="Cylinder">
+</g>
+<g id="Layer_6">
+</g>
+<g id="Pressure_gauge">
+</g>
+<g id="Chasis__x26__base">
+	<g>
+		<rect x="8.5" y="176.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="43" height="6"/>
+		<path fill="#808080" stroke="#808080" stroke-miterlimit="10" d="M59.5,168.268c0,4.547-3.686,8.232-8.232,8.232H8.732
+			c-4.547,0-8.232-3.686-8.232-8.232v-42.535c0-4.547,3.686-8.232,8.232-8.232h42.535c4.547,0,8.232,3.686,8.232,8.232V168.268z"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" cx="30.599" cy="146.5" r="20.924"/>
+		<rect x="22.5" y="182.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="15" height="103"/>
+		<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M1163.5,141.25c0,4.557-5.372,8.25-12.121,8.25h-67.396
+			c-6.75,0-12.484-3.693-12.484-8.25v-0.5c0-4.557,5.734-8.25,12.484-8.25h67.396c6.749,0,12.121,3.693,12.121,8.25V141.25z"/>
+		<rect x="1152.5" y="145.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="6" height="17"/>
+		<g>
+			<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M183.5,147.5h-40.481c-0.67-1.66-1.519-3.04-3.519-3.92V68.5
+				h-15v75.08c-1,0.34-1.12,0.77-1.61,1.26c-0.75,0.75-1.3,1.66-1.71,2.66H59.5v6h61.679c0.67,1.66,2.321,3.04,3.321,3.92V285.5h15
+				V157.42c2-0.88,2.849-2.26,3.519-3.92H183.5V147.5z"/>
+			<polygon fill="#999999" stroke="#999999" stroke-miterlimit="10" points="285.5,124.5 285.5,158.5 1026.5,158.5 1026.5,125.732 
+							"/>
+		</g>
+		<rect x="1048.5" y="182.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="15" height="103"/>
+		<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M571.5,95.87v0.26c0,2.5-2,4.59-4,5.19v23.18h-6v-23.18
+			c-1-0.39-2.67-1.44-3.34-2.82h-147.74c-0.99,1.22-2.5,2-4.19,2h-3.26c-2.97,0-5.469-2.4-5.469-5.37v-0.26c0-2.5,2-4.59,4-5.19
+			V11.32c-1-0.39-2.67-1.44-3.34-2.82H241.5v-6h157.279c0.99-1.22,2.5-2,4.19-2h3.26c2.97,0,5.271,2.4,5.271,5.37v0.26
+			c0,2.5-2,4.59-4,5.19v78.36c2,0.39,2.869,1.44,3.539,2.82h147.74c0.99-1.22,2.5-2,4.19-2h3.26
+			C569.199,90.5,571.5,92.9,571.5,95.87z"/>
+		<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M124.5,28.5H36.419c-0.99-1.22-2.5-2-4.19-2h-3.26
+			c-2.97,0-5.469,2.4-5.469,5.37v0.26c0,2.5,2,4.59,4,5.19v79.18h6V37.32c2-0.39,2.869-1.44,3.539-2.82H124.5V28.5z"/>
+		<rect x="1048.5" y="106.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="15" height="11"/>
+		<rect x="1034.5" y="176.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="43" height="6"/>
+		<path fill="#808080" stroke="#808080" stroke-miterlimit="10" d="M1085.5,168.268c0,4.547-3.686,8.232-8.232,8.232h-42.535
+			c-4.547,0-8.232-3.686-8.232-8.232v-42.535c0-4.547,3.686-8.232,8.232-8.232h42.535c4.547,0,8.232,3.686,8.232,8.232V168.268z"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" cx="1056.599" cy="146.5" r="20.924"/>
+		<g>
+			<rect x="1038.5" y="5.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="34" height="101"/>
+			<rect x="1045.5" y="0.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="19" height="5"/>
+		</g>
+		<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M326.5,136.5c0-6.627-5.706-12-12.866-12h-128.57
+			c-7.16,0-13.564,5.373-13.564,12v10c0,6.627,6.404,12,13.564,12h128.57c7.16,0,12.866-5.373,12.866-12V136.5z"/>
+		<rect x="150.5" y="2.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="91" height="6"/>
+		<rect x="108.5" y="281.5" fill="#333333" stroke="#333333" stroke-miterlimit="10" width="47" height="4"/>
+	</g>
+</g>
+<g id="Layer_8">
+</g>
+<g id="Motor__x26__pump">
+</g>
+<g id="Valves">
+</g>
+</svg>

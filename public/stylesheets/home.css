@@ -1,0 +1,392 @@
+body
+{
+    margin: 0;
+    font-family: nft, Verdana, Arial;
+    /*border: 1px solid red;*/
+    /*overflow:scroll ;*/
+}
+
+a{
+    text-decoration: none;
+    color:#000;
+}
+
+.p_log:hover,.map:hover,#rig:hover,#bop:hover,#chk:hover
+{
+    background-color: #fbca7e;
+    cursor: pointer;
+}
+.f2:hover
+{
+    cursor: pointer;
+}
+
+table
+{
+    border-collapse:collapse;
+    text-align: center;
+
+}
+
+.Alarm_solve
+{
+    border:1px solid black;
+    padding: 5px 0;
+    text-align: center;
+    color: #000;
+}
+.Alarm_notsolve
+{
+    border:1px solid black;
+    padding: 5px 0;
+    text-align: center;
+    color: #fff;
+    background-color: #c1272d;
+}
+#valvealarm tr,#otheralarm tr,#valvealarm1 tr,#otheralarm1 tr
+{
+    height: 44px;
+}
+#valvealarm td,#otheralarm td, #valvealarm1 td,#otheralarm1 td
+{
+    border:1px solid black;
+    padding: 5px 0;
+    text-align: center;
+
+}
+
+
+#valvealarm th,#otheralarm th ,table th, #valvealarm1 th,#otheralarm1 th{
+    border: none;
+    padding: 5px 0;
+    text-decoration: none;
+    font-weight: lighter;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+
+}
+.alm_div{
+background-image:url('../svg/t_back.svg');background-size:cover;background-color:#333333;
+}
+.noalm_div{
+background:rgb(51, 51, 51);background-size:cover;
+}
+
+@media only screen and (min-width : 120px) {
+    .large_rss
+    {
+        display: none;
+        position: absolute;
+    }
+    .medium_rss{
+        display: block;
+        position: absolute;
+    }
+    #rig {
+        margin-left: 1204.462px;
+        margin-top: 12.568px;
+        width: 199.647px;
+        height: 289.67px;
+        position: absolute;
+    }
+    #bop {
+        margin-left: 0px;
+        margin-top: 215.252px;
+        /*margin-bottom: 10px;*/
+        width: 1061.357px;
+        height: 532px;
+        position: absolute;
+        z-index: 1;
+    }
+    #chk {
+        margin-left:  883.34px;
+        margin-top:130.842px;
+        width: 381.677px;
+        height: 353.786px;
+        position: absolute;
+
+    }
+    #ground1 {
+        margin-left: 0px;
+        margin-top: 483.261px;
+        width: 1267.811px;
+        height: 263.504px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    #ground2 {
+        margin-left: 706.447px;
+        margin-top: 300.762px;
+        width: 703.9px;
+        height: 183.5px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    .log_out {
+        margin-left:11.562px;
+        margin-top: 10.772px;
+        width: 20.239px;
+        height:20.239px;
+        position: absolute;
+    }
+    .map {
+        width: 323.692px;
+        height: 64.592px;
+        margin-top: 45.561px;
+        margin-left: 0px;
+        position: absolute;
+        border: 1px solid #000;
+    }
+    .map_img
+    {
+        margin-left: 13.292px;margin-top:15.608px;position: absolute; height: 34px;
+    }
+    .map_lbl
+    {
+        position: absolute;
+        margin-top: 25.608px;
+        margin-left: 130px;
+        font-family: nft,Verdana,Arial;
+        font-size: 14px;
+    }
+    .p_log {
+        width: 323.692px;
+        height: 64.592px;
+        margin-top: 125.246px;
+        margin-left: 0px;
+        position: absolute;
+        border: 1px solid #000;
+    }
+    .p_img
+    {
+        margin-left: 55.393px;margin-top:15.608px;position: absolute; height: 34px;
+    }
+    .p_lbl
+    {
+        position: absolute;
+        margin-top: 25.608px;
+        margin-left: 130px;
+        font-family: nft,Verdana,Arial;
+        font-size: 14px;
+    }
+
+    .f1 {
+        margin: 0;
+        margin-top: 747px; /*change*/
+        width:1439.5px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 26.938px;
+        font-family: nft, Verdana, Arial;
+        font-size: 13px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+
+    }
+
+    .f2 {
+
+        margin: 0;
+        margin-top:772px; /*change*/
+        width:1439.5px;
+        background-color: #333333;
+        height: 23px;
+        font-family: nft, Verdana, Arial;
+        font-size: 16px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+        padding-top: 5px;
+
+    }
+    .logo_div
+    {
+        margin-left: 0;
+        margin-top: 774px;
+        width:95px;
+        height: 25px;
+        position: absolute;
+        background: rgb(51, 51, 51);
+    }
+    #btm_arrow {
+        margin-left: 719.5px;
+        margin-top: 762px;
+        width:28px;
+        height: 12px;
+        z-index: 1;
+        position: absolute;
+    }
+}
+
+
+
+@media only screen and (min-width : 1445px) {
+    .large_rss
+    {
+        display: block;
+    }
+    .medium_rss{
+        display: none;
+    }
+
+
+    .log_out {
+        margin-left: 7.930555555556009px;
+        margin-top: 7.925925925925817px;
+        width: 29.722222222222218px;
+        height: 34.675925925925924px;
+        position: absolute;
+    }
+
+    .map {
+        border: 1px solid #000;
+        width: 437.9074074074074px;
+        height: 88.17592592592592px;
+        position: absolute;
+        margin-top: 49.04166666666656px;
+        margin-left: 0.5000000000004547px;
+    }
+    .map_img
+    {
+        margin-left:29.57px;   margin-top: 20px;position: absolute; height: 54px;
+    }
+    .map_lbl
+    {
+        position: absolute;
+        margin-top: 35px;
+        margin-left: 210px;
+        font-family: nft,Verdana,Arial;
+        font-size: 20px;
+    }
+    .p_log {
+        border: 1px solid #000;
+        width: 437.9074074074074px;
+        height: 88.17592592592592px;
+        position: absolute;
+        margin-top: 176.84722222222211px;
+        margin-left: 0.5000000000004547px;
+    }
+    .p_img
+    {
+        margin-left: 75.5px;margin-top:20px;position: absolute; height: 54px;
+    }
+    .p_lbl
+    {
+        position: absolute;
+        margin-top: 35px;
+        margin-left: 210px;
+        font-family: nft,Verdana,Arial;
+        font-size: 20px;
+    }
+
+    #bop {
+        margin-left: 0.5px;
+        margin-top: 279.88425925925924px;
+        margin-bottom: 10px;
+        width: 1433.601851851852px;
+        height: 719px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    #chk {
+        margin-left: 1276.5px;
+        margin-top: 181.5px;
+        width: 433px;
+        height: 468px;
+        position: absolute;
+
+    }
+
+    #rig {
+        margin-left: 1636.5px;
+        margin-top: 10px;
+        width: 254px;
+        height: 400px;
+        position: absolute;
+    }
+
+    #ground1 {
+        margin-left: 0.5px;
+        margin-top: 649px;
+        width: 1721px;
+        height: 350px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    #ground2 {
+        margin-left: 950px;
+        margin-top: 409px;
+        width: 959px;
+        height: 240px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    .f1 {
+        margin-left: 0.5000000000001137px;
+        margin-top: 998.5px;
+        width: 1918px;
+        height: 35px;
+        font-family: nft, Verdana, Arial;
+        font-size: 16px;
+        color: rgb(255, 255, 255);
+        position: absolute;
+        z-index: -1;
+        background-color: rgba(96, 56, 19, 0.8);
+    }
+
+    .f2 {
+        margin-left: 0.5000000000001137px;
+        margin-top: 1032px;
+        width: 1918px;
+        height: 37px;
+        font-family: nft, Verdana, Arial;
+        font-size: 30px;
+        color: rgb(255, 255, 255);
+        position: absolute;
+        background-image: url(http://localhost:3000/svg/t_back.svg);
+        background-color: rgb(51, 51, 51);
+        background-size: cover;
+    }
+
+    .logo_div {
+        height: 34.848px;
+        margin-top: 1034px;
+        margin-left: 0.5px;
+        position: absolute;
+        background: rgb(51, 51, 51);
+    }
+
+    #btm_arrow {
+        margin-left: 945.0000000000001px;
+        margin-top: 1020px;
+        width: 32px;
+        height: 15px;
+        z-index: 1;
+        position: absolute;
+    }
+}
+
+
+
+.small
+{
+    display: none;
+}
+.logo
+{
+    max-width: 80%;
+}
+@media only screen and (min-width: 150px) and (max-width: 1024px) {
+    .maintab
+    {
+        display: none;
+    }
+    .small
+    {
+        display: block;
+    }
+}

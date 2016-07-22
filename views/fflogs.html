@@ -1,0 +1,2812 @@
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title></title>
+
+<script src="/javascripts/jquery.min.js"></script>
+<link href="/stylesheets/fonts.css" rel="stylesheet" type="text/css">
+<script src="socket.io/socket.io.js"></script>
+<script src="/datajs/conn.js" type="text/javascript"></script>
+<script src="/javascripts/amcharts.js" type="text/javascript"></script>
+<script src="/javascripts/serial.js" type="text/javascript"></script>
+<link  rel="stylesheet" type="text/css" href="/stylesheets/stylishscroll.css"/>
+<script type="text/javascript" src="/javascripts/jquery.datetimepicker1.js"></script>
+<link  rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.css"/>
+<script type="text/javascript" src="/javascripts/date.js"></script>
+<link href="/stylesheets/fflogs.css" rel="stylesheet" /> <!--page CSS-->
+
+<!--for footer content Resources start-->
+<link href="/javascripts/animated_marq/animate.css" rel="stylesheet" />
+<link href="/stylesheets/modeldialog.css" rel="stylesheet" />
+<script type='text/javascript' src='/javascripts/jquery.simplemodal.js'></script>
+<link href="/stylesheets/alarm_button.css" rel="stylesheet" />
+<script src="/datajs/t_alarm.js"></script>
+<script src="/datajs/Almarqu.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.textillate.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.fittext.js"></script>
+<script type="text/javascript" src="javascripts/animated_marq/jquery.lettering.js"></script>
+
+<!--for footer content Resources End-->
+
+
+
+<script>
+//lower tab div
+
+var ctr=0,ctr1= 1,ctr2= 1;
+var rig_id=window.localStorage.getItem("rigid");
+$(function() {
+
+    var pageindex=1;
+    $('#data').append(alarmcontent());
+    $('.f2').append(alarm_footer());
+    $('.f1').append(userinfo());
+    user_name();
+    $.ajax({
+        type: 'GET',
+
+        contentType: 'application/json',
+        url: "fill_valve/"+rig_id
+    })
+            .fail(function(result) {
+                console.log(result);
+//                    addAlert("danger", "Oops, looks like our server might have goofed.  If you're an admin, please check the PHP error logs.");
+//                    alertWidget('display-alerts');
+            })
+            .done(function(result) {
+                if(result.length>0)
+                {
+                    var html ='';
+                    var html2 ='';
+                    var i=result.length;
+                    var valveid=1;
+                    var pageindex=1;
+                    for(var a=0;a<result.length;a+=5)
+                    {
+
+                        html+='<div class="full" id="full'+pageindex+'">';
+                        html2+='<div class="ffull" id="ffull'+pageindex+'">';
+                        if(i>5)
+                        {
+                            for(var x=1;x<=5;x++)
+                            {
+                                $('#trc').append('<option value='+valveid+'>'+result[valveid-1].valve_name+'</option>');   //Bind valve Drop Down
+                                $('#trc1').append('<option value='+valveid+'>'+result[valveid-1].valve_name+'</option>'); //Bind valve Drop Down
+                      html+='<div class="first'+x+'" >';
+                      html+='<div class="left'+x+'" id="left'+valveid+'" ></div>';
+                      html+='<div class="right'+x+'" id="right'+valveid+'"></div>';
+                                html2+='<div class="first'+x+'" >';
+                                html2+='<div class="left'+x+'" id="fleft'+valveid+'" ></div>';
+                                html2+='<div class="right'+x+'" id="fright'+valveid+'"></div>';
+                                if(x==1)
+                                {
+                                      html+='<div class="charttitle" >'+result[valveid-1].valve_name+'</div>';
+                                      html2+='<div class="charttitle" >'+result[valveid-1].valve_name+'</div>';
+
+                                }else
+                                {
+
+                                    html+='<div  >'+result[valveid-1].valve_name+'</div>';
+                                    html2+='<div  >'+result[valveid-1].valve_name+'</div>';
+                                }
+
+                      html+='</div>';
+                                html2+='</div>';
+                                valveid=valveid+1;
+
+                            }
+                        }else
+                        {
+                            for(var x=1;x<=i;x++)
+                            {
+                                $('#trc').append('<option value='+valveid+'>'+result[valveid-1].valve_name+'</option>');   //Bind valve Drop Down
+                                $('#trc1').append('<option value='+valveid+'>'+result[valveid-1].valve_name+'</option>'); //Bind valve Drop Down
+if(x==i)
+{
+    html+='<div class="first'+x+'" style="width:21%;" >';
+    html+='<div class="left5" id="left'+valveid+'" ></div>';
+    html+='<div class="right5" id="right'+valveid+'"></div>';
+    html2+='<div class="first'+x+'" style="width:21%;" >';
+    html2+='<div class="left5" id="fleft'+valveid+'" ></div>';
+    html2+='<div class="right5" id="fright'+valveid+'"></div>';
+}else
+{
+    html+='<div class="first'+x+'" >';
+    html+='<div class="left'+x+'" id="left'+valveid+'" ></div>';
+    html+='<div class="right'+x+'" id="right'+valveid+'"></div>';
+    html2+='<div class="first'+x+'" >';
+    html2+='<div class="left'+x+'" id="fleft'+valveid+'" ></div>';
+    html2+='<div class="right'+x+'" id="fright'+valveid+'"></div>';
+}
+
+
+                                if(x==1)
+                                {
+                                    html+='<div class="charttitle" >'+result[valveid-1].valve_name+'</div>';
+                                    html2+='<div class="charttitle" >'+result[valveid-1].valve_name+'</div>';
+                                }else
+                                {
+                                    html+='<div  >'+result[valveid-1].valve_name+'</div>';
+                                    html2+='<div  >'+result[valveid-1].valve_name+'</div>';
+                                }
+                                html+='</div>';
+                                html2+='</div>';
+                              valveid=valveid+1;
+                            }
+                        }
+
+                        html+='</div>';
+                        html2+='</div>';
+                        i=i-5;
+                        pageindex=pageindex+1;
+
+                    }
+                    $("#first").append(html);
+                    $("#second").append(html2);
+
+
+                    for(var i=1;i<=pageindex;i++)
+                    {
+                        if(ctr1==i)
+                        {
+                            $('#full'+i).show();
+                        }
+                        else
+                        {
+                            $('#full'+i).hide();
+                        }
+
+                    }
+                    for(var i=1;i<=pageindex;i++) {
+
+                        if (ctr2 == i) {
+                            $('#ffull' + i).show();
+                        }
+                        else {
+                            $('#ffull' + i).hide();
+                        }
+                    }
+                }
+
+            });
+    //here get selected rigname
+    var rigname = window.localStorage.getItem("rgnm");
+//    console.log(rigname);
+    $('#rig_lbl').text(rigname); //display rigname
+
+
+    //making stylish alram start
+    $('.tlt').textillate({
+        // the default selector to use when detecting multiple texts to animate
+        selector: '.texts',
+
+        // enable looping
+       loop: true,
+
+        // sets the minimum display time for each text before it is replaced
+        minDisplayTime: 2000,
+
+        // sets the initial delay before starting the animation
+        // (note that depending on the in effect you may need to manually apply
+        // visibility: hidden to the element before running this plugin)
+        initialDelay: 0,
+
+        // set whether or not to automatically start animating
+        autoStart: true,
+
+        // custom set of 'in' effects. This effects whether or not the
+        // character is shown/hidden before or after an animation
+        inEffects: [],
+
+        // custom set of 'out' effects
+        outEffects: ['hinge'],
+
+        // in animation settings
+        in: {
+            // set the effect name
+            effect: 'fadeInLeftBig',
+
+            // set the delay factor applied to each consecutive character
+            delayScale: 1.5,
+
+            // set the delay between each character
+            delay: 50,
+
+            // set to true to animate all the characters at the same time
+            sync: true,
+
+            // randomize the character sequence
+            // (note that shuffle doesn't make sense with sync = true)
+            shuffle: false,
+
+            // reverse the character sequence
+            // (note that reverse doesn't make sense with sync = true)
+            reverse: false,
+
+            // callback that executes once the animation has finished
+            callback: function () { }
+        },
+
+        // out animation settings.
+        out: {
+            effect: 'fadeOutRight',
+            delayScale: 1.5,
+            delay: 50,
+            sync: true,
+            shuffle: false,
+            reverse: false,
+            callback: function () { }
+        },
+
+        // callback that executes once textillate has finished
+        callback: function () {
+
+        }
+    });
+
+//    End stylish alram
+
+    window.onload = ptab;
+//    window.onresize=table_adjust;
+//    window.onload = ptab;
+
+//    VAlarms();
+    $("#main").show();
+
+
+    bindyear();
+
+    $('#txtfr').datetimepicker({
+        timepicker: false,
+        format: 'y-m-d',
+        'z-index':'16'
+    });
+
+    $('#txtto').datetimepicker({
+        timepicker: false,
+        format: 'y-m-d'
+    });
+
+    div1_plot($('#dropdown1').val(),rig_id);
+
+    ffdiv1_plot($('#ffdropdown1').val(),rig_id);
+
+
+
+
+
+    var to=new Date();
+    var predate=new Date();
+    predate.setDate(predate.getDate());
+//           alert(predate);
+    fetchdata(predate,to);
+    $('#txtfr').val(predate.getFullYear()+"-"+(predate.getMonth()+1)+"-"+predate.getDate());
+    $('#txtto').val(to.getFullYear()+"-"+(to.getMonth()+1)+"-"+to.getDate());
+
+    $('#btn').click(function() {
+        fetchdata($('#txtfr').val(),$('#txtto').val());
+
+
+    });
+
+
+
+
+
+//    bind_table();
+    $('#btndetail').click(function(){
+        location.href="/flog?trace="+$('#trc').val()+"&year="+$('#yeardrp').val()+"&month="+$('#mnth').val();
+//        alert("flog?trace="+$('#trc').val()+"&year="+$('#yeardrp').val()+"&month="+$('#mnth').val());
+    });
+
+    $('#btndetail1').click(function(){
+        location.href="/fflog?trace="+$('#trc1').val()+"&year="+$('#yrdrp1').val()+"&month="+$('#mnth1').val();
+//        alert("/fflog?trace="+$('#trc1').val()+"&year="+$('#yrdrp1').val()+"&month="+$('#mnth1').val());
+    });
+
+    $('#dropdown1').change(function () {
+
+
+        div1_plot($('#dropdown1').val(),rig_id);
+
+    });
+
+    $('.ra').click(function () {
+        var divCount = $(".full").size();
+        if (ctr1 < divCount) {
+            ctr1++;
+        }
+        for(var i=1;i<=divCount;i++)
+        {
+            if(ctr1==i)
+            {
+                $('#full'+i).show();
+            }
+            else
+            {
+                $('#full'+i).hide();
+            }
+        }
+        div1_plot($('#dropdown1').val(),rig_id);
+
+
+    });
+
+    $('.la').click(function () {
+
+        var divCount = $(".full").size();
+        if (ctr1 > 1) {
+            ctr1--;
+        }
+        for(var i=1;i<=divCount;i++)
+        {
+            if(ctr1==i)
+            {
+                $('#full'+i).show();
+            }
+            else
+            {
+                $('#full'+i).hide();
+            }
+
+        }
+
+        div1_plot($('#dropdown1').val(),rig_id);
+
+
+
+    });
+
+
+    $('#tabHeader_1').click(function () {
+
+
+
+        div1_plot($('#dropdown1').val(),rig_id);
+
+    });
+
+
+    $('#tabHeader_2').click(function () {
+
+        ffdiv1_plot($('#ffdropdown1').val(),rig_id);
+
+    });
+    $('#ffdropdown1').change(function () {
+
+        ffdiv1_plot($('#ffdropdown1').val(),rig_id);
+
+    });
+    $('.ffra').click(function () {
+
+        var divCount = $(".ffull").size();
+        if (ctr2 < divCount) {
+            ctr2++;
+        }
+        for(var i=1;i<=divCount;i++) {
+            if (ctr2 == i) {
+                $('#ffull' + i).show();
+            }
+            else {
+                $('#ffull' + i).hide();
+            }
+
+
+        }
+        ffdiv1_plot($('#ffdropdown1').val(),rig_id);
+
+    });
+
+    $('.ffla').click(function () {
+
+        var divCount = $(".ffull").size();
+        if (ctr2 > 1) {
+            ctr2--;
+        }
+        for(var i=1;i<=divCount;i++)
+        {
+            if(ctr2==i)
+            {
+                $('#ffull'+i).show();
+            }
+            else
+            {
+                $('#ffull'+i).hide();
+            }
+
+        }
+
+        ffdiv1_plot($('#ffdropdown1').val(),rig_id);
+
+
+    });
+
+});
+
+function show_dialog() {
+    $('#data').modal();
+//    VAlarms();
+}
+
+function ptab() {
+
+    // get tab container
+    var container = document.getElementById("tabContainer");
+    // set current tab
+    var navitem = container.querySelector(".tabs ul li");
+    //store which tab we are on
+    var ident = navitem.id.split("_")[1];
+    navitem.parentNode.setAttribute("data-current",ident);
+    //set current tab with class of activetabheader
+    navitem.setAttribute("class","tabActiveHeader");
+
+    //hide two tab contents we don't need
+    var pages = container.querySelectorAll(".tabpage");
+    for (var i = 1; i < pages.length; i++) {
+        pages[i].style.display="none";
+    }
+
+    //this adds click event to tabs
+    var tabs = container.querySelectorAll(".tabs ul li");
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].onclick=displayPage;
+
+
+    }
+
+}
+
+// on click of one of tabs
+function displayPage() {
+
+    var current = this.parentNode.getAttribute("data-current");
+    //remove class of activetabheader and hide old contents
+    document.getElementById("tabHeader_" + current).removeAttribute("class");
+    document.getElementById("tabpage_" + current).style.display="none";
+
+    var ident = this.id.split("_")[1];
+    //add class of activetabheader to new active tab and show contents
+    this.setAttribute("class","tabActiveHeader");
+    document.getElementById("tabpage_" + ident).style.display="block";
+    this.parentNode.setAttribute("data-current",ident);
+//    table_adjust();
+}
+
+
+
+
+
+
+function fetchdata(fm,tm){
+
+    var frm=new Date(Date.parse(fm));
+
+    var to=new Date(Date.parse(tm));
+    to.setDate(to.getDate() + 1);
+    var s_no=0;
+    $("#val_alarm_data").html('');
+    var ctrl= 0,cal=0;
+
+    if(frm>to)
+    {
+        alert('Make sure From Date not be greater than To Date');
+    }
+    else {
+        $.get('/logs/'+rig_id+'/' + fm + '/' + tm, {}, function (data) {
+            JSON.stringify(data);
+//                  alert(data.message[0].Array[1].String[0].Val[0]);
+            for (i = 0; i < data.message.length; i++) {
+                ctrl++;
+                var dt= new Date(data.message[i].date_time);
+
+                $("#val_alarm_data").append("<tr><td>" + data.message[i].valve_position+ "</td><td>" + dt.toString("dd/MM/yyyy") + "&nbsp;&nbsp;&nbsp;&nbsp;" + dt.toString("hh:mm tt")+ "</td><td>" + data.message[i].air_press+ "</td><td>" + data.message[i].bypass_valve_pos+ "</td></tr>");
+
+            }
+//                table_adjust();
+            if(ctrl>19)
+            {
+                cal=19-(ctrl);
+            }
+
+
+            if(ctrl==1)
+            {
+                cal=20-(ctrl);
+            }
+            else
+            {
+                cal=19-(ctrl);
+            }
+
+
+            if(cal>0)
+            {
+                for(j=0;j<cal;j++)
+                {
+                    $("#val_alarm_data").append("<tr><td></td><td></td><td></td><td></td></tr>");
+
+                }
+            }
+        });
+    }
+
+}
+function bindyear()//generating dynamic drop down
+{
+
+    $('#dropdown1').empty();
+    var dt=new Date();
+    for(i=dt.getFullYear();i>=2010;i--)
+    {
+        $('#dropdown1').append('<option value='+i+'>'+i+'</option>');
+        $('#ffdropdown1').append('<option value='+i+'>'+i+'</option>');
+        $('#yeardrp').append('<option value='+i+'>'+i+'</option>');
+        $('#yrdrp1').append('<option value='+i+'>'+i+'</option>');
+    }
+}
+
+//   code for function logs by amit tiwari
+function div1_plot(yr,rig_id){
+
+    $.ajax({
+        type: 'GET',
+
+        contentType: 'application/json',
+
+        url: "funlog/"+yr+"/"+rig_id
+    })
+            .fail(function(result) {
+                console.log(result);
+//                    addAlert("danger", "Oops, looks like our server might have goofed.  If you're an admin, please check the PHP error logs.");
+//                    alertWidget('display-alerts');
+            })
+            .done(function(result) {
+                var  max_count =  0;
+
+                if(result.message.length>0)
+                {
+                    for(var i=0;i<result.message.length;i++){
+
+
+                        if(max_count<result.message[i].open_tot)
+                        {
+                            max_count=result.message[i].open_tot;
+                        }
+//                arr_total_close[j] = data.message[0][i].close_tot;
+                    }
+                    for(var i=0;i<result.message1.length;i++){
+
+                        if(max_count<result.message1[i].close_tot)
+                        {
+                            max_count=result.message1[i].close_tot;
+                        }
+//                arr_open[j] = data.message1[0][i].open_tot;
+//                arr_close[j] = data.message1[0][i].close_tot;
+
+                    }
+                    var vo = [];
+                    var vc = [];
+                    var chartData = [];
+                    for(i=1;i<=result.nov.length;i++)
+                    {
+
+                        vo[i]=0;
+                        vc[i]=0;
+
+                        for(var x=1;x<=result.message.length;x++)
+                        {
+                            if(i==result.message[x-1].valve_id)
+                            {
+                                vo[i]=result.message[x-1].open_tot;
+
+                            }
+                        }
+
+                        for(var x=1;x<=result.message1.length;x++)
+                        {
+                            if(i==result.message1[x-1].valve_id)
+                            {
+                                vc[i]=result.message1[x-1].close_tot;
+
+                            }
+                        }
+                        chartData[i]=[
+                            {
+                                "open":  vo[i],
+                                "close": vc[i]
+                            }
+
+                        ];
+                        var a=i%5;
+
+                        switch(true)
+                        {
+                            case (a==0):
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 45;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0.4;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum =0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "Income:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "Expenses:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+
+                                // WRITE
+                                chart.write('right'+i);
+
+                                break;
+                            case (i==result.nov.length):
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 45;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0.4;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum =0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "Income:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "Expenses:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+
+                                // WRITE
+                                chart.write('right'+i);
+                                break;
+                            default :
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+                                // chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                // categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = max_count;
+
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // var ttl = new AmCharts.Title();
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('right'+i);
+                        }
+
+                    }
+
+                    for(var i=0;i<result.message3.length;i++){
+
+
+                        if(max_count<result.message3[i].open_tot)
+                        {
+                            max_count=result.message3[i].open_tot;
+                        }
+//                arr_total_close[j] = data.message[0][i].close_tot;
+                    }
+                    for(var i=0;i<result.message4.length;i++){
+
+                        if(max_count<result.message4[i].close_tot)
+                        {
+                            max_count=result.message4[i].close_tot;
+                        }
+//                arr_open[j] = data.message1[0][i].open_tot;
+//                arr_close[j] = data.message1[0][i].close_tot;
+
+                    }
+                    var mo = [];
+                    var mc = [];
+                    var mnthData = [];
+                    for(i=1;i<=result.nov.length;i++)
+                    {
+
+                        mo[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                        mc[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                        for(var x=1;x<=result.message3.length;x++)
+                        {
+                            if(i==result.message3[x-1].valve_id)
+                            {
+                                var  x1=result.message3[x-1].mnth-1;
+
+                                mo[i][x1]=result.message3[x-1].open_tot;
+
+                            }
+                        }
+
+                        for(var x=1;x<=result.message4.length;x++)
+                        {
+                            if(i==result.message4[x-1].valve_id)
+                            {
+
+                                var  x1=result.message4[x-1].mnth-1;
+
+                                mc[i][x1]=result.message4[x-1].close_tot;
+
+                            }
+                        }
+
+                        mnthData[i] = [
+                            {
+                                "month": "DECEMBER",
+                                "open": mo[i][11],
+                                "close": mc[i][11]
+                            },
+                            {
+                                "month": "NOVEMBER",
+                                "open": mo[i][10],
+                                "close": mc[i][10]
+                            },
+                            {
+                                "month": "OCTOBER",
+                                "open": mo[i][9],
+                                "close": mc[i][9]
+                            },
+                            {
+                                "month": "SEPTEMBER",
+                                "open": mo[i][8],
+                                "close": mc[i][8]
+                            },
+                            {
+                                "month": 'AUGUST',
+                                "open": mo[i][7],
+                                "close": mc[i][7]
+                            },
+                            {
+                                "month": "JULY",
+                                "open": mo[i][6],
+                                "close": mc[i][6]
+                            },
+                            {
+                                "month": "JUNE",
+                                "open": mo[i][5],
+                                "close": mc[i][5]
+                            },
+                            {
+                                "month": "MAY",
+                                "open": mo[i][4],
+                                "close": mc[i][4]
+                            },
+                            {
+                                "month": "APRIL",
+                                "open": mo[i][3],
+                                "close": mc[i][3]
+                            },
+                            {
+                                "month": 'MARCH',
+                                "open": mo[i][2],
+                                "close": mc[i][2]
+                            },
+                            {
+                                "month": "FEBRUARY",
+                                "open": mo[i][1],
+                                "close": mc[i][1]
+                            },
+                            {
+                                "month": "JANUARY",
+                                "open": mo[i][0],
+                                "close": mc[i][0]
+                            }
+                        ];
+                        var a=i%5;
+                        switch(true)
+                        {
+                            case (a==1):
+                                var chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = mnthData[i];
+                                chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 0;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 80;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+                                // chart.plotAreaBorderColor = "#DADADA";
+                                // chart.plotAreaBorderAlpha = 1;
+
+                                chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0.5;
+                                categoryAxis.axisAlpha = 0.4;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = 100;
+                                // valueAxis.title = "ANNULAR";
+                                // valueAxis.position = "top";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                graph1.labelText = "[[value]]";
+                                graph1.labelPosition = "bottom";
+                                graph1.title = "OPEN";
+                                graph1.valueField = "open";
+                                graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                graph2.labelText = "[[value]]";
+                                graph2.labelPosition = "bottom";
+                                graph2.title = "CLOSE";
+                                graph2.valueField = "close";
+                                graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('left'+i);
+                                break;
+                            default :
+                                var chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = mnthData[i];
+                                chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 0;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+                                chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0.5;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.position = "top";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                graph1.labelText = "[[value]]";
+                                graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                graph2.labelText = "[[value]]";
+                                graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('left'+i);
+                        }
+
+
+                    }
+
+
+                }
+                else
+                {
+
+
+                        var vo = [];
+                        var vc = [];
+                        var chartData = [];
+                        for(i=1;i<=result.nov.length;i++)
+                        {
+
+                            vo[i]=0;
+                            vc[i]=0;
+
+
+                            chartData[i]=[
+                                {
+                                    "open":  vo[i],
+                                    "close": vc[i]
+                                }
+
+                            ];
+                            var a=i%5;
+
+                            switch(true)
+                            {
+                                case (a==0):
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 45;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0.4;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum =0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "Income:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "Expenses:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+
+                                    // WRITE
+                                    chart.write('right'+i);
+
+                                    break;
+                                case (i==result.nov.length):
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 45;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0.4;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum =0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "Income:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "Expenses:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+
+                                    // WRITE
+                                    chart.write('right'+i);
+                                    break;
+                                default :
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+                                    // chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    // categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = max_count;
+
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // var ttl = new AmCharts.Title();
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('right'+i);
+                            }
+
+                        }
+
+
+                        var mo = [];
+                        var mc = [];
+                        var mnthData = [];
+                        for(i=1;i<=result.nov.length;i++)
+                        {
+
+                            mo[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                            mc[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+
+
+                            mnthData[i] = [
+                                {
+                                    "month": "DECEMBER",
+                                    "open": mo[i][11],
+                                    "close": mc[i][11]
+                                },
+                                {
+                                    "month": "NOVEMBER",
+                                    "open": mo[i][10],
+                                    "close": mc[i][10]
+                                },
+                                {
+                                    "month": "OCTOBER",
+                                    "open": mo[i][9],
+                                    "close": mc[i][9]
+                                },
+                                {
+                                    "month": "SEPTEMBER",
+                                    "open": mo[i][8],
+                                    "close": mc[i][8]
+                                },
+                                {
+                                    "month": 'AUGUST',
+                                    "open": mo[i][7],
+                                    "close": mc[i][7]
+                                },
+                                {
+                                    "month": "JULY",
+                                    "open": mo[i][6],
+                                    "close": mc[i][6]
+                                },
+                                {
+                                    "month": "JUNE",
+                                    "open": mo[i][5],
+                                    "close": mc[i][5]
+                                },
+                                {
+                                    "month": "MAY",
+                                    "open": mo[i][4],
+                                    "close": mc[i][4]
+                                },
+                                {
+                                    "month": "APRIL",
+                                    "open": mo[i][3],
+                                    "close": mc[i][3]
+                                },
+                                {
+                                    "month": 'MARCH',
+                                    "open": mo[i][2],
+                                    "close": mc[i][2]
+                                },
+                                {
+                                    "month": "FEBRUARY",
+                                    "open": mo[i][1],
+                                    "close": mc[i][1]
+                                },
+                                {
+                                    "month": "JANUARY",
+                                    "open": mo[i][0],
+                                    "close": mc[i][0]
+                                }
+                            ];
+                            var a=i%5;
+                            switch(true)
+                            {
+                                case (a==1):
+                                    var chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = mnthData[i];
+                                    chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 0;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 80;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+                                    // chart.plotAreaBorderColor = "#DADADA";
+                                    // chart.plotAreaBorderAlpha = 1;
+
+                                    chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0.5;
+                                    categoryAxis.axisAlpha = 0.4;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = 100;
+                                    // valueAxis.title = "ANNULAR";
+                                    // valueAxis.position = "top";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    graph1.labelText = "[[value]]";
+                                    graph1.labelPosition = "bottom";
+                                    graph1.title = "OPEN";
+                                    graph1.valueField = "open";
+                                    graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    graph2.labelText = "[[value]]";
+                                    graph2.labelPosition = "bottom";
+                                    graph2.title = "CLOSE";
+                                    graph2.valueField = "close";
+                                    graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('left'+i);
+                                    break;
+                                default :
+                                    var chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = mnthData[i];
+                                    chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 0;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+                                    chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0.5;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.position = "top";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    graph1.labelText = "[[value]]";
+                                    graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    graph2.labelText = "[[value]]";
+                                    graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('left'+i);
+                            }
+
+
+                        }
+
+
+
+                }
+
+            });
+
+
+
+}
+
+/* code for function fail logs  by amit tiwari*/
+
+function ffdiv1_plot(yr,rig_id){
+
+    $.ajax({
+        type: 'GET',
+
+        contentType: 'application/json',
+
+        url: "ffunlog/"+yr+"/"+rig_id
+    })
+            .fail(function(result) {
+                console.log(result);
+//                    addAlert("danger", "Oops, looks like our server might have goofed.  If you're an admin, please check the PHP error logs.");
+//                    alertWidget('display-alerts');
+            })
+            .done(function(result) {
+                var  max_count =  0;
+
+                if(result.message.length>0)
+                {
+                    for(var i=0;i<result.message.length;i++){
+
+
+                        if(max_count<result.message[i].open_tot)
+                        {
+                            max_count=result.message[i].open_tot;
+                        }
+//                arr_total_close[j] = data.message[0][i].close_tot;
+                    }
+                    for(var i=0;i<result.message1.length;i++){
+
+                        if(max_count<result.message1[i].close_tot)
+                        {
+                            max_count=result.message1[i].close_tot;
+                        }
+//                arr_open[j] = data.message1[0][i].open_tot;
+//                arr_close[j] = data.message1[0][i].close_tot;
+
+                    }
+                    var vo = [];
+                    var vc = [];
+                    var chartData = [];
+                    for(i=1;i<=result.nov.length;i++)
+                    {
+
+                        vo[i]=0;
+                        vc[i]=0;
+
+                        for(var x=1;x<=result.message.length;x++)
+                        {
+                            if(i==result.message[x-1].valve_id)
+                            {
+                                vo[i]=result.message[x-1].open_tot;
+
+                            }
+                        }
+
+                        for(var x=1;x<=result.message1.length;x++)
+                        {
+                            if(i==result.message1[x-1].valve_id)
+                            {
+                                vc[i]=result.message1[x-1].close_tot;
+
+                            }
+                        }
+                        chartData[i]=[
+                            {
+                                "open":  vo[i],
+                                "close": vc[i]
+                            }
+
+                        ];
+                        var a=i%5;
+
+                        switch(true)
+                        {
+                            case (a==0):
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 45;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0.4;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum =0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "Income:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "Expenses:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+
+                                // WRITE
+                                chart.write('fright'+i);
+                                break;
+                            case (i==result.nov.length):
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 45;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0.4;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum =0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "Income:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "Expenses:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+
+                                // WRITE
+                                chart.write('fright'+i);
+                                break;
+                            default :
+                                chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = chartData[i];
+                                // chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 4;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+
+                                // chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0;
+                                categoryAxis.axisAlpha = 0;
+                                // categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.dashLength = 5;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = max_count;
+
+                                // valueAxis.autoGridCount  = false;
+                                // valueAxis.gridCount = 12;
+                                valueAxis.position = "right";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // var ttl = new AmCharts.Title();
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                // graph1.labelText = "[[value]]";
+                                // graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                // graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                graph1.labelText = "[[open]]";
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                // graph2.labelText = "[[value]]";
+                                // graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                // graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                graph2.labelText = "[[close]]";
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('fright'+i);
+                        }
+
+
+
+
+                    }
+
+                    for(var i=0;i<result.message3.length;i++){
+
+
+                        if(max_count<result.message3[i].open_tot)
+                        {
+                            max_count=result.message3[i].open_tot;
+                        }
+//                arr_total_close[j] = data.message[0][i].close_tot;
+                    }
+                    for(var i=0;i<result.message4.length;i++){
+
+                        if(max_count<result.message4[i].close_tot)
+                        {
+                            max_count=result.message4[i].close_tot;
+                        }
+//                arr_open[j] = data.message1[0][i].open_tot;
+//                arr_close[j] = data.message1[0][i].close_tot;
+
+                    }
+                    var mo = [];
+                    var mc = [];
+                    var mnthData = [];
+                    for(i=1;i<=result.nov.length;i++)
+                    {
+
+                        mo[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                        mc[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                        for(var x=1;x<=result.message3.length;x++)
+                        {
+                            if(i==result.message3[x-1].valve_id)
+                            {
+                                var  x1=result.message3[x-1].mnth-1;
+
+                                mo[i][x1]=result.message3[x-1].open_tot;
+
+                            }
+                        }
+
+                        for(var x=1;x<=result.message4.length;x++)
+                        {
+                            if(i==result.message4[x-1].valve_id)
+                            {
+
+                                var  x1=result.message4[x-1].mnth-1;
+
+                                mc[i][x1]=result.message4[x-1].close_tot;
+
+                            }
+                        }
+
+                        mnthData[i] = [
+                            {
+                                "month": "DECEMBER",
+                                "open": mo[i][11],
+                                "close": mc[i][11]
+                            },
+                            {
+                                "month": "NOVEMBER",
+                                "open": mo[i][10],
+                                "close": mc[i][10]
+                            },
+                            {
+                                "month": "OCTOBER",
+                                "open": mo[i][9],
+                                "close": mc[i][9]
+                            },
+                            {
+                                "month": "SEPTEMBER",
+                                "open": mo[i][8],
+                                "close": mc[i][8]
+                            },
+                            {
+                                "month": 'AUGUST',
+                                "open": mo[i][7],
+                                "close": mc[i][7]
+                            },
+                            {
+                                "month": "JULY",
+                                "open": mo[i][6],
+                                "close": mc[i][6]
+                            },
+                            {
+                                "month": "JUNE",
+                                "open": mo[i][5],
+                                "close": mc[i][5]
+                            },
+                            {
+                                "month": "MAY",
+                                "open": mo[i][4],
+                                "close": mc[i][4]
+                            },
+                            {
+                                "month": "APRIL",
+                                "open": mo[i][3],
+                                "close": mc[i][3]
+                            },
+                            {
+                                "month": 'MARCH',
+                                "open": mo[i][2],
+                                "close": mc[i][2]
+                            },
+                            {
+                                "month": "FEBRUARY",
+                                "open": mo[i][1],
+                                "close": mc[i][1]
+                            },
+                            {
+                                "month": "JANUARY",
+                                "open": mo[i][0],
+                                "close": mc[i][0]
+                            }
+                        ];
+                        var a=i%5;
+                        switch(true)
+                        {
+                            case (a==1):
+                                var chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = mnthData[i];
+                                chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 0;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 80;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+                                // chart.plotAreaBorderColor = "#DADADA";
+                                // chart.plotAreaBorderAlpha = 1;
+
+                                chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0.5;
+                                categoryAxis.axisAlpha = 0.4;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = 100;
+                                // valueAxis.title = "ANNULAR";
+                                // valueAxis.position = "top";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                graph1.labelText = "[[value]]";
+                                graph1.labelPosition = "bottom";
+                                graph1.title = "OPEN";
+                                graph1.valueField = "open";
+                                graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                graph2.labelText = "[[value]]";
+                                graph2.labelPosition = "bottom";
+                                graph2.title = "CLOSE";
+                                graph2.valueField = "close";
+                                graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('fleft'+i);
+                                break;
+                            default :
+                                var chart = new AmCharts.AmSerialChart();
+                                chart.dataProvider = mnthData[i];
+                                chart.categoryField = "month";
+                                chart.startDuration = 1;
+                                chart.columnSpacing = 0;
+                                chart.autoMargins = false;
+                                chart.marginRight = 0;
+                                chart.marginLeft = 0;
+                                chart.marginBottom = 10;
+                                chart.marginTop = 20;
+                                chart.fontSize = 10;
+                                chart.rotate = true;
+
+                                // AXES
+                                // Category
+                                var categoryAxis = chart.categoryAxis;
+                                categoryAxis.gridPosition = "start";
+                                categoryAxis.gridAlpha = 0.5;
+                                categoryAxis.axisAlpha = 0;
+                                categoryAxis.dashLength = 5;
+                                // categoryAxis.autoGridCount  = false;
+                                // categoryAxis.gridCount = 24;
+
+
+                                // Value
+                                var valueAxis = new AmCharts.ValueAxis();
+                                valueAxis.axisAlpha = 0;
+                                valueAxis.gridAlpha = 0;
+                                valueAxis.minimum = 0;
+                                valueAxis.maximum = max_count;
+                                // valueAxis.position = "top";
+
+                                chart.addValueAxis(valueAxis);
+
+                                // GRAPHS
+                                // first graph
+                                var graph1 = new AmCharts.AmGraph();
+                                graph1.type = "column";
+                                graph1.labelText = "[[value]]";
+                                graph1.labelPosition = "bottom";
+                                graph1.title = "open";
+                                graph1.valueField = "open";
+                                graph1.balloonText = "open:[[value]]";
+                                graph1.lineAlpha = 0;
+                                graph1.fillColors = "#6CD6CF";
+                                graph1.fillAlphas = 1;
+                                chart.addGraph(graph1);
+
+                                // second graph
+                                var graph2 = new AmCharts.AmGraph();
+                                graph2.type = "column";
+                                graph2.labelText = "[[value]]";
+                                graph2.labelPosition = "bottom";
+                                graph2.title = "close";
+                                graph2.valueField = "close";
+                                graph2.balloonText = "close:[[value]]";
+                                graph2.lineAlpha = 0;
+                                graph2.fillColors = "#999999";
+                                graph2.fillAlphas = 1;
+                                chart.addGraph(graph2);
+
+                                // LEGEND
+                                // var legend = new AmCharts.AmLegend();
+                                // chart.addLegend(legend);
+
+                                // WRITE
+                                chart.write('fleft'+i);
+                        }
+
+
+                    }
+
+
+                }else
+                {
+
+
+                        var vo = [];
+                        var vc = [];
+                        var chartData = [];
+                        for(i=1;i<=result.nov.length;i++)
+                        {
+
+                            vo[i]=0;
+                            vc[i]=0;
+
+
+                            chartData[i]=[
+                                {
+                                    "open":  vo[i],
+                                    "close": vc[i]
+                                }
+
+                            ];
+                            var a=i%5;
+
+                            switch(true)
+                            {
+                                case (a==0):
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 45;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0.4;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum =0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "Income:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "Expenses:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+
+                                    // WRITE
+                                    chart.write('fright'+i);
+                                    break;
+                                case (i==result.nov.length):
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 45;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0.4;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum =0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "Income:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "Expenses:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+
+                                    // WRITE
+                                    chart.write('fright'+i);
+                                    break;
+                                default :
+                                    chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = chartData[i];
+                                    // chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 4;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+
+                                    // chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0;
+                                    categoryAxis.axisAlpha = 0;
+                                    // categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.dashLength = 5;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = max_count;
+
+                                    // valueAxis.autoGridCount  = false;
+                                    // valueAxis.gridCount = 12;
+                                    valueAxis.position = "right";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // var ttl = new AmCharts.Title();
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    // graph1.labelText = "[[value]]";
+                                    // graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    // graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    graph1.labelText = "[[open]]";
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    // graph2.labelText = "[[value]]";
+                                    // graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    // graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    graph2.labelText = "[[close]]";
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('fright'+i);
+                            }
+
+
+
+
+                        }
+
+
+                        var mo = [];
+                        var mc = [];
+                        var mnthData = [];
+                        for(i=1;i<=result.nov.length;i++)
+                        {
+
+                            mo[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+                            mc[i]=[0,0,0,0,0,0,0,0,0,0,0,0];
+
+
+                            mnthData[i] = [
+                                {
+                                    "month": "DECEMBER",
+                                    "open": mo[i][11],
+                                    "close": mc[i][11]
+                                },
+                                {
+                                    "month": "NOVEMBER",
+                                    "open": mo[i][10],
+                                    "close": mc[i][10]
+                                },
+                                {
+                                    "month": "OCTOBER",
+                                    "open": mo[i][9],
+                                    "close": mc[i][9]
+                                },
+                                {
+                                    "month": "SEPTEMBER",
+                                    "open": mo[i][8],
+                                    "close": mc[i][8]
+                                },
+                                {
+                                    "month": 'AUGUST',
+                                    "open": mo[i][7],
+                                    "close": mc[i][7]
+                                },
+                                {
+                                    "month": "JULY",
+                                    "open": mo[i][6],
+                                    "close": mc[i][6]
+                                },
+                                {
+                                    "month": "JUNE",
+                                    "open": mo[i][5],
+                                    "close": mc[i][5]
+                                },
+                                {
+                                    "month": "MAY",
+                                    "open": mo[i][4],
+                                    "close": mc[i][4]
+                                },
+                                {
+                                    "month": "APRIL",
+                                    "open": mo[i][3],
+                                    "close": mc[i][3]
+                                },
+                                {
+                                    "month": 'MARCH',
+                                    "open": mo[i][2],
+                                    "close": mc[i][2]
+                                },
+                                {
+                                    "month": "FEBRUARY",
+                                    "open": mo[i][1],
+                                    "close": mc[i][1]
+                                },
+                                {
+                                    "month": "JANUARY",
+                                    "open": mo[i][0],
+                                    "close": mc[i][0]
+                                }
+                            ];
+                            var a=i%5;
+                            switch(true)
+                            {
+                                case (a==1):
+                                    var chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = mnthData[i];
+                                    chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 0;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 80;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+                                    // chart.plotAreaBorderColor = "#DADADA";
+                                    // chart.plotAreaBorderAlpha = 1;
+
+                                    chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0.5;
+                                    categoryAxis.axisAlpha = 0.4;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = 100;
+                                    // valueAxis.title = "ANNULAR";
+                                    // valueAxis.position = "top";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    graph1.labelText = "[[value]]";
+                                    graph1.labelPosition = "bottom";
+                                    graph1.title = "OPEN";
+                                    graph1.valueField = "open";
+                                    graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    graph2.labelText = "[[value]]";
+                                    graph2.labelPosition = "bottom";
+                                    graph2.title = "CLOSE";
+                                    graph2.valueField = "close";
+                                    graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('fleft'+i);
+                                    break;
+                                default :
+                                    var chart = new AmCharts.AmSerialChart();
+                                    chart.dataProvider = mnthData[i];
+                                    chart.categoryField = "month";
+                                    chart.startDuration = 1;
+                                    chart.columnSpacing = 0;
+                                    chart.autoMargins = false;
+                                    chart.marginRight = 0;
+                                    chart.marginLeft = 0;
+                                    chart.marginBottom = 10;
+                                    chart.marginTop = 20;
+                                    chart.fontSize = 10;
+                                    chart.rotate = true;
+
+                                    // AXES
+                                    // Category
+                                    var categoryAxis = chart.categoryAxis;
+                                    categoryAxis.gridPosition = "start";
+                                    categoryAxis.gridAlpha = 0.5;
+                                    categoryAxis.axisAlpha = 0;
+                                    categoryAxis.dashLength = 5;
+                                    // categoryAxis.autoGridCount  = false;
+                                    // categoryAxis.gridCount = 24;
+
+
+                                    // Value
+                                    var valueAxis = new AmCharts.ValueAxis();
+                                    valueAxis.axisAlpha = 0;
+                                    valueAxis.gridAlpha = 0;
+                                    valueAxis.minimum = 0;
+                                    valueAxis.maximum = max_count;
+                                    // valueAxis.position = "top";
+
+                                    chart.addValueAxis(valueAxis);
+
+                                    // GRAPHS
+                                    // first graph
+                                    var graph1 = new AmCharts.AmGraph();
+                                    graph1.type = "column";
+                                    graph1.labelText = "[[value]]";
+                                    graph1.labelPosition = "bottom";
+                                    graph1.title = "open";
+                                    graph1.valueField = "open";
+                                    graph1.balloonText = "open:[[value]]";
+                                    graph1.lineAlpha = 0;
+                                    graph1.fillColors = "#6CD6CF";
+                                    graph1.fillAlphas = 1;
+                                    chart.addGraph(graph1);
+
+                                    // second graph
+                                    var graph2 = new AmCharts.AmGraph();
+                                    graph2.type = "column";
+                                    graph2.labelText = "[[value]]";
+                                    graph2.labelPosition = "bottom";
+                                    graph2.title = "close";
+                                    graph2.valueField = "close";
+                                    graph2.balloonText = "close:[[value]]";
+                                    graph2.lineAlpha = 0;
+                                    graph2.fillColors = "#999999";
+                                    graph2.fillAlphas = 1;
+                                    chart.addGraph(graph2);
+
+                                    // LEGEND
+                                    // var legend = new AmCharts.AmLegend();
+                                    // chart.addLegend(legend);
+
+                                    // WRITE
+                                    chart.write('fleft'+i);
+                            }
+
+
+                        }
+
+
+
+                }
+
+            });
+
+
+
+}
+</script>
+
+
+</head>
+
+
+<body>
+<div id="main" style="display: none;">
+<!--<div class="ba"><a href="/bop" title="Back"><img class="ba_img" src="/svg/back_arrow.svg"></a> </div>-->
+<a href="/bop" title="Back"><img class="back" src="/svg/back_arrow.svg"></a>
+<a href="/logout" title="Log out"><img class="log_out" src="/svg/logout.svg"></a>
+<div id="wrapper">
+
+<div id="tabContainer">
+<div class="tabs">
+    <ul>
+        <li id="tabHeader_1">FUNCTION LOGS</li>
+        <li id="tabHeader_2">FUNCTION FAIL LOGS</li>
+        <li id="tabHeader_3">VALVE POSITION FUNCTION FAIL DETAILS</li>
+
+    </ul>
+</div>
+<div class="tabscontent">
+<div class="tabpage" id="tabpage_1">
+<div class="dropdown1"><select id="dropdown1" class="fnt">
+</select></div>
+
+
+
+<div class="la"><img class="la_1" src="/svg/left_arrow.svg"></a> </div>
+<div class="ra"><img class="la_1" src="/svg/right_arrow.svg"></a> </div>
+
+<div class="yeardrp"><select class="fnt"  id="yeardrp">
+</select></div>
+
+<div id="trace"><select  id="trc" class="fnt">
+
+</select></div>
+
+
+<div id="month"> <select  id="mnth" class="fnt">
+    <option value="1">JANUARY</option>
+    <option value="2">FEBRUARY</option>
+    <option value="3">MARCH</option>
+    <option value="4">APRIL</option>
+    <option value="5">MAY</option>
+    <option value="6">JUNE</option>
+    <option value="7">JULY</option>
+    <option value="8">AUGUST</option>
+    <option value="9">SEPTEMBER</option>
+    <option value="10">OCTOBER</option>
+    <option value="11">NOVEMBER</option>
+    <option value="12">DECEMBER</option>
+</select></div>
+
+
+<div class="btndetail"><button class="fnt" id="btndetail">Get Details</button></div>
+
+<div class="blue"></div>
+<div class="label1"><label >OPEN</label></div>
+
+<div class="grey"></div>
+<div class="label2"><label >CLOSE</label></div>
+<div id="first">
+
+</div>
+</div>
+
+<div class="tabpage" id="tabpage_2">
+
+<div class="ffdropdown1"><select  id="ffdropdown1" class="fnt">
+
+</select></div>
+
+<div class="ffla"><img class="la_1" src="/svg/left_arrow.svg"></a> </div>
+<div class="ffra"><img class="la_1" src="/svg/right_arrow.svg"></a> </div>
+
+<div class="yeardrp1"><select class="fnt" id="yrdrp1">
+</select></div>
+
+
+<div id="trace1"><select  id="trc1" class="fnt">
+
+
+</select></div>
+
+
+<div id="month1" > <select  id="mnth1" class="fnt">
+
+
+    <option value="1">JANUARY</option>
+    <option value="2">FEBRUARY</option>
+    <option value="3">MARCH</option>
+    <option value="4">APRIL</option>
+    <option value="5">MAY</option>
+    <option value="6">JUNE</option>
+    <option value="7">JULY</option>
+    <option value="8">AUGUST</option>
+    <option value="9">SEPTEMBER</option>
+    <option value="10">OCTOBER</option>
+    <option value="11">NOVEMBER</option>
+    <option value="12">DECEMBER</option>
+</select></div>
+
+
+<div class="btndetail1"><button class="fnt" id="btndetail1">Get Details</button></div>
+
+
+<div class="blue"></div>
+<div class="label1"><label >OPEN</label></div>
+
+<div class="grey"></div>
+<div class="label2"><label >CLOSE</label></div>
+
+<div id="second">
+
+</div>
+
+
+
+</div>
+<div class="tabpage" id="tabpage_3">
+
+    <div class="txtfr">
+
+        <input type="text" id="txtfr" class="fnt" />
+    </div>
+    <div class="s_to">
+        <span id="s_to" class="fnt">To</span>
+    </div>
+
+    <div class="txtto" >
+        <input type="text" class="fnt" id="txtto" />
+    </div>
+    <div class="btnstyle"  >
+        <button id="btn" class="fnt" >Get Details</button>
+
+    </div>
+    <div class="tab_val">
+    <div class="d_had" >
+        <table>
+
+            <tr >
+                <td style="border: 1px solid #000;"  ><div class="dh">VALVE POSITION</div></td>
+                <td style="border: 1px solid #000;" ><div class="dh">OPERATED DATE & TIME</div></td>
+                <td style="border: 1px solid #000;" ><div class="dh">AIR PRESSURE</div></td>
+                <td style="border: 1px solid #000;" ><div class="dh">BYPASS VALVE POSITION</div></td>
+            </tr>
+
+        </table>
+    </div>
+        <div id="d_val"  >
+            <table class="scroll" id="t_val"  >
+
+
+                <tbody id="val_alarm_data"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+<div class="f1" id="f1">
+
+</div>
+
+<!--Alarm footer content goes to JS file-->
+<div class="f2" onclick="show_dialog()">
+</div>
+
+<div id="data" style="display:none;">
+</div>
+
+
+<img class="logo_div" src="svg/CPC_logo_ft.svg"/>
+<img src="svg/btm_arrow.svg" id="btm_arrow"/>
+
+</div>
+</body>
+</html>

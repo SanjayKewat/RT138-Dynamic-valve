@@ -1,0 +1,565 @@
+body
+{
+    font-family: nft, Verdana, Arial;
+    position:relative;
+    margin: 0;
+}
+table {
+    border-collapse: collapse;
+    text-align: left;
+
+}
+
+.f2:hover {
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+
+}
+
+.arrow_left:hover, .arrow_right:hover, .log_out:hover {
+    cursor: pointer;
+}
+
+.txt_g {
+    display: none;
+}
+
+/* css formats for the D3 gauge */
+.gauge .domain {
+    stroke-width: 1px;
+    stroke: #ffd800;
+}
+
+/*Major tick line */
+.gauge .tick line {
+    stroke: #000;
+    stroke-width: 1px;
+
+}
+
+/*Minor tick line */
+.gauge line {
+    stroke: #000;
+    stroke-width: 1px;
+
+}
+
+.gauge .arc, .gauge .cursor {
+    opacity: 0;
+}
+
+/*Inside range values font*/
+.gauge .major {
+    fill: #000000;
+    font-size: 12.69px;
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif, sans-serif;
+    font-weight: bold;
+}
+
+.gauge .indicator {
+    stroke: #c81531;
+    fill: #000;
+    stroke-width: 2px;
+    /*background-image: url("./png/x.png");*/
+}
+
+/* css formats for the segment display */
+.segdisplay .on {
+    fill: #515151;
+    padding-left: 80px;
+
+}
+
+.segdisplay .off {
+    fill: #999; /* digit color inside */
+    opacity: 0.15;
+    margin-left: 80px;
+}
+
+/*End Css for D3 guage*/
+
+#lgnd {
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+@media only screen and (min-width : 120px){
+.home
+{
+    margin-left: 14.677px;
+    margin-top: 10.772px;
+    width: 40px;
+    height: 17.839px;
+    position: absolute;
+}
+
+    .arrow_left {
+        margin-left: 55.165px;
+        margin-top: 185.052px;
+        width: 20.158px;
+        height: 23.277px;
+        position: absolute;
+    }
+    .log_out {
+        margin-left: 1407.516px;
+        margin-top: 10.772px;
+        width: 20.239px;
+        height: 20.239px;
+        position: absolute;
+    }
+    #info {
+        margin-left: 159.372px;
+        margin-top: 35.28px;
+        width: 250px;
+        height: 35px;
+        font-size: 16px;
+        text-align: center;
+        position: absolute;
+    }
+    #infoII {
+        margin-left: 970.926px;
+        margin-top: 35.28px;
+        width: 250px;
+        height: 35px;
+        font-size: 16px;
+        position: absolute;
+    }
+    .arrow_right {
+        margin-left: 474.046px;
+        margin-top: 185.052px;
+        width: 20.158px;
+        height: 23.277px;
+        position: absolute;
+    }
+
+    #a1, #a2, #a3, #a4, #a5 {
+        margin-left: 659.535px;
+        margin-top: 100.307px;
+        width: 726.252px;
+        height: 272px;
+        overflow: hidden;
+        position: absolute;
+    }
+    .big_ann
+    {
+        display: none;
+        position: absolute;
+    }
+    .sml_ann{
+        display: block;
+        margin-left: -45px;
+        position: absolute;
+    }
+    .gauge_1 {
+        margin-left: 47px;
+        margin-top: -327.55px;
+        width: 270px;
+        height: 251px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    .g_arrng {
+        position: absolute;
+        margin-left: 141.844px;
+        margin-top: 73.478px;
+    }
+    hr {
+        position: absolute;
+        margin-top: 358.556px;
+        width: 1437px;
+    }
+    #multiline {
+        margin-left: 53.963px;
+        margin-top: 407.59px;
+        width: 888.507px;
+        height: 330px;
+        overflow: hidden;
+        position: absolute;
+    }
+    .legend {
+        margin-left: 1045.875px;
+        margin-top: 433.685px;
+        width: 314.042px;
+        height: 100px;
+        font-size: 18px;
+        position: absolute;
+    }
+    .subtitle {
+        font-size: 16px;
+    }
+
+    .m_div {
+        float: left;
+        width: 88px;
+        border: 1px solid #29abe2;
+        vertical-align: middle;
+    }
+
+    .acc_div {
+        float: left;
+        width: 88px;
+        border: 1px dashed #0071bc;
+        vertical-align: middle;
+    }
+
+    .ann_div {
+        float: left;
+        width: 88px;
+        border: 1px solid #6cd6cf;
+        vertical-align: middle;
+    }
+
+    .rig_div {
+        float: left;
+        width: 88px;
+        border: 1px dashed #003caf;
+        vertical-align: middle;
+    }
+
+    .shr_div {
+        float: left;
+        width: 88px;
+        border: 1px dashed #006666;
+        vertical-align: middle;
+    }
+
+
+    .f1 {
+        margin: 0;
+        margin-top: 747px; /*change*/
+        width:1439.5px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 26.938px;
+        font-family: nft, Verdana, Arial;
+        font-size: 13px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+
+    }
+
+    .f2 {
+
+        margin: 0;
+        margin-top:772px; /*change*/
+        width:1439.5px;
+        background-color: #333333;
+        height: 23px;
+        font-family: nft, Verdana, Arial;
+        font-size: 16px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+        padding-top: 5px;
+
+    }
+    .logo_div
+    {
+        margin-left: 0;
+        margin-top: 774px;
+        width:95px;
+        height: 25px;
+        position: absolute;
+        background: rgb(51, 51, 51);
+    }
+    #btm_arrow {
+        margin-left: 719.5px;
+        margin-top: 762px;
+        width:28px;
+        height: 12px;
+        z-index: 1;
+        position: absolute;
+    }
+    .g_txt{
+        margin-top: 245px;
+        position: absolute;
+        font-size: 16.93px;
+        margin-left: 268px;
+    }
+}
+
+/** Large screens **/
+@media only screen and (min-width : 1445px) {
+    .big_ann
+    {
+        display: block;
+        position: absolute;
+    }
+    .sml_ann{
+        display: none;
+        position: absolute;
+    }
+    .header1 {
+        position: absolute;
+        margin-left: 279.356px;
+        margin-top: 71.166px;
+        font-size: 21px;
+        float: left;
+    }
+
+    .header2 {
+        position: absolute;
+        margin-left: 1295.467px;
+        margin-top: 71.166px;
+        font-size: 21px;
+        float: left;
+    }
+
+
+
+    .home {
+        margin-left: 17.548px;
+        margin-top: 23.56px;
+        width: 54.009px;
+        height: 23.847px;
+        position: absolute;
+    }
+
+    .log_out {
+        margin-left: 1850.5px;
+        margin-top: 19.161px;
+        width: 30px;
+        height: 35px;
+        position: absolute;
+    }
+
+    #info {
+        margin-left: 255.356px;
+        margin-top: 61.166px;
+        width: 250px;
+        height: 35px;
+        font-size: 21px;
+        text-align: center;
+        position: absolute;
+    }
+
+    #infoII {
+        margin-left: 1295.467px;
+        margin-top: 61.166px;
+        width: 250px;
+        height: 35px;
+        font-size: 21px;
+        position: absolute;
+    }
+
+    .arrow_left {
+        margin-left: 73.604px;
+        margin-top: 271.01px;
+        width: 28px;
+        height: 32px;
+        position: absolute;
+    }
+
+    .arrow_right {
+        margin-left: 632.5px;
+        margin-top: 271.01px;
+        width: 28px;
+        height: 32px;
+        position: absolute;
+    }
+
+    #a1, #a2, #a3, #a4, #a5 {
+        margin-left: 879.999px;
+        margin-top: 122px;
+        width: 969.01px;
+        height: 370px;
+        overflow: hidden;
+        position: absolute;
+    }
+
+    hr {
+        position: absolute;
+        margin-top: 502.5px;
+        width: 1918px;
+    }
+
+    #multiline {
+        margin-left: 72px;
+        margin-top: 541px;
+        width: 1185.5px;
+        height: 408px;
+        overflow: hidden;
+        position: absolute;
+    }
+
+    .legend {
+        margin-left: 1395.467px;
+        margin-top: 602.734px;
+        width: 314.042px;
+        height: 180px;
+        font-size: 21px;
+        position: absolute;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+
+
+    .m_div {
+        float: left;
+        width: 116px;
+        border: 1px solid #29abe2;
+        vertical-align: middle;
+    }
+
+    .acc_div {
+        float: left;
+        width: 116px;
+        border: 1px dashed #0071bc;
+        vertical-align: middle;
+    }
+
+    .ann_div {
+        float: left;
+        width: 116px;
+        border: 1px solid #6cd6cf;
+        vertical-align: middle;
+    }
+
+    .rig_div {
+        float: left;
+        width: 116px;
+        border: 1px dashed #003caf;
+        vertical-align: middle;
+    }
+
+    .shr_div {
+        float: left;
+        width: 116px;
+        border: 1px dashed #006666;
+        vertical-align: middle;
+    }
+
+    .f1 {
+        margin-left: .5px;
+        margin-top: 998px;
+        width: 1918px;
+        height: 35px;
+        background-color: rgba(96, 56, 19, 0.80);
+        font-family: nft, Verdana, Arial;
+        font-size: 16px;
+        color: #fff;
+        position: absolute;
+    }
+
+    .f2 {
+        margin-left: .5px;
+        margin-top: 1033px;
+        width: 1918px;
+        height: 37px;
+        background-color: #333333;
+        background-size: cover;
+        font-family: nft, Verdana, Arial;
+        font-size: 30px;
+        color: #fff;
+        position: absolute;
+    }
+
+    .logo_div {
+        margin-left: 0.9078703703710289px;
+        margin-top: 1033px;
+        width: 155px;
+        height: 36.65740740740741px;
+        position: absolute;
+        background: rgb(51, 51, 51);
+    }
+
+    .txt_g {
+        width: 400px;
+    }
+
+    .gauge_1 {
+        /* margin-left: 151.99583333333402px;
+         margin-top: 138.7037037037038px;
+         width: 391.34259259259255px;
+         height: 317.037037037037px;
+         position: absolute;
+         z-index: -2;*/
+
+        margin-left: 153.99583333333402px;
+        margin-top: 137.7037037037038px;
+        width: 391.34259259259255px;
+        height: 317.037037037037px;
+        position: absolute;
+        z-index: -2;
+    }
+
+    #chartdiv_1, #chartdiv_2, #chartdiv_3, #chartdiv_4, #chartdiv_5 {
+        margin-left: -25px;
+        margin-top: -143px;
+        width: 753px;
+        height: 580px;
+        position: absolute;
+        z-index: -2;
+
+    }
+
+    #blackimg, #blackimg2, #blackimg3, #blackimg4, #blackimg5 {
+        margin-left: 329.81064814814897px;
+        margin-top: 289.2962962962964px;
+        width: 39.629629629629626px;
+        height: 39.629629629629626px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    #ann_val, #acc_val, #mani_val, #rig_val, #shr_val {
+        text-align: center;
+        font-size: 36px;
+        font-family: digital;
+        margin-left: 200px;
+        margin-top: 395px;
+        width: 300px;
+        height: 40px;
+        position: absolute;
+    }
+
+    #btm_arrow {
+        margin-left: 1035px;
+        margin-top: 1020px;
+        width: 32px;
+        height: 15px;
+        z-index: 1;
+        position: absolute;
+    }
+
+
+    .g_txt{
+        margin-top: 315px;
+        position: absolute;
+        font-size: 16.93px;
+        margin-left: 345px;
+    }
+
+    .g_arrng {
+        position: absolute;
+        margin-left: 143px;
+        margin-top: 118px;
+    }
+}
+
+@media only screen and (min-width: 150px) and (max-width: 1024px) {
+    .maintab
+    {
+        display: none;
+    }
+
+    .small
+    {
+        display: block;
+    }
+    .guage_cont1
+    {
+        display: none;
+    }
+    .txt_g
+    {
+        display: block;
+    }
+}
+

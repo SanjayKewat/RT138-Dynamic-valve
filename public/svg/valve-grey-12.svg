@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="116.134px" height="137.979px" viewBox="0 0 116.134 137.979" enable-background="new 0 0 116.134 137.979"
+	 xml:space="preserve">
+<g id="Layer_1" display="none">
+</g>
+<g id="Cylinder">
+</g>
+<g id="Layer_6">
+</g>
+<g id="Pressure_gauge">
+</g>
+<g id="Chasis__x26__base">
+</g>
+<g id="Layer_8">
+</g>
+<g id="Motor__x26__pump">
+</g>
+<g id="Valves">
+	<g>
+		<path fill="#808080" stroke="#808080" stroke-miterlimit="10" d="M14.408,73.989c0,9.976,0,28.592,0,37.055
+			c0,7.66,4.564,6.436,7.487,6.436c8.001,0,85.878,0,85.878,0c2.349-1,2.783-3.132,2.789-4.287c0-6.592-3.377-7.488-3.377-7.488
+			l-85.29-34.207c0,0-3.958-2.034-5.872-2.316C14.481,69.181,14.408,70.964,14.408,73.989z"/>
+		<path fill="#E6E6E6" stroke="#999999" stroke-width="0.25" stroke-miterlimit="10" d="M31.605,82.12c0,0,3.848-0.019,6.49-0.019
+			s2.814,3.384,3.967,5.794c1.22,2.287,3.601,1.695,6.508,0c2.418-1.689,13.474-10.216,13.474-10.216s2.196-2.033,0.011-5.286
+			C50.721,59.078,31.605,59.18,31.605,59.18s-19.18-0.102-30.514,13.214c-2.186,3.253,0.018,5.286,0.018,5.286
+			s11.059,8.526,13.477,10.216c2.908,1.695,5.291,2.287,6.51,0c1.152-2.41,1.326-5.794,3.969-5.794S31.605,82.12,31.605,82.12z"/>
+		<rect x="28.408" y="114.479" fill="#808080" stroke="#808080" stroke-miterlimit="10" width="7" height="23"/>
+		<circle fill="#999999" stroke="#999999" stroke-width="0.25" stroke-miterlimit="10" cx="31.574" cy="100.321" r="13.846"/>
+		<path fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" d="M72.408,109.479v5H41.021c-3.133,0-5.765,0.336-6.555,0.619
+			c-0.157,0.059-0.242,0.183-0.242,0.243c-0.652,0.442-1.439,0.729-2.286,0.729c-2.265,0-4.099-1.826-4.099-4.101
+			s1.834-4.109,4.099-4.109c0.847,0,1.634,0.261,2.286,0.702c0,0.062,0.082,0.243,0.24,0.298c0.792,0.287,3.448,0.618,6.605,0.618
+			H72.408z"/>
+		<rect x="61.408" y="101.479" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="44" height="20"/>
+		<rect x="74.408" y="103.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="23" height="2"/>
+		<rect x="74.408" y="117.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="23" height="2"/>
+		<rect x="69.408" y="98.479" fill="#C8C8C8" stroke="#999999" stroke-miterlimit="10" width="5" height="27"/>
+		<rect x="97.408" y="98.479" fill="#C8C8C8" stroke="#999999" stroke-miterlimit="10" width="5" height="27"/>
+		<rect x="67.408" y="102.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+		<rect x="103.408" y="102.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+		<path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M115.634,111.681c0,3.285-2.662,5.949-5.946,5.949
+			c-0.461,0-0.906-0.15-1.336-0.15h-2.943v-12h2.943c0.43,0,0.875,0.052,1.336,0.052
+			C112.972,105.531,115.634,108.397,115.634,111.681z"/>
+		<polygon fill="#333333" stroke="#333333" stroke-width="0.25" stroke-miterlimit="10" points="36.783,108.552 36.539,45.399 
+			26.908,45.361 27.152,108.515 32.008,119.028 		"/>
+		<path fill="#333333" stroke="#333333" stroke-miterlimit="10" d="M31.908,0.5c3.958,0,7.5,2.843,7.5,6.351v38.629h-15V6.851
+			C24.408,3.343,27.95,0.5,31.908,0.5z"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="31.574" cy="100.321" r="3.02"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="17.669" cy="84.922" r="3.049"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="45.669" cy="84.922" r="3.049"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="110.374" cy="111.681" r="2.973"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="31.883" cy="111.694" r="2.439"/>
+		<rect x="67.408" y="116.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+		<rect x="103.408" y="116.479" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+		<circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="18.033" cy="113.986" r="2.439"/>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,24 @@
+.pump_content{
+    width: 100%;
+}
+
+@media only screen and (min-width : 120px) {
+
+.pump{
+
+    margin-top: 30px;
+    height: 87.678px;
+    z-index: -2;
+    font-size: 14px;
+}
+
+}
+
+@media only screen and (min-width : 1445px) {
+    .pump {
+        margin-top: 30px;
+        height: 153.5px;
+        z-index: -2;
+        font-size: 21px;
+    }
+}

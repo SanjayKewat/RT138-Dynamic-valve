@@ -1,0 +1,201 @@
+div ul {
+    list-style: none;
+    margin-top:15px;
+
+
+}
+div ul li{
+
+}
+
+@media only screen and (min-width : 120px)
+{
+.dyn_gauges{
+    border: 2px solid red;
+    position: absolute;
+    width: 350px;
+    height: 120px;
+    margin-top: 180px;
+    margin-left: 600px;
+    z-index: 8;
+}
+    .dyn_valve{
+        position: absolute;
+        margin-left: 125px;
+        margin-top: 303px;
+        width: 1267px;
+        height: 140px;
+        /*border: 1px solid #ff0000;*/
+        z-index: 5;
+    }
+    .li_cmn
+    {
+        padding-left:25px;
+        margin-top: -10px;
+        font-size: 13px;
+        color: #000;
+    }
+    .li_cmn_smll
+    {
+        padding-left:15px;
+        margin-top: -5px;
+        font-size: 11px;
+        color: #000;
+    }
+    .dyn_mtr
+    {
+        margin-left: 160px;
+        margin-top: 481px;
+        width: 560px;
+        height: 230px;
+        position: absolute;
+         /*border: 1px solid red;*/
+    }
+    .dyn_pump
+    {
+
+        margin-left: 700px;
+        margin-top: 451px;
+        width: 630px;
+        height: 240px;
+        position: absolute;
+        /*border: 1px solid red;*/
+    }
+    .pump_css
+    {
+
+        width: 147px;
+        height: 276px;
+
+    }
+ /*   .motor_dyn{
+        width: 307px;
+        height: 200px;
+        z-index: 5;
+    }*/
+
+    .motor_clss_1{
+        width: 271px;
+        height: 271px;
+        position: absolute;
+        z-index: 2;
+    }
+    .motor_clss_2{
+        margin-top: -10px;
+        width: 293px;
+        height: 296px;
+        position: absolute;
+        z-index: 2;
+    }
+
+    .motor_status_1{
+        margin-left: 50px;
+        margin-top: 60px;
+        width: 200px;
+        text-align: center;
+        position: absolute;
+        color:red;
+        font-size: 14px;
+        z-index: 6;
+
+    }
+    .motor_status_2{
+        margin-left: 70px;
+        margin-top: 60px;
+        width: 200px;
+        text-align: center;
+        position: absolute;
+        color:red;
+        font-size: 14px;
+        z-index: 6;
+
+    }
+    .motor_2{
+        margin-left: 245px;
+    }
+}
+
+@media only screen and (min-width : 1445px) {
+
+    .dyn_valve{
+        position: absolute;
+        margin-left: 166px;
+        margin-top: 420px;
+        width: 1693px;
+        height: 200px;
+        /*border: 1px solid #ff0000;*/
+        z-index: 5;
+    }
+    .li_cmn
+    {
+        padding-left:25px;
+        margin-top: 0px;
+        font-size: 14px;
+        color: #000;
+    }
+    .li_cmn_smll
+    {
+        padding-left: 22px;
+        margin-top: -5px;
+        font-size: 12px;
+        color: #000;
+    }
+    .dyn_mtr
+    {
+        margin-left: 220px;
+        margin-top: 640px;
+        width: 750px;
+        height: 300px;
+        position: absolute;
+        /* border: 1px solid red; */
+    }
+    .motor_clss_1 {
+        width: 370px;
+        height: 376px;
+        position: absolute;
+        z-index: 2;
+    }
+    .motor_status_1 {
+        margin-left: 60px;
+        margin-top: 90px;
+        width: 270px;
+        text-align: center;
+        position: absolute;
+        color: red;
+        font-size: 14px;
+        z-index: 6;
+    }
+    .motor_2 {
+        margin-left: 338px;
+        margin-top: 3.3px;
+    }
+    .motor_clss_2 {
+        /* margin-top: -23px; */
+        width: 395px;
+        height: 400px;
+        position: absolute;
+        z-index: 2;
+    }
+    .motor_status_2 {
+        margin-left: 95px;
+        margin-top: 95px;
+        width: 270px;
+        text-align: center;
+        position: absolute;
+        color: red;
+        font-size: 14px;
+        z-index: 6;
+    }
+    .dyn_pump {
+        margin-left: 930px;
+        margin-top: 615px;
+        width: 830px;
+        height: 357px;
+        position: absolute;
+   /*     border: 1px solid red;*/
+    }
+    .pump_css {
+        width: 200px;
+        height: 358px;
+    }
+}

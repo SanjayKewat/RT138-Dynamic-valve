@@ -1,0 +1,525 @@
+
+@media only screen and (min-width: 1921px)   and (max-height:260px){
+
+
+    .log_div
+    {
+        margin:auto;
+        left: 50%;
+        right: 0;
+
+        margin-top: 0px;
+        margin-left: -233px;
+        /*background-color: #29ABE2;*/
+        width : 466px;
+        height: 260px;
+        position: absolute;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 466px;
+        height: 35px;
+        font-size:  16px;
+
+    }
+    .tab_tr1{
+        width : 466px;
+        height: 51px;
+        font-size:  16px;
+    }
+    .tab_tr2{
+        width : 466px;
+        height: 98px;
+        font-size:  16px;
+    }
+    .txt
+    {
+        width : 300px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo_btn
+    {
+        width : 105px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo
+    {
+        width : 77.063px;
+        height: 26.5px;
+        font-size:  16px;
+    }
+    #error
+    {
+        margin-right: 25px;
+        font-size: 16px;
+    }
+
+}
+@media only screen and (min-width: 1921px) and (min-height:261px){
+
+    .log_div
+    {
+        margin:auto;
+        left: 50%;
+        right: 0;
+        top:50%;
+        bottom: 0;
+        margin-top: -130px;
+        margin-left: -233px;
+        /*background-color: #29ABE2;*/
+        width : 466px;
+        height: 260px;
+        position: fixed;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 466px;
+        height: 35px;
+        font-size:  16px;
+
+    }
+    .tab_tr1{
+        width : 466px;
+        height: 51px;
+        font-size:  16px;
+    }
+    .tab_tr2{
+        width : 466px;
+        height: 98px;
+        font-size:  16px;
+    }
+    .txt
+    {
+        width : 300px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo_btn
+    {
+        width : 105px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo
+    {
+        width : 77.063px;
+        height: 26.5px;
+        font-size:  16px;
+    }
+    #error
+    {
+        margin-right: 25px;
+        font-size: 16px;
+    }
+}
+@media only screen and (min-width: 467px) and (max-width: 1920px)  and (min-height:261px){
+
+    .log_div
+    {
+        margin:auto;
+        left: 50%;
+        right: 0;
+        top:50%;
+        bottom: 0;
+        margin-top: -130px;
+        margin-left: -233px;
+        /*background-color: #29ABE2;*/
+        width : 466px;
+        height: 260px;
+        position: fixed;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 466px;
+        height: 35px;
+        font-size:  16px;
+
+    }
+    .tab_tr1{
+        width : 466px;
+        height: 51px;
+        font-size:  16px;
+    }
+    .tab_tr2{
+        width : 466px;
+        height: 98px;
+        font-size:  16px;
+    }
+    .txt
+    {
+        width : 300px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo_btn
+    {
+        width : 105px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo
+    {
+        width : 77.063px;
+        height: 26.5px;
+        font-size:  16px;
+    }
+    #error
+    {
+        margin-right:25px;
+        font-size: 16px;
+    }
+}
+@media only screen and (min-width: 467px) and (max-width: 1920px)  and (max-height:260px){
+
+
+    .log_div
+    {
+        margin:auto;
+        left: 50%;
+        right: 0;
+
+        margin-top: 0px;
+        margin-left: -233px;
+        /*background-color: #29ABE2;*/
+        width : 466px;
+        height: 260px;
+        position: absolute;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 466px;
+        height: 35px;
+        font-size:  16px;
+
+    }
+    .tab_tr1{
+        width : 466px;
+        height: 51px;
+        font-size:  16px;
+    }
+    .tab_tr2{
+        width : 466px;
+        height: 98px;
+        font-size:  16px;
+    }
+    .txt
+    {
+        width : 300px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo_btn
+    {
+        width : 105px;
+        height: 34px;
+        font-size:  16px;
+    }
+    .logo
+    {
+        width : 77.063px;
+        height: 26.5px;
+        font-size:  16px;
+    }
+    #error
+    {
+        margin-right:25px;
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (min-width: 401px)  and  (max-width: 466px) and  (min-height:261px) {
+
+    .log_div
+    {
+        margin:auto;
+
+        top:50%;
+        bottom: 0;
+        margin-top: -130px;
+        margin-left: 0px;
+        width : 100%;
+        height: 260px;
+        position: fixed;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 100%;
+        height: 30px;
+        font-size:  14px;
+
+    }
+    .tab_tr1{
+        width : 100%;
+        height: 51px;
+        font-size:  14px;
+    }
+    .tab_tr2{
+        width : 100%;
+        height: 98px;
+        font-size:  14px;
+    }
+    .txt
+    {
+        width :250px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo_btn
+    {
+        width : 100px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo
+    {
+        width : 100px;
+        height: 26.5px;
+        font-size:  14px;
+    }
+    #error
+    {
+        margin-right:20px;
+        font-size: 14px;
+    }
+}
+@media only screen and (min-width: 401px)  and (max-width: 466px) and  (max-height:260px){
+
+    .log_div
+    {
+
+        margin-top: 0;
+        margin-left: 0px;
+        width : 100%;
+        height: 260px;
+        position: absolute;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 100%;
+        height: 30px;
+        font-size:  14px;
+
+    }
+    .tab_tr1{
+        width : 100%;
+        height: 51px;
+        font-size:  14px;
+    }
+    .tab_tr2{
+        width : 100%;
+        height: 98px;
+        font-size:  14px;
+    }
+    .txt
+    {
+        width :250px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo_btn
+    {
+        width : 100px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo
+    {
+        width : 100px;
+        height: 26.5px;
+        font-size:  14px;
+    }
+    #error
+    {
+        margin-right:20px;
+        font-size: 14px;
+    }
+
+
+}
+@media only screen and  (max-width: 400px) and  (min-height:261px) {
+
+    .log_div
+    {
+        margin:auto;
+
+        top:50%;
+        bottom: 0;
+        margin-top: -130px;
+        margin-left: 0px;
+        width : 100%;
+        height: 260px;
+        position: fixed;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 100%;
+        height: 30px;
+        font-size:  14px;
+
+    }
+    .tab_tr1{
+        width : 100%;
+        height: 51px;
+        font-size:  14px;
+    }
+    .tab_tr2{
+        width : 100%;
+        height: 98px;
+        font-size:  14px;
+    }
+    .txt
+    {
+        width :180px;
+        height: 30px;
+        font-size:  14px;
+    }
+    .logo_btn
+    {
+        width : 80px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo
+    {
+        width : 80px;
+        height: 26.5px;
+        font-size:  14px;
+    }
+    #error
+    {
+        margin-right: 15px;
+        font-size: 14px;
+    }
+}
+@media only screen and  (max-width: 400px) and  (max-height:260px) {
+
+    .log_div
+    {
+
+        margin-top: 0px;
+        margin-left: 0px;
+        width : 100%;
+        height: 260px;
+        position: absolute;
+        overflow: auto;
+    }
+    .tab_top
+    {
+
+        width : 100%;
+        height: 30px;
+        font-size:  14px;
+
+    }
+    .tab_tr1{
+        width : 100%;
+        height: 51px;
+        font-size:  14px;
+    }
+    .tab_tr2{
+        width : 100%;
+        height: 98px;
+        font-size:  14px;
+    }
+    .txt
+    {
+        width :180px;
+        height: 30px;
+        font-size:  14px;
+    }
+    .logo_btn
+    {
+        width : 80px;
+        height: 34px;
+        font-size:  14px;
+    }
+    .logo
+    {
+        width : 80px;
+        height: 26.5px;
+        font-size:  14px;
+    }
+    #error
+    {
+        margin-right: 15px;
+        font-size: 14px;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: nft, nft, verdana, helvetica, arial, sans-serif;
+    position: relative;
+
+}
+html {
+    background: url(/svg/lg_back.svg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.logo {
+    max-width: 60%;
+    max-height: 80%;
+    padding-right: 3%;
+
+    float: right;
+}
+
+table
+{
+    border-collapse: collapse;
+    color: #fff;
+    margin: 0;
+}
+
+.tab_top
+{
+    background-color: #4d4d4d;
+    /*font-size: 24px;*/
+    font-family: verdana, sans-serif;
+    /*height: 35px;*/
+
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+
+}
+a:hover
+{
+    cursor: pointer;
+    color: #fbca7e;
+}
+
+
+#btn_login:hover
+{
+    cursor: pointer;
+}
+#error
+{
+    /*font-size: 10px;*/
+    color: #fbca7e;
+}

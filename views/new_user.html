@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Sara Sae :: RT138</title>
+<script src="/javascripts/jquery.min.js"></script>
+<link href="/stylesheets/fonts.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/new_user.css" rel="stylesheet" /> <!--page CSS-->
+
+<script>
+    $(function(){
+//        $('form[name="form2"]').validVal();
+
+
+//        $("#btn_sub" ).submit(function( event ) {
+//            alert( "Handler for .submit() called." );
+//
+//            event.preventDefault();
+//        });
+        $('#btn_sub').click(function(){
+            var name,uname,eadd,p_no,pwd,con_pwd,add;
+            name=$('#txtname').val();
+
+            create_acct();
+        });
+    });
+
+    function validateEmail(sEmail) {
+        var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        if (filter.test(sEmail)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function create_acct()
+    {
+
+        var nme=$('#txtname').val();
+        var usr=$('#txtusr').val();
+        var email=$('#txteadd').val();
+        var phn=$('#txtphn').val();
+        var pwd=$('#txtpss').val();
+        var con_pwd=$('#txtcnpss').val();
+        var add=$('#txtadd').val();
+//            Name,User_name,Password,Email_Address,Phone_no,Address
+
+        if((nme.length>0)&&(usr.length>0)&&(email.length>0)&&(phn.length>0)&&(pwd.length>0)&&(con_pwd.length>0)&&(add.length>0)) {
+
+            if (validateEmail(email)) {
+                if(pwd==con_pwd)
+                {
+                    $.get('/newuser/' + nme + '/' + usr + '/' + pwd + '/' + email + '/' + phn + '/' + add, {}, function (data) {
+                        JSON.stringify(data);
+
+                        if (data.status == 200) {
+//                            $('#error').text('New User "' + usr + '" account created successfully');
+                            $('#txtname').val('');
+                            $('#txtusr').val('');
+                            $('#txteadd').val('');
+                            $('#txtphn').val('');
+                            $('#txtcnpss').val('');
+                            $('#txtadd').val('');
+                            $('#txtpss').val('');
+                            $('#error').text('');
+                            if (window.confirm('New User "' + usr + '" account created successfully'))
+                            {
+                                // They clicked Yes
+                                window.location.href = "/login";
+                            }
+
+
+                        }
+                        else {
+                            $('#error').text('Username "' + usr + '" already assign. Plz try again with another Username.');
+                        }
+                        connection.destroy();
+                    });
+                }
+                else
+                {
+                    alert('Conformation Password not matched.')
+                }
+            }
+            else {
+                alert('Invalid Email Address');
+
+            }
+
+
+
+        }
+        else
+        {
+            alert('Make sure any field cannot be blank.')
+        }
+
+    }
+</script>
+</head>
+<body>
+<div id="main">
+<div class="log_div">
+
+    <table style="width: 100%; background-color: #808080;">
+        <tr class="tab_top" valign="middle">
+            <td><div style="width: 55%; padding-left: 2%; padding-top: 0.7%; float: left; font-family: nft, Verdana, Arial;"><img class="n_icon" src="svg/new_user.svg"/>NEW USER REGISTRATION</div> <div style="padding-top: 0.5%;"><img class="logo" src="svg/CPC logo-06.svg"/> </div></td>
+        </tr>
+        <tr class="tab_tr1" valign="middle">
+            <td><div style="width: 45%; padding-left: 4%; padding-top: 4%; float: left; font-family: nft, Verdana, Arial;">Name <!--<label class="lbl_man">*</label> -->: <br><input type="text" id="txtname" class="txt"/></div> <div style="padding-top: 4%;width: 44%; float: right;padding-right: 3%;">Username<!--<label class="lbl_man">*</label>--> :<br><input type="text" id="txtusr" class="txt"/> </div></td>
+        </tr>
+        <tr class="tab_tr2" valign="middle">
+            <td><div style="width: 45%; padding-left: 4%; padding-top: 2%; float: left; font-family: nft, Verdana, Arial;">Email Address<!--<label class="lbl_man">*</label>--> : <br><input type="text" id="txteadd" class="txt"/></div> <div style="padding-top: 2%;width: 44%; float: right;padding-right: 3%;">Phone Number <!--<label class="lbl_man">*</label> -->: <br><input type="text" id="txtphn" class="txt"/> </div></td>
+        </tr>
+
+        <tr class="tab_tr2" valign="middle">
+            <td><div style="width: 45%; padding-left: 4%; padding-top: 2%; float: left; font-family: nft, Verdana, Arial;">Password<!--<label class="lbl_man">*</label>--> :  <br><input type="password" id="txtpss" class="txt"/></div> <div style="padding-top: 2%;width: 44%; float: right;padding-right: 3%;">Confirm Password<!--<label class="lbl_man">*</label>--> : <br><input type="password" id="txtcnpss" class="txt"/> </div></td>
+        </tr>
+
+        <tr class="tab_tr3" valign="middle">
+            <td><div style="width: 45%; padding-left: 4%; padding-bottom: 4%; padding-top: 2%; float: left; font-family: nft, Verdana, Arial;">Address <!--<label class="lbl_man">*</label> -->:  <br><textarea id="txtadd" class="txt_add" ></textarea></div>
+
+                <div style="padding-top: 6%;width: 44%; padding-bottom: 4%;float: right;padding-right: 3%;"><label id="error"></label><br> <a   style="margin-right:14.61%;padding: 1.86% 3.24%"  id="back"  href="/login">CANCEL</a> <input type="submit"  style="padding: 1.86% 3.24%"  class="btn_smt" value="CREATE ACCOUNT >"  id="btn_sub"/>
+                    <!--<div style="padding-top: 9%;width: 44%; padding-bottom: 4%;float: right;padding-right: 3%;"><a href="/login"><img class="btn_cncl" src="svg/cncl_btn.svg" id="btn_cncl"/></a> <img  class="btn_acct" id="btn_acc" src="svg/btn_acct.svg"/> -->
+                </div></td>
+        </tr>
+        <tr><td><div style="width: 50%; float: left;"><label class="lbl_man">Note : All fields are mandatory.</label></div> <div style="width: 46%;float: left; text-align: right; padding-right: 3%;"><!--<a id="lgn" href="/login">Click here to Login...!</a>--></div></td></tr>
+    </table>
+</div>
+</div>
+</body>
+</html>

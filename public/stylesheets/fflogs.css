@@ -1,0 +1,1237 @@
+.ra:hover
+{
+    cursor:pointer;
+}
+.la:hover
+{
+    cursor:pointer;
+}
+.ffla:hover
+{
+    cursor:pointer;
+}
+.ffra:hover
+{
+    cursor:pointer;
+}
+.first1{
+    width:23%;
+    height:100%;
+    position:inherit;
+}
+.first2{
+    width:18%;
+    margin-left:23.2%;
+    height:100%;position:inherit;
+}
+.first3{
+    width:18%;
+    margin-left:41.4%;
+    height:100%;
+    position:inherit;
+}
+.first4{
+    width:18%;
+    margin-left:59.6%;
+    height:100%;
+    position:inherit;
+}
+.first5{
+    width:21%;
+    margin-left:77.8%;
+    height:100%;
+    position:inherit;
+}
+.left1{
+    width:85%;
+    height:100%;
+    position:absolute;
+}
+.left2{
+width:83%;
+    height:100%;
+    position:absolute;
+}
+.left3{
+    width:83%;
+    height:100%;
+    position:absolute;
+}
+.left4{
+    width:83%;
+    height:100%;
+    position:absolute;
+}
+.left5{
+    width:71%;
+    height:100%;
+    position:absolute;
+}
+.right1{
+    margin-left:87%;width:13%;height:100%;
+}
+.right2{
+    margin-left:84%;width:16%;height:100%;
+}
+.right3{
+    margin-left:84%;width:16%;height:100%;
+}
+.right4{
+    margin-left:84%;width:16%;height:100%;
+}
+.right5{
+    margin-left:72%;width:28%;height:100%;
+}
+.charttitle
+{
+    margin-left:26.05%
+}
+
+@media  only screen and (min-width: 120px)
+{
+    #wrapper {
+        width: 1439px; /*change*/
+        /*margin-left: 0.5px;*/
+        margin-top:44px; /*change*/
+        position: absolute;
+
+    }
+
+    #wrapper h1 {
+        color: #FFF;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    #wrapper a {
+        display: block;
+        font-size: 16px;
+        /*padding-top:20px;*/
+        color: #FFF;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .tabs {
+        height: 31px; /*change*/
+        margin-left: 87.981px;
+    }
+
+    .tabs > ul {
+        font-size: 18px;
+        list-style: none;
+    }
+
+    .tabs > ul > li {
+        height: 17px;
+        margin: 0 2px 0 0;
+        padding: 13px 10px;
+        display: block;
+        float: left;
+        color: #000;
+        vertical-align: middle;
+
+        /*border-top: 1px solid #000;*/
+        /*border-left:  1px solid #000;*/
+        /*border-right:  1px solid #000;*/
+        border: 1px solid #000;
+        background: #cccccc; /* old browsers */
+        background: -moz-linear-gradient(top, #cccccc 0%, #cccccc 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cccccc), color-stop(100%, #cccccc)); /* webkit */
+    }
+
+    .tabs > ul > li:hover {
+        background: #FFFFFF; /* old browsers */
+        border-bottom: none;
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFFFFF), color-stop(10%, #F3F3F3), color-stop(50%, #F3F3F3), color-stop(100%, #FFFFFF)); /* webkit */
+        cursor: pointer;
+        color: #333;
+    }
+
+    .tabs > ul > li.tabActiveHeader {
+        border-bottom: none;
+        background: #FFFFFF; /* old browsers */
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FFFFFF), color-stop(10%, #F3F3F3), color-stop(50%, #F3F3F3), color-stop(100%, #FFFFFF)); /* webkit */
+        cursor: pointer;
+        color: #333;
+        height: 18px;
+    }
+
+    .tabscontent {
+
+        /*padding:30px 0;*/
+        background: #FFFFFF; /* old browsers */
+        border-top: 1px solid #000;
+
+        margin: 0;
+        color: #333;
+
+    }
+
+    .tabpage_main {
+        width: 100%;
+
+    }
+
+    #tabContainer {
+        /*padding-left: 0.5px;*/
+        width: 1439px;
+        font-size: 16px;
+        background-color: #fff;
+    }
+
+    #tabHeader_1 {
+        height: 20px;
+        margin-right: 2px;
+        padding-top: 6px; /*change*/
+        padding-bottom: 6px; /*change*/
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 16px;
+
+    }
+
+    #tabHeader_2 {
+        height: 20px;
+        margin-right: 2px;
+        padding-top: 6px; /*change*/
+        padding-bottom: 6px; /*change*/
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 16px;
+
+    }
+    #tabHeader_3{
+
+        height: 20px;
+
+        margin-right: 2px;
+        padding-top:  6px;
+        padding-bottom:  6px;
+        padding-right: 10px;
+        padding-left:  10px;
+
+        font-size: 16px;
+
+    }
+    .scroll tbody{
+        height: 519.469px;
+
+        overflow-y: auto;
+        overflow-x: auto;
+        text-align: center;
+
+    }
+
+
+    .dropdown1{
+        margin-left: 124.6px;
+        margin-top:46px;
+        width:58px;
+        height: 20.241px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .fnt{
+    font-size:14px;
+        width:100%;
+        height: 100%;
+
+    }
+    .ffdropdown1{
+        margin-left: 124.6px;
+        margin-top:46px;
+        width:58px;
+        height: 20.241px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .yeardrp{
+        margin-left: 916.941px;
+        margin-top: 46px;
+        width:58px;
+        height: 20.241px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    .yeardrp1{
+        margin-left: 916.941px;
+        margin-top: 46px;
+        width:58px;
+        height: 20.241px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    #trace{
+        margin-left: 500px;
+        margin-top:46px;
+        width:290px;
+        height: 20.141px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    #trace1{
+        margin-left: 500px;
+        margin-top:46px;
+        width:290px;
+        height: 20.141px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    #month{
+        margin-left: 802.993px;
+        margin-top: 46px;
+        width:92.958px;
+        height: 20.241px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    #month1{
+        margin-left: 802.993px;
+        margin-top: 46px;
+        width:92.958px;
+        height: 20.241px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    .btndetail{
+        margin-left: 992.656px;
+        margin-top: 45px;
+        width:110px;
+        height: 21px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    .btndetail1{
+        margin-left: 992.656px;
+        margin-top: 45px;
+        width:110px;
+        height: 21px;
+        font-size:  14px;
+        position: absolute;
+
+    }
+    .blue{
+        margin-left: 1154.957px;
+        margin-top: 46px;
+        width:16px;
+        height: 16px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .label1{
+        margin-left: 1175px;
+        margin-top: 46px;
+        width:26px;
+        height: 20px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .grey{
+        margin-left: 1247.165px;
+        margin-top: 46px;
+        width:16px;
+        height: 16px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .label2{
+        margin-left: 1267px;
+        margin-top: 46px;
+        width:26px;
+        height: 20px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .la{
+        margin-left: 29.155px;
+        margin-top: 350.657px;
+        width:23.805px;
+        height: 27.487px;
+
+        position: absolute;
+
+    }
+    .ffla{
+        margin-left: 29.155px;
+        margin-top: 350.657px;
+        width:23.805px;
+        height: 27.487px;
+
+        position: absolute;
+
+    }
+    .ra{
+        margin-left: 1385.852px;
+        margin-top: 350.657px;
+        width:23.805px;
+        height: 27.487px;
+        position: absolute;
+
+    }
+    .ffra{
+        margin-left: 1385.852px;
+        margin-top: 350.657px;
+        width:23.805px;
+        height: 27.487px;
+        position: absolute;
+
+    }
+    .la_1{
+        width:23.805px;
+        height: 27.487px;
+    }
+    .full{
+        margin-left: 90.155px;
+        margin-top: 128.5px;
+        width:1250.953px;
+        height: 485.779px;
+        font-size: 16px;
+
+        position: absolute;
+
+    }
+    .ffull{
+        margin-left: 90.155px;
+        margin-top: 128.5px;
+        width:1250.953px;
+        height: 485.779px;
+        font-size: 16px;
+
+        position: absolute;
+
+    }
+
+    .ccchart{
+
+        font-size: 18px;
+
+
+    }
+
+    .txtfr{
+        margin-left: 56.226px;
+        margin-top: 46px;
+        width:92.916px;
+        height: 20.232px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .txtto{
+        margin-left: 209.462px;
+        margin-top: 46px;
+        width:92.916px;
+        height: 21px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .btnstyle{
+        margin-left: 336.68px;
+        margin-top: 46px;
+        width:110px;
+        height: 21px;
+        font-size: 14px;
+        position: absolute;
+
+    }
+    .s_to{
+        margin-left:180.462px;
+        margin-top: 48px;
+        width:30px;
+        height: 27px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .tab_val{
+        margin-left: 56.226px;
+        margin-top: 90px;
+        width:1230px;
+        height: 570px;
+        font-size: 18px;
+        position: absolute;
+
+        overflow: auto;
+
+    }
+    .title{
+        font-size:  14px;
+    }
+
+    .fftitle{
+        font-size:18px;
+    }
+
+
+    table{
+        font-size:  13px;
+    }
+    #f1 {
+
+        margin: 0;
+        margin-top: 747px; /*change*/
+        width:1439.5px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 26.938px;
+        font-family: nft, Verdana, Arial;
+        font-size: 13px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+    }
+
+    .f2 {
+        margin: 0;
+        margin-top:772px; /*change*/
+        width:1439.5px;
+        background-color: #333333;
+        height: 23px;
+        font-family: nft, Verdana, Arial;
+        font-size: 16px; /*change*/
+        color: #fff;
+        position: absolute; /*change*/
+        padding-top: 5px;
+    }
+
+
+    .logo_div{
+        margin-left: 0px;
+        margin-top:  775px;
+        width:95px;
+        height: 25px;
+        background:#333333;
+        position:absolute;
+        z-index: 8;
+    }
+    #btm_arrow{
+        margin-left: 719.5px;
+        margin-top: 762px;
+        width:28px;
+        height: 12px;
+        z-index: 9;
+        position: absolute;
+    }
+
+    .back {
+        margin-left: 14.677px;
+        margin-top: 10.772px;
+        width: 40px;
+        height: 17.839px;
+        position: absolute;
+    }
+    .log_out{
+        margin-left:1407.516px;
+        margin-top: 10.772px;
+        width: 20.239px;
+        height: 20.239px;
+        position: absolute;
+    }
+   .dh
+   {
+       color:#3FA9F5;
+       font-size: 14px;
+padding-top: 4px;
+       width:300px;
+       height:22.226px;
+       text-align: center;
+   }
+    #d_val{
+        height: 460px;
+
+        overflow:auto;
+    }
+    .scroll {
+        border-collapse: collapse;
+        text-align: center;
+    }
+  .scroll tr
+  {
+      height: 30px;
+  }
+
+    .scroll td{
+
+        font-size: 15px;
+        border: 1px solid #000;
+width:300px;
+        font-weight: normal;
+    }
+
+    .even {
+        background-color: rgba(230, 230, 230, 0.29);
+    }
+
+    #f_dv
+    {
+        padding-top: .2%;
+    }
+    body {
+        margin: 0;
+        font-family: nft, nft, verdana, helvetica, arial, sans-serif;
+        position: relative;
+
+    }
+
+    h2{
+        margin-bottom:10px;
+    }
+
+
+
+
+    .blue{
+        /*margin-left: 1575px;*/
+        /*margin-top: 45.5px;*/
+        /*position: absolute;*/
+        /*width: 20px;*/
+        /*height: 20px;*/
+        background-color: #6CD6CF;
+    }
+    .grey{
+        /*margin-left: 1675px;*/
+        /*margin-top: 45.5px;*/
+        /*position: absolute;*/
+        /*width: 20px;*/
+        /*height: 20px;*/
+        background-color: #999999;
+    }
+
+
+
+
+
+    .ffblue{
+        margin-left: 1575px;
+        margin-top: 45.5px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #6CD6CF;
+    }
+    .ffgrey{
+        margin-left: 1675px;
+        margin-top: 45.5px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #999999;
+    }
+    .ffl1{
+        margin-left: 1600px;
+        margin-top: 45.5px;
+        position: absolute;
+    }
+    .ffl2{
+        margin-left: 1700px;
+        margin-top: 45.5px;
+        position: absolute;
+    }
+
+
+    /*table.scroll {*/
+        /*width: 100%;*/
+         /*border-collapse: collapse;*/
+        /*border-spacing: 0;*/
+
+        /*overflow-x: auto;*/
+        /*min-width: 600px;*/
+    /*}*/
+    /*table.scroll tbody,*/
+    /*table.scroll thead { display: block;*/
+
+    /*}*/
+    /*table.scroll tbody td, thead th {*/
+        /*width: 300px;*/
+
+
+    /*}*/
+
+}
+@media only screen and (min-width: 1445px)
+{
+
+  /*.scroll tbody{*/
+        /*height: 610px;*/
+
+        /*overflow-y: auto;*/
+        /*overflow-x: auto;*/
+        /*text-align: center;*/
+
+    /*}*/
+
+    .dh
+    {
+        color:#3FA9F5;
+        font-size: 16px;
+padding-top: 5px;
+        width:435px;
+        height:25px;
+        text-align: center;
+    }
+    .dropdown1{
+        margin-left: 165.5px;
+        margin-top: 45.5px;
+        width:85px;
+        height: 27px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .ffdropdown1{
+        margin-left: 165.5px;
+        margin-top: 45.5px;
+        width:85px;
+        height: 27px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .yeardrp{
+        margin-left: 1235px;
+        margin-top: 45.5px;
+        width:85px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    .yeardrp1{
+        margin-left: 1235px;
+        margin-top: 45.5px;
+        width:85px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    #trace{
+        margin-left: 665.5px;
+        margin-top: 45.5px;
+        width:380px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    #trace1{
+        margin-left: 665.5px;
+        margin-top: 45.5px;
+        width:380px;
+        height: 27px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    #month{
+        margin-left: 1065.5px;
+        margin-top: 45.5px;
+        width:150px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    #month1{
+        margin-left: 1065.5px;
+        margin-top: 45.5px;
+        width:150px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    .btndetail{
+        margin-left: 1340px;
+        margin-top: 45.5px;
+        width:150px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    .btndetail1{
+        margin-left: 1340px;
+        margin-top: 45.5px;
+        width:150px;
+        height: 27px;
+        font-size:  18px;
+        position: absolute;
+
+    }
+    .blue{
+        margin-left: 1575px;
+        margin-top: 45.5px;
+        width:20px;
+        height: 20px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .label1{
+        margin-left: 1600px;
+        margin-top: 45.5px;
+        width:39px;
+        height: 19px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .grey{
+        margin-left: 1675px;
+        margin-top: 45.5px;
+        width:20px;
+        height: 20px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .label2{
+        margin-left: 1700px;
+        margin-top: 45.5px;
+        width:44px;
+        height: 19px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .la{
+        margin-left: 20.5px;
+        margin-top: 450px;
+        width:34.09px;
+        height: 23.847px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .ffla{
+        margin-left: 20.5px;
+        margin-top: 450px;
+        width:34px;
+        height: 23.847px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .ra{
+        margin-left: 1800px;
+        margin-top: 450px;
+        width:54.009px;
+        height: 23.847px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .ffra{
+        margin-left: 1800px;
+        margin-top: 450px;
+        width:54.009px;
+        height: 23.847px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .la_1{
+        width:28.375px;
+        height: 32.781px;
+    }
+    .full{
+        margin-left: 80.5px;
+        margin-top: 128.5px;
+        width:1682px;
+        height: 666.5px;
+        font-size: 18px;
+
+        position: absolute;
+
+    }
+    .ffull{
+        margin-left: 80.5px;
+        margin-top: 128.5px;
+        width:1682px;
+        height: 666.5px;
+        font-size: 18px;
+
+        position: absolute;
+
+    }
+
+    .ccchart{
+
+        font-size: 18px;
+
+
+    }
+
+    .txtfr{
+        margin-left: 40px;
+        margin-top: 45px;
+        width:140px;
+        height: 30px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .txtto{
+        margin-left: 280px;
+        margin-top: 45px;
+        width:140px;
+        height: 30px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .btnstyle{
+        margin-left: 470px;
+        margin-top: 45px;
+        width:150px;
+        height: 30px;
+        font-size:  18px;
+        position:absolute;
+
+    }
+    .s_to{
+        margin-left: 240px;
+        margin-top: 48px;
+        width:30px;
+        height: 27px;
+        font-size: 18px;
+        position: absolute;
+
+    }
+    .tab_val{
+        margin-left: 37.535px;
+        margin-top: 140.5px;
+        width:1773.465px;
+        height: 663.25px;
+        font-size: 18px;
+        position: absolute;
+
+        overflow: auto;
+
+    }
+    .title{
+        font-size:  14px;
+    }
+
+    .fftitle{
+        font-size:18px;
+    }
+
+
+    #tabContainer{
+        padding-left: 0.5px;
+        width: 1919px;
+        font-size: 18px;
+        background-color:#fff;
+    }
+    .tabs{
+        margin-left: 37px;
+        height: 44.5px;
+        font-size: 18px;
+        z-index: 1;
+    }
+    #tabHeader_1{
+        height:20px;
+        margin-right:2px;
+        padding-top:13px;
+        padding-bottom: 13px;
+        padding-right: 10px;
+        padding-left:  10px;
+        font-size: 18px;
+
+    }
+    #tabHeader_2{
+        height: 20px;
+        margin-right: 2px;
+        padding-top:  13px;
+        padding-bottom:  13px;
+        padding-right: 10px;
+        padding-left:  10px;
+        font-size: 18px;
+
+    }
+    #tabHeader_3{
+        height: 20px;
+        margin-right: 2px;
+        padding-top:  13px;
+        padding-bottom:  13px;
+        padding-right: 10px;
+        padding-left:  10px;
+        font-size: 18px;
+
+    }
+    table{
+        font-size:  16px;
+    }
+    #f1{
+        width: 1919px;
+        background-color: rgba(96, 56, 19, 0.80);
+        height: 35px;
+        font-family: nft, Verdana, Arial;
+        font-size:  16px;
+        color: #fff;
+        position: absolute;
+        margin-top: 1008px;
+        margin-left:0.5px;
+    }
+
+    #btm_arrow{
+        margin-left: 1035px;
+        margin-top: 1029px;
+        width: 32px;
+        height: 15px;
+        z-index:1;
+        position: absolute;
+    }
+    .f2{
+        width: 1919px;
+        background-color: #333333;
+        height: 37px;
+        font-family: nft, Verdana, Arial;
+        font-size:  30px;
+        color: #fff;
+        position: absolute;
+        margin-top: 1041px;
+        margin-left:0.5px;
+        padding-top: 0px;
+    }
+    .logo_div{
+        margin-left:0.5px;
+        margin-top: 1041px;
+        width:155px;
+        height: 37px;
+        background:#333333;
+        position:absolute;
+    }
+    .back{
+        margin-left: 17.548px;
+        margin-top: 23.56px;
+        width:54.009px;
+        height: 23.847px;
+        position: absolute;
+    }
+    .log_out{
+        margin-left:1850.5px;
+        margin-top: 19.161px;
+        width: 30px;
+        height:35px;
+        position: absolute;
+    }
+    #wrapper{
+        margin-left:0.5px;
+        margin-top: 71.5px;
+        width: 1920px;
+        z-index: 1;
+        position: absolute;
+    }
+    #d_val{
+        height: 620px;
+    }
+
+    .scroll {
+        border-collapse: collapse;
+        text-align: center;
+    }
+    .scroll tr
+    {
+        height:35px;
+    }
+    .scroll th{
+        color:#3FA9F5;
+        font-size: 18px;
+        border: 1px solid #000;
+        font-weight: normal;
+        width:435px;
+    }
+    .scroll td{
+
+        font-size: 16px;
+        border: 1px solid #000;
+        height:35px;
+width:435px;
+
+        font-weight: normal;
+    }
+    .d_had
+    {
+        width: 1756px;
+    }
+
+    .even {
+        background-color: rgba(230, 230, 230, 0.29);
+    }
+
+    #f_dv
+    {
+        padding-top: .2%;
+    }
+    body {
+        margin: 0;
+        font-family: nft, nft, verdana, helvetica, arial, sans-serif;
+        position: relative;
+
+    }
+
+    h2{
+        margin-bottom:10px;
+    }
+
+    #wrapper{
+        width:1900px;
+        margin-left: 0.5px;
+        margin-top: 71.5px;
+        position: absolute;
+
+    }
+
+    #wrapper h1{
+        color:#FFF;
+        text-align:center;
+        margin-bottom:20px;
+    }
+
+    #wrapper a{
+        display:block;
+        font-size:1.2em;
+        /*padding-top:20px;*/
+        color:#FFF;
+        text-decoration:none;
+        text-align:center;
+    }
+
+
+    .tabs{
+        height:44.5px;
+        margin-left: 37px;
+    }
+
+    .tabs > ul{
+        font-size: 18px;
+        list-style:none;
+    }
+
+    .tabs > ul > li{
+        height: 17px;
+        margin:0 2px 0 0;
+        padding:13px 10px;
+        display:block;
+        float:left;
+        color:#000;
+        vertical-align: middle;
+
+        /*border-top: 1px solid #000;*/
+        /*border-left:  1px solid #000;*/
+        /*border-right:  1px solid #000;*/
+        border:1px solid #000;
+        background: #cccccc; /* old browsers */
+        background: -moz-linear-gradient(top, #cccccc 0%, #cccccc 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cccccc), color-stop(100%,#cccccc)); /* webkit */
+    }
+
+    .tabs > ul > li:hover{
+        background: #FFFFFF; /* old browsers */
+        border-bottom: none;
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+        cursor:pointer;
+        color: #333;
+    }
+
+    .tabs > ul > li.tabActiveHeader{
+        border-bottom: none;
+        background: #FFFFFF; /* old browsers */
+        background: -moz-linear-gradient(top, #FFFFFF 0%, #F3F3F3 10%, #F3F3F3 50%, #FFFFFF 100%); /* firefox */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(10%,#F3F3F3), color-stop(50%,#F3F3F3), color-stop(100%,#FFFFFF)); /* webkit */
+        cursor:pointer;
+        color: #333;
+        height: 18px;
+    }
+
+    .tabscontent {
+
+        /*padding:30px 0;*/
+        background: #FFFFFF; /* old browsers */
+        border-top: 1px solid #000;
+
+        margin:0;
+        color:#333;
+    }
+    .tabpage_main
+    {
+        width: 100%;
+
+    }
+
+
+
+    .blue{
+        /*margin-left: 1575px;*/
+        /*margin-top: 45.5px;*/
+        /*position: absolute;*/
+        /*width: 20px;*/
+        /*height: 20px;*/
+        background-color: #6CD6CF;
+    }
+    .grey{
+        /*margin-left: 1675px;*/
+        /*margin-top: 45.5px;*/
+        /*position: absolute;*/
+        /*width: 20px;*/
+        /*height: 20px;*/
+        background-color: #999999;
+    }
+
+
+
+    .fnt{
+        font-size:18px;
+        width:100%;
+        height: 100%;
+    }
+
+    .ffblue{
+        margin-left: 1575px;
+        margin-top: 45.5px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #6CD6CF;
+    }
+    .ffgrey{
+        margin-left: 1675px;
+        margin-top: 45.5px;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #999999;
+    }
+    .ffl1{
+        margin-left: 1600px;
+        margin-top: 45.5px;
+        position: absolute;
+    }
+    .ffl2{
+        margin-left: 1700px;
+        margin-top: 45.5px;
+        position: absolute;
+    }
+
+
+
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   width="116.134px" height="125px" viewBox="0 0 116.134 125" enable-background="new 0 0 116.134 125" xml:space="preserve">
+<g id="Layer_1" display="none">
+</g>
+<g id="Cylinder">
+</g>
+<g id="Layer_6">
+</g>
+<g id="Pressure_gauge">
+</g>
+<g id="Chasis__x26__base">
+</g>
+<g id="Layer_8">
+</g>
+<g id="Motor__x26__pump">
+</g>
+<g id="Valves">
+  <g>
+    <rect x="27.408" y="0.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="10" height="60"/>
+    <path fill="#808080" stroke="#808080" stroke-miterlimit="10" d="M14.408,63.906c0,9.977,0,28.592,0,37.055
+      c0,7.66,4.564,6.539,7.487,6.539c8.001,0,85.878,0,85.878,0c2.349-1,2.783-3.183,2.789-4.339c0-6.592-3.377-7.515-3.377-7.515
+      l-85.29-34.22c0,0-3.958-2.04-5.872-2.323C14.481,59.104,14.408,60.881,14.408,63.906z"/>
+    <path fill="#E6E6E6" stroke="#999999" stroke-width="0.25" stroke-miterlimit="10" d="M31.605,72.037c0,0,3.848-0.018,6.49-0.018
+      s2.814,3.383,3.967,5.793c1.219,2.287,3.601,1.695,6.508,0c2.418-1.689,13.474-10.215,13.474-10.215s2.196-2.033,0.011-5.287
+      C50.721,48.996,31.605,49.098,31.605,49.098s-19.18-0.102-30.514,13.213c-2.186,3.254,0.018,5.287,0.018,5.287
+      s11.059,8.525,13.477,10.215c2.908,1.695,5.291,2.287,6.51,0c1.152-2.41,1.326-5.793,3.969-5.793S31.605,72.037,31.605,72.037z"/>
+    <rect x="28.408" y="104.5" fill="#808080" stroke="#808080" stroke-miterlimit="10" width="7" height="16"/>
+    <circle fill="#999999" stroke="#999999" stroke-width="0.25" stroke-miterlimit="10" cx="31.574" cy="90.238" r="13.846"/>
+    <rect x="61.408" y="91.5" fill="#999999" stroke="#999999" stroke-miterlimit="10" width="44" height="20"/>
+    <rect x="74.408" y="93.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="23" height="2"/>
+    <rect x="74.408" y="107.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="23" height="2"/>
+    <rect x="69.408" y="88.5" fill="#C8C8C8" stroke="#999999" stroke-miterlimit="10" width="5" height="27"/>
+    <rect x="97.408" y="88.5" fill="#C8C8C8" stroke="#999999" stroke-miterlimit="10" width="5" height="27"/>
+    <rect x="67.408" y="92.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+    <rect x="103.408" y="92.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+    <path fill="#999999" stroke="#999999" stroke-miterlimit="10" d="M115.634,101.598c0,3.285-2.662,6.001-5.946,6.001
+      c-0.461,0-0.907-0.099-1.336-0.099h-2.943v-12h2.943c0.429,0,0.875,0.001,1.336,0.001
+      C112.972,95.501,115.634,98.314,115.634,101.598z"/>
+    <path fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" d="M60.408,99.5v5H29.021c-3.133,0-5.765,0.284-6.555,0.567
+      c-0.157,0.059-0.242,0.157-0.242,0.218c-0.652,0.441-1.439,0.716-2.286,0.716c-2.265,0-4.099-1.833-4.099-4.106
+      c0-2.275,1.834-4.111,4.099-4.111c0.847,0,1.634,0.258,2.286,0.699c0,0.063,0.082,0.295,0.24,0.35
+      c0.792,0.287,3.448,0.668,6.605,0.668H60.408z"/>
+    <polygon fill="#333333" stroke="#333333" stroke-width="0.25" stroke-miterlimit="10" points="25.72,103.146 70.203,58.318 
+      63.42,51.482 18.937,96.311 14.936,107.178     "/>
+    <path fill="#C1272D" stroke="#C1272D" stroke-width="0.25" stroke-miterlimit="10" d="M98.62,23.24
+      c2.799,2.799,3.058,7.076,0.577,9.557L71.874,60.121L61.739,49.986l27.323-27.324C91.543,20.183,95.821,20.441,98.62,23.24z">
+  <animateColor attributeName="fill" attributeType="XML" from="red" to="#000022" dur=".5s" repeatCount="indefinite"/>   
+    <animateColor attributeName="stroke" attributeType="XML" from="#cccccc" to="#000022" dur=".5s" repeatCount="indefinite"/>  
+  </path>  
+  <circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="31.574" cy="90.238" r="3.02"/>
+    <circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="17.669" cy="74.84" r="3.049"/>
+    <circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="110.374" cy="101.598" r="2.973"/>
+    <circle fill="#C8C8C8" stroke="#C8C8C8" stroke-width="0.25" stroke-miterlimit="10" cx="20.033" cy="101.904" r="2.439"/>
+    <rect x="67.408" y="106.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+    <rect x="103.408" y="106.5" fill="#C8C8C8" stroke="#C8C8C8" stroke-miterlimit="10" width="1" height="4"/>
+    <rect x="8.408" y="120.5" fill="#333333" stroke="#333333" stroke-miterlimit="10" width="47" height="4"/>
+  </g>
+</g>   
+        
+</svg>

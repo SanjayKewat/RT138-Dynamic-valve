@@ -1,0 +1,35 @@
+.alarm_button{
+
+    border:1px solid #171717; -webkit-border-radius: 0px; -moz-border-radius: 0px;border-radius: 0px;font-family:nft, Verdana, Arial;  text-decoration:none; display:inline-block;color: #FFFFFF;
+    background-color: #333333; background-image: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#333333));
+    background-image: -webkit-linear-gradient(top, #333333, #333333);
+    background-image: -moz-linear-gradient(top, #333333, #333333);
+    background-image: -ms-linear-gradient(top, #333333, #333333);
+    background-image: -o-linear-gradient(top, #333333, #333333);
+    background-image: linear-gradient(to bottom, #333333, #333333);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#333333, endColorstr=#333333);
+}
+
+.alarm_button:hover,#his:hover,#his1:hover{
+    color:#333333;
+    border:1px solid #666666;
+    background-color: #B3B3B3; background-image: -webkit-gradient(linear, left top, left bottom, from(#B3B3B3), to(#B3B3B3));
+    background-image: -webkit-linear-gradient(top, #B3B3B3, #B3B3B3);
+    background-image: -moz-linear-gradient(top, #B3B3B3, #B3B3B3);
+    background-image: -ms-linear-gradient(top, #B3B3B3, #B3B3B3);
+    background-image: -o-linear-gradient(top, #B3B3B3, #B3B3B3);
+    background-image: linear-gradient(to bottom, #B3B3B3, #B3B3B3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#B3B3B3, endColorstr=#B3B3B3);
+}
+@media only screen and (min-width : 120px) {
+    .alarm_button{
+
+        font-size:18px;
+        padding: 1px 5px;
+    }
+}
+@media only screen and (min-width : 1445px) {
+    .alarm_button{
+        width: 180px;
+        font-size:21px;
+        padding: 4px;
+    }
+}
